@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 jan. 2021 à 07:48
+-- Généré le :  mar. 12 jan. 2021 à 08:24
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -77,8 +77,10 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
   `mail` varchar(40) COLLATE utf8_bin DEFAULT NULL,
-  `password` varchar(40) COLLATE utf8_bin DEFAULT NULL,
-  `name` varchar(40) COLLATE utf8_bin DEFAULT NULL,
+  `mdp` varchar(40) COLLATE utf8_bin DEFAULT NULL,
+  `nom` varchar(40) COLLATE utf8_bin DEFAULT NULL,
+  `prenom` int(40) DEFAULT NULL,
+  `dateNaissance` char(10) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 COMMIT;

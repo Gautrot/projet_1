@@ -3,8 +3,10 @@ Base de données de 'bibliothèque'.
   - user : Utilisateurs
     * id - ID (incrément auto.)
     * mail - E-mail
-    * password - Mot de passe
-    * name - Nom de l'utilisateur
+    * mdp - Mot de passe
+    * nom - Nom de l'utilisateur
+    * prenom - Prénom de l'utilisateur
+    * dateNaissance - Date de naissance de l'utilisateur
   - livre : Livres
     * RefLiv - ID
     * LivNom - Nom du livre
