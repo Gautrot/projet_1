@@ -1,5 +1,7 @@
-Base de données de 'bibliothèque'.
+# Niveau 2
 
+Base de donnée de 'bibliothèque'.
+Tableaux :
   - user : Utilisateurs
     * id - ID (incrément auto.)
     * mail - E-mail
