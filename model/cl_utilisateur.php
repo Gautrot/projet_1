@@ -22,6 +22,10 @@ class Utilisateur{
     return $this->prenom;
   }
 
+  public function getDateNaissance() {
+    return $this->prenom;
+  }
+
   public function setMail($mail) {
     if (is_string($mail)) {
       $this->mail = $mail;
@@ -43,6 +47,12 @@ class Utilisateur{
   public function setPrenom($prenom) {
     if (is_string($prenom)) {
       $this->prenom = $prenom;
+    }
+  }
+
+  public function setDateNaissance($date) {
+    if (is_string($date)) {
+      $this->date = $date;
     }
   }
 
