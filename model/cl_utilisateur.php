@@ -1,42 +1,48 @@
 <?php
 class Utilisateur{
-  private $login, $password, $email, $id;
+  private $mail, $mdp, $mail, $prenom;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
   }
 
-  public function getLogin() {
-    return $this->login;
+  public function getMail() {
+    return $this->mail;
   }
 
-  public function getPassword() {
-    return $this->password;
+  public function getMdp() {
+    return $this->mdp;
   }
 
-  public function getEmail() {
-    return $this->email;
+  public function getNom() {
+    return $this->nom;
   }
 
-  public function getId() {
-    return $this->id;
+  public function getPrenom() {
+    return $this->prenom;
   }
 
-  public function setLogin($login) {
-    if (is_string($login)) {
-      $this->login = $login;
+  public function setMail($mail) {
+    if (is_string($mail)) {
+      $this->mail = $mail;
     }
   }
 
-  public function setPassword($password) {
-    if (is_string($password)) {
-      $this->password = $password;
+  public function setMdp($mdp) {
+    if (is_string($mdp)) {
+      $this->mdp = $mdp;
     }
   }
 
-  public function setEmail($email) {
-    if (is_string($email)) {
-      $this->email = $email;
+  public function setNom($nom) {
+    if (is_string($nom)) {
+      $this->nom = $nom;
+    }
+  }
+
+  public function setPrenom($prenom) {
+    if (is_string($prenom)) {
+      $this->prenom = $prenom;
     }
   }
 

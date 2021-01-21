@@ -9,19 +9,19 @@ class Manager{
   public function connexion($a) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM ex3
-      WHERE login = :login
-      AND password = :password
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
+      WHERE mail = :mail
+      AND mdp = :mdp
     ');
     $req -> execute([
-      'login' => $a->getLogin(),
-      'password' => $a->getPassword()
+      'mail' => $a->getMail(),
+      'mdp' => $a->getMdp()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
-      $_SESSION['login'] = $res['login'];
-      header("Location: ../vue/espace_client.php");
+      $_SESSION['mail'] = $res['mail'];
+      header("Location: ../site/brouillon/index.php");
     }
 
     else {
