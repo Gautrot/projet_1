@@ -10,23 +10,23 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE mail = :mail
+      WHERE pseudo = :pseudo
       AND mdp = :mdp
     ');
     $req -> execute([
-      'mail' => $a->getMail(),
+      'pseudo' => $a->getPseudo(),
       'mdp' => $a->getMdp()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
-      $_SESSION['mail'] = $res['mail'];
-      header("Location: ../index.html");
+      $_SESSION['pseudo'] = $res['pseudo'];
+      header("Location: ../vue/espace_client.php");
     }
 
     else {
       echo 'Erreur.
-            <form action="../vue/login.html" method="post">
+            <form action="../vue/connexion.php" method="post">
               <input type="submit" value="Retour" />
             </form>';
     }
@@ -35,7 +35,7 @@ class Manager{
 #Déconnexion
   public function deconnexion($a) {
     session_destroy();
-    header("Location: ../accueil.html");
+    header("Location: ../accueil.php");
   }
 
 #Inscription
@@ -43,42 +43,43 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE mail = :mail
+      WHERE pseudo = :pseudo
       ');
     $req -> execute([
-      'mail' => $a->getMail()
+      'pseudo' => $a->getPseudo()
     ]);
     $res = $req -> fetchall();
 
     if ($res) {
       echo 'Erreur. Ce compte existe.
-            <form action="../vue/register.html" method="post">
+            <form action="../vue/inscription.php" method="post">
               <input type="submit" value="Retour" />
             </form>';
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (mail, mdp, nom, prenom)
-      VALUES (:mail, :mdp, :nom, :prenom)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (pseudo, mail, mdp, nom, prenom)
+      VALUES (:pseudo, :mail, :mdp, :nom, :prenom)
       ');
       $res2 = $req -> execute([
-        'mail' => $a->getMail(),
+        'pseudo' => $a->getPseudo(),
+        'mail' => $a->getMail()
         'mdp' => $a->getMdp(),
-        'nom' => $a->getNom(),
-        'prenom' => $a->getPrenom(),
+        'nom' => $a->getNom()
+        'prenom' => $a->getPrenom()
        ]);
 
       if ($res2) {
-        $_SESSION['mail'] = $a->getMail();
+        $_SESSION['pseudo'] = $a->getPseudo();
         echo 'Inscription réussie !
-              <form action="../vue/espace_client.html" method="post">
+              <form action="../vue/espace_client.php" method="post">
                 <input type="submit" value="Suivant" />
               </form>';
       }
 
       else {
         echo 'Inscription échouée !
-              <form action="../vue/register.html" method="post">
+              <form action="../vue/inscription.php" method="post">
                 <input type="submit" value="Retour" />
               </form>';
       }
@@ -90,10 +91,10 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE mail = :mail
+      WHERE pseudo = :pseudo
     ');
     $req -> execute([
-      'mail' => $a
+      'pseudo' => $a
     ]);
     $res = $req->fetch();
     return $res;
@@ -104,41 +105,41 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE mail = :mail
+      WHERE pseudo = :pseudo
     ');
     $req -> execute([
-      'mail' => $a->getMail()
+      'pseudo' => $a->getPseudo()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
       $req = $bdd -> co_bdd()->prepare('UPDATE user
-      SET mail = :mail,
+      SET pseudo = :pseudo,
+          mail = :mail,
           mdp = :mdp,
           nom = :nom,
-          prenom = :prenom,
-          dateNaissance = :dateNaissance
+          prenom = :prenom
       WHERE id = :id
       ');
       $res2 = $req -> execute([
         'id' => $res['id'],
-        'mail' => $a->getMail(),
+        'pseudo' => $a->getPseudo(),
+        'mail' => $a->getMail()
         'mdp' => $a->getMdp(),
-        'nom' => $a->getNom(),
-        'prenom' => $a->getPrenom(),
-        'dateNaissance' => $a->getDateNaissance(),
+        'nom' => $a->getNom()
+        'prenom' => $a->getPrenom()
       ]);
 
       if ($res2) {
         echo 'Modification réussie !
-              <form action="../vue/espace_client.html" method="post">
+              <form action="../vue/espace_client.php" method="post">
                 <input type="submit" value="Suivant" />
               </form>';
       }
 
       else {
         echo 'Modification échouée !
-              <form action="../vue/modifier.html" method="post">
+              <form action="../vue/modifier.php" method="post">
                 <input type="submit" value="Retour" />
               </form>';
       }

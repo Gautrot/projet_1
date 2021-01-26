@@ -4,8 +4,9 @@ Base de donnée de 'bibliothèque'.
 Tableaux :
   - user : Utilisateurs
     * id - ID (incrément auto.)
-    * mail - E-mail
-    * mdp - Mot de passe
+    * pseudo - Pseudonyme de l'utilisateur
+    * mail - E-mail de l'utilisateur
+    * mdp - Mot de passe de l'utilisateur
     * nom - Nom de l'utilisateur
     * prenom - Prénom de l'utilisateur
     * dateNaissance - Date de naissance de l'utilisateur

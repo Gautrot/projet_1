@@ -7,13 +7,13 @@ Projet 1 - Bibliothèque
 * ../bootstrap
 ** Les thèmes et animations grâce à l'aide de Bootstrap v4.5.3.
 
-* ../vue
-
-* ../traitement
-
 * ../manager
 
 * ../model
+
+* ../traitement
+
+* ../vue
 
 * index.hmtl
 ** La page d'accueil.
