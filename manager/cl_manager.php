@@ -10,17 +10,17 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE login = :login
-      AND password = :password
+      WHERE pseudo = :pseudo
+      AND mdp = :mdp
     ');
     $req -> execute([
-      'login' => $a->getLogin(),
-      'password' => $a->getPassword()
+      'pseudo' => $a->getPseudo(),
+      'mdp' => $a->getMdp()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
-      $_SESSION['login'] = $res['login'];
+      $_SESSION['pseudo'] = $res['pseudo'];
       header("Location: ../vue/espace_client.php");
     }
 
@@ -43,10 +43,10 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE login = :login
+      WHERE pseudo = :pseudo
       ');
     $req -> execute([
-      'login' => $a->getLogin()
+      'pseudo' => $a->getPseudo()
     ]);
     $res = $req -> fetchall();
 
@@ -58,17 +58,19 @@ class Manager{
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (login, password, email)
-      VALUES (:login, :password, :email)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (pseudo, mail, mdp, nom, prenom)
+      VALUES (:pseudo, :mail, :mdp, :nom, :prenom)
       ');
       $res2 = $req -> execute([
-        'login' => $a->getLogin(),
-        'password' => $a->getPassword(),
-        'email' => $a->getEmail()
+        'pseudo' => $a->getPseudo(),
+        'mail' => $a->getMail()
+        'mdp' => $a->getMdp(),
+        'nom' => $a->getNom()
+        'prenom' => $a->getPrenom()
        ]);
 
       if ($res2) {
-        $_SESSION['login'] = $a->getLogin();
+        $_SESSION['pseudo'] = $a->getPseudo();
         echo 'Inscription réussie !
               <form action="../vue/espace_client.php" method="post">
                 <input type="submit" value="Suivant" />
@@ -89,10 +91,10 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE login = :login
+      WHERE pseudo = :pseudo
     ');
     $req -> execute([
-      'login' => $a
+      'pseudo' => $a
     ]);
     $res = $req->fetch();
     return $res;
@@ -103,25 +105,29 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE login = :login
+      WHERE pseudo = :pseudo
     ');
     $req -> execute([
-      'login' => $a->getLogin()
+      'pseudo' => $a->getPseudo()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
       $req = $bdd -> co_bdd()->prepare('UPDATE user
-      SET login = :login,
-          password = :password,
-          email = :email
+      SET pseudo = :pseudo,
+          mail = :mail,
+          mdp = :mdp,
+          nom = :nom,
+          prenom = :prenom
       WHERE id = :id
       ');
       $res2 = $req -> execute([
         'id' => $res['id'],
-        'login' => $a->getLogin(),
-        'password' => $a->getPassword(),
-        'email' => $a->getEmail()
+        'pseudo' => $a->getPseudo(),
+        'mail' => $a->getMail()
+        'mdp' => $a->getMdp(),
+        'nom' => $a->getNom()
+        'prenom' => $a->getPrenom()
       ]);
 
       if ($res2) {
