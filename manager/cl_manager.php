@@ -9,7 +9,7 @@ class Manager{
   public function connexion($a) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM ex3
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
       WHERE login = :login
       AND password = :password
     ');
@@ -42,7 +42,7 @@ class Manager{
   public function inscription($a) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM ex3
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
       WHERE login = :login
       ');
     $req -> execute([
@@ -58,7 +58,7 @@ class Manager{
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO ex3 (login, password, email)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (login, password, email)
       VALUES (:login, :password, :email)
       ');
       $res2 = $req -> execute([
@@ -88,7 +88,7 @@ class Manager{
   public function recupSession($a){
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM ex3
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
       WHERE login = :login
     ');
     $req -> execute([
@@ -102,7 +102,7 @@ class Manager{
   public function modifier($a) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM ex3
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
       WHERE login = :login
     ');
     $req -> execute([
@@ -111,7 +111,7 @@ class Manager{
     $res = $req -> fetch();
 
     if ($res) {
-      $req = $bdd -> co_bdd()->prepare('UPDATE ex3
+      $req = $bdd -> co_bdd()->prepare('UPDATE user
       SET login = :login,
           password = :password,
           email = :email
