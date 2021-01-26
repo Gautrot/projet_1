@@ -2,7 +2,7 @@
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
 
-if (empty($_POST['login']) || empty($_POST['password'])) {
+if (empty($_POST['mail']) || empty($_POST['mdp'])) {
   echo 'Erreur. Un ou plusieurs champs sont vides.
         <form action="../vue/connexion.php" method="post">
           <input type="submit" value="Retour" />
@@ -11,8 +11,8 @@ if (empty($_POST['login']) || empty($_POST['password'])) {
 
 else {
   $a = new Utilisateur([
-    'login' => $_POST['login'],
-    'password' => $_POST['password']
+    'mail' => $_POST['mail'],
+    'mdp' => $_POST['mdp']
   ]);
   $b = new Manager();
   $b->connexion($a);
