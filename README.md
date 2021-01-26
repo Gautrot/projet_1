@@ -5,7 +5,7 @@ Projet 1 - Bibliothèque
 ** La base de donnée du projet.
 
 * ../bootstrap
-** Les thèmes et animations grâce à l'aide de Bootstrap v4.5.3.
+** Les thèmes et animations grâce à l'aide de Bootstrap v4.6.0.
 
 * ../manager
 
