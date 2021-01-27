@@ -1,6 +1,6 @@
 <?php
-#Appelle le ficher 'cl_bdd.php'
-require_once 'cl_bdd.php';
+#Appelle le ficher 'cl_bdd.html'
+require_once 'cl_bdd.html';
 
 #Début classe Manager
 class Manager{
@@ -10,23 +10,23 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE pseudo = :pseudo
+      WHERE mail = :mail
       AND mdp = :mdp
-    ');
+      ');
     $req -> execute([
-      'pseudo' => $a->getPseudo(),
+      'mail' => $a->getMail(),
       'mdp' => $a->getMdp()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
       $_SESSION['pseudo'] = $res['pseudo'];
-      header("Location: ../vue/espace_client.php");
+      header("Location: ../vue/espace_client.html");
     }
 
     else {
       echo 'Erreur.
-            <form action="../vue/connexion.php" method="post">
+            <form action="../vue/login.html" method="post">
               <input type="submit" value="Retour" />
             </form>';
     }
@@ -35,7 +35,7 @@ class Manager{
 #Déconnexion
   public function deconnexion($a) {
     session_destroy();
-    header("Location: ../accueil.php");
+    header("Location: ../index.html");
   }
 
 #Inscription
@@ -52,7 +52,7 @@ class Manager{
 
     if ($res) {
       echo 'Erreur. Ce compte existe.
-            <form action="../vue/inscription.php" method="post">
+            <form action="../vue/register.html" method="post">
               <input type="submit" value="Retour" />
             </form>';
     }
@@ -72,14 +72,14 @@ class Manager{
       if ($res2) {
         $_SESSION['pseudo'] = $a->getPseudo();
         echo 'Inscription réussie !
-              <form action="../vue/espace_client.php" method="post">
+              <form action="../vue/espace_client.html" method="post">
                 <input type="submit" value="Suivant" />
               </form>';
       }
 
       else {
         echo 'Inscription échouée !
-              <form action="../vue/inscription.php" method="post">
+              <form action="../vue/register.html" method="post">
                 <input type="submit" value="Retour" />
               </form>';
       }
@@ -132,21 +132,24 @@ class Manager{
 
       if ($res2) {
         echo 'Modification réussie !
-              <form action="../vue/espace_client.php" method="post">
+              <form action="../vue/espace_client.html" method="post">
                 <input type="submit" value="Suivant" />
               </form>';
       }
 
       else {
         echo 'Modification échouée !
-              <form action="../vue/modifier.php" method="post">
+              <form action="../vue/edit.html" method="post">
                 <input type="submit" value="Retour" />
               </form>';
       }
     }
 
     else {
-      echo "Erreur. L'utilisateur n'existe pas.";
+      echo 'Erreur. L'utilisateur n'existe pas.
+      <form action="../vue/edit.html" method="post">
+        <input type="submit" value="Retour" />
+      </form>';
     }
   }
 #Fin classe Manager
