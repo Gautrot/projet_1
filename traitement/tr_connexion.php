@@ -10,11 +10,11 @@ if (empty($_POST['mail']) || empty($_POST['mdp'])) {
 }
 
 else {
-  $a = new Utilisateur([
+  $user = new Utilisateur([
     'mail' => $_POST['mail'],
     'mdp' => $_POST['mdp']
   ]);
-  $b = new Manager();
-  $b->connexion($a);
+  $manager = new Manager();
+  $manager->connexion($user);
 }
 ?>

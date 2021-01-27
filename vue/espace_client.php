@@ -1,3 +1,11 @@
+<!-- PHP -->
+<?php
+require_once '../manager/cl_manager.php';
+$manager = new Manager();
+$valeur = $manager->recupSession($_SESSION['nom']);
+?>
+
+<!-- HTML -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,26 +30,25 @@
             </div>
           </div>
         </form>
-        <li class="nav-item dropdown no-arrow">
+        <span class="text-light mr-2 d-none d-lg-inline text-gray-600 small"><?php echo "Bonjour " .$valeur['nom']. " !" ?></span>
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-              <img class="img-profile" src="../bootstrap/bootstrap-icons-1.3.0/person-fill.svg">
+            <img class="img-profile" src="../bootstrap/bootstrap-icons-1.3.0/person-fill.svg">
           </a>
-          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Paramètres</a>
-            <a class="dropdown-item" href="#">Activitées</a>
-            <hr>
-            <div class="p-1">
-              <button class="btn btn-danger btn-user btn-block" type="submit" name="button">
-                <a href="../traitement/tr_deconnexion.php" class="text-light">Se déconnecter</a>
-              </button>
-            </div>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="#">Paramètres</a>
+          <a class="dropdown-item" href="#">Activitées</a>
+          <hr>
+          <div class="p-1">
+            <button class="btn btn-danger btn-user btn-block" type="submit" name="button">
+              <a href="../traitement/tr_deconnexion.php" class="text-light">Se déconnecter</a>
+            </button>
           </div>
-        </li>
+        </div>
       </nav>
     </div>
 
+<!-- JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
   </body>

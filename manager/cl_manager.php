@@ -1,27 +1,27 @@
 <?php
-#Appelle le ficher 'cl_bdd.html'
-require_once 'cl_bdd.html';
+#Appelle le ficher 'cl_bdd.php'
+require_once 'cl_bdd.php';
 
 #Début classe Manager
 class Manager{
 
 #Connexion
-  public function connexion($a) {
+  public function connexion($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
+    $req = $bdd->co_bdd()->prepare('SELECT * FROM user
       WHERE mail = :mail
       AND mdp = :mdp
-      ');
+    ');
     $req -> execute([
-      'mail' => $a->getMail(),
-      'mdp' => $a->getMdp()
+      'mail' => $user->getMail(),
+      'mdp' => $user->getMdp()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
-      $_SESSION['pseudo'] = $res['pseudo'];
-      header("Location: ../vue/espace_client.html");
+      $_SESSION['nom'] = $res['nom'];
+      header("Location: ../vue/espace_client.php");
     }
 
     else {
@@ -33,20 +33,20 @@ class Manager{
   }
 
 #Déconnexion
-  public function deconnexion($a) {
+  public function deconnexion($user) {
     session_destroy();
     header("Location: ../index.html");
   }
 
 #Inscription
-  public function inscription($a) {
+  public function inscription($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE pseudo = :pseudo
+      WHERE mail = :mail
       ');
     $req -> execute([
-      'pseudo' => $a->getPseudo()
+      'pseudo' => $user->getPseudo()
     ]);
     $res = $req -> fetchall();
 
@@ -58,21 +58,20 @@ class Manager{
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (pseudo, mail, mdp, nom, prenom)
-      VALUES (:pseudo, :mail, :mdp, :nom, :prenom)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (mail, mdp, nom, prenom)
+      VALUES (:mail, :mdp, :nom, :prenom)
       ');
       $res2 = $req -> execute([
-        'pseudo' => $a->getPseudo(),
-        'mail' => $a->getMail()
-        'mdp' => $a->getMdp(),
-        'nom' => $a->getNom()
-        'prenom' => $a->getPrenom()
+        'mail' => $user->getMail(),
+        'mdp' => $user->getMdp(),
+        'nom' => $user->getNom(),
+        'prenom' => $user->getPrenom()
        ]);
 
       if ($res2) {
-        $_SESSION['pseudo'] = $a->getPseudo();
+        $_SESSION['pseudo'] = $user->getPseudo();
         echo 'Inscription réussie !
-              <form action="../vue/espace_client.html" method="post">
+              <form action="../vue/espace_client.php" method="post">
                 <input type="submit" value="Suivant" />
               </form>';
       }
@@ -87,35 +86,34 @@ class Manager{
   }
 
 #Récupération d'un compte
-  public function recupSession($a){
+  public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE pseudo = :pseudo
+      WHERE nom = :nom
     ');
     $req -> execute([
-      'pseudo' => $a
+      'nom' => $user
     ]);
     $res = $req->fetch();
     return $res;
   }
 
 #Modification d'un compte
-  public function modifier($a) {
+  public function modifier($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
       WHERE pseudo = :pseudo
     ');
     $req -> execute([
-      'pseudo' => $a->getPseudo()
+      'pseudo' => $user->getPseudo()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
       $req = $bdd -> co_bdd()->prepare('UPDATE user
-      SET pseudo = :pseudo,
-          mail = :mail,
+      SET mail = :mail,
           mdp = :mdp,
           nom = :nom,
           prenom = :prenom
@@ -123,16 +121,15 @@ class Manager{
       ');
       $res2 = $req -> execute([
         'id' => $res['id'],
-        'pseudo' => $a->getPseudo(),
-        'mail' => $a->getMail()
-        'mdp' => $a->getMdp(),
-        'nom' => $a->getNom()
-        'prenom' => $a->getPrenom()
+        'mail' => $user->getMail(),
+        'mdp' => $user->getMdp(),
+        'nom' => $user->getNom(),
+        'prenom' => $user->getPrenom()
       ]);
 
       if ($res2) {
         echo 'Modification réussie !
-              <form action="../vue/espace_client.html" method="post">
+              <form action="../vue/espace_client.php" method="post">
                 <input type="submit" value="Suivant" />
               </form>';
       }
@@ -146,7 +143,7 @@ class Manager{
     }
 
     else {
-      echo 'Erreur. L'utilisateur n'existe pas.
+      echo 'Erreur. L\'utilisateur n\'existe pas.
       <form action="../vue/edit.html" method="post">
         <input type="submit" value="Retour" />
       </form>';
