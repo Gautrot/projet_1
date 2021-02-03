@@ -5,9 +5,10 @@ require_once 'cl_bdd.php';
 #Début classe Manager
 class Manager{
 
-#Connexion
+# Connexion
+
   public function connexion($user) {
-    #Instancie la classe BDD
+# Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd->co_bdd()->prepare('SELECT * FROM user
       WHERE mail = :mail
@@ -24,21 +25,30 @@ class Manager{
       header("Location: ../vue/espace_client.php");
     }
 
+# Si l'un des deux champs sont vides.
+
+    else if (empty($_POST['mail']) || empty($_POST['mdp'])) {
+      header("Location: ../index.php");
+      throw new Exception ("Un des deux champs sont vides.");
+    }
+
+# Si la saisie du mot de passe ou de l'e-mail est incorrecte.
+
     else {
-      echo 'Erreur.
-            <form action="../vue/login.html" method="post">
-              <input type="submit" value="Retour" />
-            </form>';
+      header("Location: ../index.php");
+      throw new Exception ("L'e-mail ou le mot de passe est incorrecte ou n'existe pas.");
     }
   }
 
-#Déconnexion
+# Déconnexion
+
   public function deconnexion($user) {
     session_destroy();
-    header("Location: ../index.html");
+    header("Location: ../index.php");
   }
 
-#Inscription
+# Inscription
+
   public function inscription($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
@@ -46,15 +56,22 @@ class Manager{
       WHERE mail = :mail
       ');
     $req -> execute([
-      'pseudo' => $user->getPseudo()
+      'mail' => $user->getMail()
     ]);
     $res = $req -> fetchall();
 
-    if ($res) {
-      echo 'Erreur. Ce compte existe.
-            <form action="../vue/register.html" method="post">
-              <input type="submit" value="Retour" />
-            </form>';
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['mail'])) {
+      header("Location: ../index.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+# Si le compte existe dans la BDD.
+
+    else if ($res) {
+      header("Location: ../index.php");
+      throw new Exception("Ce compte existe.");
     }
 
     else {
@@ -69,23 +86,26 @@ class Manager{
        ]);
 
       if ($res2) {
-        $_SESSION['pseudo'] = $user->getPseudo();
-        echo 'Inscription réussie !
-              <form action="../vue/espace_client.php" method="post">
-                <input type="submit" value="Suivant" />
-              </form>';
+        $_SESSION['nom'] = $user->getNom();
+        header("Location: ../vue/espace_client.php");
+      }
+
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['mail'])) {
+        header("Location: ../index.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
       }
 
       else {
-        echo 'Inscription échouée !
-              <form action="../vue/register.html" method="post">
-                <input type="submit" value="Retour" />
-              </form>';
+        header("Location: ../index.php");
+        throw new Exception("Inscription échouée !");
       }
     }
   }
 
-#Récupération d'un compte
+# Récupération d'un compte
+
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
@@ -99,15 +119,16 @@ class Manager{
     return $res;
   }
 
-#Modification d'un compte
+# Modification d'un compte
+
   public function modifier($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE pseudo = :pseudo
+      WHERE mail = :mail
     ');
     $req -> execute([
-      'pseudo' => $user->getPseudo()
+      'mail' => $user->getMail()
     ]);
     $res = $req -> fetch();
 
@@ -128,27 +149,21 @@ class Manager{
       ]);
 
       if ($res2) {
-        echo 'Modification réussie !
-              <form action="../vue/espace_client.php" method="post">
-                <input type="submit" value="Suivant" />
-              </form>';
+        $_SESSION['nom'] = $user->getNom();
+        header("Location: ../vue/espace_client.php");
       }
 
       else {
-        echo 'Modification échouée !
-              <form action="../vue/edit.html" method="post">
-                <input type="submit" value="Retour" />
-              </form>';
+        throw new Exception("Modification échouée !");
       }
     }
 
     else {
-      echo 'Erreur. L\'utilisateur n\'existe pas.
-      <form action="../vue/edit.html" method="post">
-        <input type="submit" value="Retour" />
-      </form>';
+      throw new Exception ("L'utilisateur n'existe pas.");
     }
   }
-#Fin classe Manager
+
+# Fin classe Manager
+
 }
 ?>
