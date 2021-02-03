@@ -12,7 +12,7 @@ require_once 'manager/cl_manager.php';
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
         <title>Index</title>
     </head>
-    <body style="background-size: cover; background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/b2/M%C3%A9diath%C3%A8que_Anne_Franck_%C3%A0_Dugny.jpg')">
+    <body class="bg-secondary">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-10 col-md-8">
@@ -22,13 +22,21 @@ require_once 'manager/cl_manager.php';
                                 <h1 class="h4 text-gray-500 mb-4">Bienvenue dans la<br>Médiathèque Anne Franck !</h1>
                                 <hr>
                                 <div class="form-group row p-3">
-                                    <div class="col-sm-6" data-toggle="modal" data-target="#connexion" href="#connexion">
+                                    <div class="col-6" data-toggle="modal" data-target="#connexion" href="#connexion">
                                         <a class="btn btn-primary btn-user btn-block">Se connecter</a>
                                     </div>
-                                    <div class="col-sm-6" data-toggle="modal" data-target="#inscription" href="#inscription">
+                                    <div class="col-6" data-toggle="modal" data-target="#inscription" href="#inscription">
                                         <a class="btn btn-primary btn-user btn-block">S'inscrire</a>
                                     </div>
                                 </div>
+<!-- PHP : Message d'erreur de connexion/inscription -->
+                                <p class="text-danger form-text">
+                                    <?php
+                                    if (isset($_SESSION['erreur'])) {
+                                      echo $_SESSION['erreur'];
+                                    }
+                                    ?>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -55,14 +63,6 @@ require_once 'manager/cl_manager.php';
                                     <div class="m-4">
                                         <input class="btn btn-primary" type="submit" value="Se connecter" />
                                     </div>
-                                    <p class="form-text text-muted text-danger">
-                                        <!-- PHP : Connexion -->
-                                        <?php
-                                        if (isset($_SESSION['erreur'])) {
-                                          echo $_SESSION['erreur'];
-                                        }
-                                        ?>
-                                    </p>
                                 </form>
                             </div>
                         </div>
@@ -96,14 +96,6 @@ require_once 'manager/cl_manager.php';
                                     <div class="mt-4">
                                         <input class="btn btn-primary" type="submit" value="S'inscrire" />
                                     </div>
-                                    <p class="form-text text-muted text-danger">
-                                        <!-- PHP : Inscription -->
-                                        <?php
-                                        if (isset($_SESSION['erreur'])) {
-                                          echo $_SESSION['erreur'];
-                                        }
-                                        ?>
-                                    </p>
                                 </form>
                             </div>
                         </div>

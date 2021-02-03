@@ -29,7 +29,7 @@ class Manager{
 
     else if (empty($_POST['mail']) || empty($_POST['mdp'])) {
       header("Location: ../index.php");
-      throw new Exception ("Un des deux champs sont vides.");
+      throw new Exception ("Un ou plusieurs champs sont vides.");
     }
 
 # Si la saisie du mot de passe ou de l'e-mail est incorrecte.
