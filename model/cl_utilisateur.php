@@ -1,6 +1,6 @@
 <?php
 class Utilisateur{
-  private $mail, $mdp, $mail, $prenom;
+  private $nom, $mdp, $mail, $prenom;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
