@@ -54,11 +54,11 @@ require_once 'manager/cl_manager.php';
                                 <h2 class="text-uppercase" id="connexionFen">Connexion</h2>
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_connexion.php">
-                                    <div class="m-2">
-                                        <input type="email" name="mail" placeholder="E-mail" />
+                                    <div class="form-group">
+                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-mail">
                                     </div>
-                                    <div class="m-2">
-                                        <input type="password" name="mdp" placeholder="Mot de passe" />
+                                    <div class="form-group">
+                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
                                     </div>
                                     <div class="m-4">
                                         <input class="btn btn-primary" type="submit" value="Se connecter" />
