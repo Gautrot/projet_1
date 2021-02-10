@@ -1,10 +1,3 @@
-<!-- PHP -->
-<?php
-require_once '../model/cl_utilisateur.php';
-require_once '../manager/cl_manager.php';
-
-?>
-
 <!-- HTML -->
 <!doctype html>
 <html lang="en">
@@ -61,7 +54,7 @@ require_once '../manager/cl_manager.php';
                         </li>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bonjour <?php echo $_SESSION['nom'];?> !</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bonjour !</span>
                                 <!-- Image -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
@@ -95,7 +88,7 @@ require_once '../manager/cl_manager.php';
                                     Activités
                                 </a>
                                 -->
-                                <div class="dropdown-divider"></div>
+                                <hr>
                                 <form action="../traitement/tr_deconnexion.php" method="post">
                                     <a class="dropdown-item" href="../traitement/tr_deconnexion.php">
                                         <!-- Image -->

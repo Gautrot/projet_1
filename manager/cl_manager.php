@@ -150,18 +150,20 @@ class Manager{
   }
 
 # Récupération d'un compte
-/*
+
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE email = :email
+      WHERE nom = :nom
     ');
-    $req -> execute([]);
+    $req -> execute([
+      'nom' => $user
+    ]);
     $res = $req->fetch();
     return $res;
   }
-*/
+
 # Modification d'un compte
 
   public function modifier($user) {
