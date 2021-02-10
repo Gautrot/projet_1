@@ -54,13 +54,13 @@ require_once 'manager/cl_manager.php';
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_connexion.php">
                                     <div class="form-group">
-                                        <input type="email" name="mail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-mail">
+                                        <input type="email" name="mail" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="E-mail">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="mdp" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
+                                        <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
                                     </div>
                                     <div class="m-4">
-                                        <input class="btn btn-primary" type="submit" value="Se connecter" />
+                                        <a class="btn btn-primary">Se connecter</a>
                                     </div>
                                 </form>
                             </div>
@@ -81,24 +81,24 @@ require_once 'manager/cl_manager.php';
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_inscription.php">
                                     <div class="form-group">
-                                        <input type="text" name="nom" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nom">
+                                        <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom">
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="prenom" class="form-control form-control-user" id="exampleInputPassword" placeholder="Prénom">
+                                        <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="mail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-mail">
+                                        <input type="email" name="mail" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="E-mail">
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="password" name="mdp" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
+                                            <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="password" name="mdpconfirm" class="form-control form-control-user" id="exampleInputPassword" placeholder="Confirmer">
+                                            <input type="password" name="mdpconfirm" class="form-control form-control-user" placeholder="Confirmer">
                                         </div>
                                     </div>
                                     <div class="mt-4">
-                                        <input class="btn btn-primary" type="submit" value="S'inscrire" />
+                                        <a class="btn btn-primary">S'inscrire</a>
                                     </div>
                                 </form>
                             </div>

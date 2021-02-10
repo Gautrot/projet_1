@@ -206,7 +206,15 @@ class Manager{
         header("Location: ../vue/espace_client.php");
       }
 
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['mail'])) {
+        header("Location: ../vue/edit.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
+      }
+
       else {
+        header("Location: ../vue/edit.php");
         throw new Exception("Modification échouée !");
       }
     }
