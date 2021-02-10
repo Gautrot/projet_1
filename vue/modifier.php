@@ -57,8 +57,8 @@ require_once '../manager/cl_manager.php';
                                             <input type="text" name="date_annee" class="form-control form-control-user" id="exampleInputPassword" placeholder="Année">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <a class="btn btn-primary btn-user btn-block">Modifier</a>
+                                    <div class="justify-content-center">
+                                        <input class="btn btn-primary" type="submit" value="Modifier" />
                                     </div>
                                 </form>
                                 <div class="text-danger form-text text-center">

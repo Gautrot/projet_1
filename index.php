@@ -60,7 +60,7 @@ require_once 'manager/cl_manager.php';
                                         <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
                                     </div>
                                     <div class="m-4">
-                                        <a class="btn btn-primary">Se connecter</a>
+                                        <input class="btn btn-primary" type="submit" value="Se connecter" />
                                     </div>
                                 </form>
                             </div>
@@ -98,7 +98,7 @@ require_once 'manager/cl_manager.php';
                                         </div>
                                     </div>
                                     <div class="mt-4">
-                                        <a class="btn btn-primary">S'inscrire</a>
+                                        <input class="btn btn-primary" type="submit" value="S'inscrire" />
                                     </div>
                                 </form>
                             </div>
