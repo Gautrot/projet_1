@@ -69,6 +69,7 @@ class Manager{
     $res = $req -> fetch();
 
     if ($res) {
+      $_SESSION['nom'] = $res['nom'];
       header("Location: ../vue/espace_client.php");
     }
 
@@ -149,7 +150,7 @@ class Manager{
   }
 
 # Récupération d'un compte
-
+/*
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
@@ -160,7 +161,7 @@ class Manager{
     $res = $req->fetch();
     return $res;
   }
-
+*/
 # Modification d'un compte
 
   public function modifier($user) {
