@@ -137,7 +137,7 @@ $valeur = $manager->recupSession($_SESSION['nom']);
                         </a>
                     </div>
                     <div class="carousel-item">
-                        <a href="cds.php">
+                        <a href="cd.php">
                             <img src="../img/stock_cd.jpg" class="img-fluid d-block w-100 rounded-lg" alt="...">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>CDs</h5>
@@ -148,11 +148,11 @@ $valeur = $manager->recupSession($_SESSION['nom']);
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">Précédent</span>
                 </a>
                 <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only">Suivant</span>
                 </a>
             </div>
         </div>

@@ -189,7 +189,8 @@ class Manager{
       SET mail = :mail,
           mdp = :mdp,
           nom = :nom,
-          prenom = :prenom
+          prenom = :prenom,
+          dateNaissance = :dateNaissance,
       WHERE id = :id
       ');
       $res2 = $req -> execute([
@@ -198,7 +199,8 @@ class Manager{
         'mdp' => $user->getMdp(),
         'mdpconfirm' => $user->getMdpConfirm(),
         'nom' => $user->getNom(),
-        'prenom' => $user->getPrenom()
+        'prenom' => $user->getPrenom(),
+        'dateNaissance' => $user->getDateNaissance(),
       ]);
 
       if ($res2) {
@@ -217,10 +219,6 @@ class Manager{
         header("Location: ../vue/edit.php");
         throw new Exception("Modification échouée !");
       }
-    }
-
-    else {
-      throw new Exception ("L'utilisateur n'existe pas.");
     }
   }
 

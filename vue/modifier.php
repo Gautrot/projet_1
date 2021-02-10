@@ -62,6 +62,7 @@ require_once '../manager/cl_manager.php';
                                     </div>
                                 </form>
                                 <div class="text-danger form-text text-center">
+<!-- PHP : Message d'erreur de modification -->
                                     <?php
                                     if (isset($_SESSION['erreur'])) {
                                       echo $_SESSION['erreur'];

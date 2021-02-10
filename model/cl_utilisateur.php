@@ -1,6 +1,6 @@
 <?php
 class Utilisateur{
-  private $nom, $mdp, $mdpconfirm, $mail, $prenom;
+  private $nom, $mdp, $mdpconfirm, $mail, $prenom, $datenaissance;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
@@ -27,7 +27,7 @@ class Utilisateur{
   }
 
   public function getDateNaissance() {
-    return $this->prenom;
+    return $this->datenaissance;
   }
 
   public function setMail($mail) {
@@ -60,9 +60,11 @@ class Utilisateur{
     }
   }
 
-  public function setDateNaissance($date) {
-    if (is_string($date)) {
-      $this->date = $date;
+  public function setDateNaissance($datenaissance) {
+    if (is_string($datenaissance)) {
+      $this->date_jour = $datenaissance. '-';
+      $this->date_mois = $datenaissance. '-';
+      $this->date_annee = $datenaissance;
     }
   }
 
