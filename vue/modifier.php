@@ -1,6 +1,7 @@
 <?php
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
+$manager = new Manager();
 ?>
 
 <html lang="en">
@@ -26,21 +27,21 @@ require_once '../manager/cl_manager.php';
                                 <form class="user" action="../traitement/tr_modifier.php">
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" name="nom" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nom">
+                                            <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom" value="<?php echo $_SESSION['nom']; ?>">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="text" name="prenom" class="form-control form-control-user" id="exampleInputPassword" placeholder="Prénom">
+                                            <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom" value="<?php echo $_SESSION['prenom']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="mail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-mail">
+                                        <input type="email" name="mail" class="form-control form-control-user" placeholder="E-mail" value="<?php echo $_SESSION['mail']; ?>">
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="password" name="mdp" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
+                                            <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="password" name="mdpconfirm" class="form-control form-control-user" id="exampleInputPassword" placeholder="Confirmer">
+                                            <input type="password" name="mdpconfirm" class="form-control form-control-user" placeholder="Confirmer">
                                         </div>
                                     </div>
                                     <div class="text-center">
@@ -48,18 +49,19 @@ require_once '../manager/cl_manager.php';
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4 mb-3 mb-sm-0">
-                                            <input type="text" name="date_jour" class="form-control form-control-user" id="exampleInputPassword" placeholder="Jour">
+                                            <input type="text" name="date_jour" class="form-control form-control-user" placeholder="Jour" value="<?php echo $_SESSION['date_jour']; ?>">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" name="date_mois" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mois">
+                                            <input type="text" name="date_mois" class="form-control form-control-user" placeholder="Mois" value="<?php echo $_SESSION['date_mois']; ?>">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" name="date_annee" class="form-control form-control-user" id="exampleInputPassword" placeholder="Année">
+                                            <input type="text" name="date_annee" class="form-control form-control-user" placeholder="Année" value="<?php echo $_SESSION['date_annee']; ?>">
                                         </div>
                                     </div>
                                     <div class="justify-content-center">
                                         <input class="btn btn-primary" type="submit" value="Modifier" />
                                     </div>
+                                    <?php var_dump($valeur); var_dump($_SESSION); ?>
                                 </form>
                                 <div class="text-danger form-text text-center">
 <!-- PHP : Message d'erreur de modification -->
@@ -80,32 +82,3 @@ require_once '../manager/cl_manager.php';
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     </body>
 </html>
-
-<!--
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>../vue/modifier.php</title>
-    </head>
-    <body>
-        <form action="../traitement/tr_modifier.php" method="post">
-          <table>
-              <th>Nom
-              <th>Mot de passe
-              <th>Email
-              <tr>
-              <?php/*
-              $manager = new Manager();
-              $valeur = $manager->recupSession($_SESSION['login']);
-              echo '<td><input type="text" name="login" value="' .$valeur['login']. '"/>
-                    <td><input type="text" name="password" value="' .$valeur['password']. '"/>
-                    <td><input type="text" name="email" value="' .$valeur['email']. '"/>';
-                    */
-              ?>
-            </table>
-            <input type="submit" value="Valider" />
-        </form>
-    </body>
-</html>
--->

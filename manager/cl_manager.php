@@ -160,13 +160,9 @@ class Manager{
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE nom = :nom
-    ');
-    $req -> execute([
-      'nom' => $user
-    ]);
-    $res = $req->fetch();
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user');
+    $req -> execute([]);
+    $res = $req->fetchall();
     return $res;
   }
 
@@ -205,7 +201,7 @@ class Manager{
         'mdp' => $user->getMdp(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom(),
-        'dateNaissance' => $user->getDateNaissance(),
+        'dateNaissance' => $user->getDateNaissance()
       ]);
 
       if ($res2) {
