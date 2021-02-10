@@ -218,6 +218,12 @@ class Manager{
     }
   }
 
+# Mot de passe oublié
+
+    public function oublie($user) {
+
+    }
+
 # Fin classe Manager
 
 }

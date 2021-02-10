@@ -29,6 +29,9 @@ require_once 'manager/cl_manager.php';
                                         <a class="btn btn-primary btn-user btn-block">S'inscrire</a>
                                     </div>
                                 </div>
+                                <div class="text-center" data-toggle="modal" data-target="#oublie" href="#oublie">
+                                    <a class="small">Mot de passe oublié ?</a>
+                                </div>
 <!-- PHP : Message d'erreur de connexion/inscription -->
                                 <p class="text-danger form-text">
                                     <?php
@@ -50,7 +53,7 @@ require_once 'manager/cl_manager.php';
                 <div class="modal-content">
                     <div class="text-center container">
                         <div class="row justify-content-center">
-                            <div class="col-lg-6 m-5">
+                            <div class="col-lg-10 m-5">
                                 <h2 class="text-uppercase" id="connexionFen">Connexion</h2>
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_connexion.php">
@@ -77,7 +80,7 @@ require_once 'manager/cl_manager.php';
                 <div class="modal-content">
                     <div class="text-center container">
                         <div class="row justify-content-center">
-                            <div class="col-lg-6 m-5">
+                            <div class="col-lg-10 m-5">
                                 <h2 class="text-uppercase" id="inscriptionFen">Inscription</h2>
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_inscription.php">
@@ -100,6 +103,31 @@ require_once 'manager/cl_manager.php';
                                     </div>
                                     <div class="mt-4">
                                         <input class="btn btn-primary" type="submit" value="S'inscrire" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fenêtre mot de passe oublié -->
+        <div class="modal fade" id="oublie" tabindex="-1" aria-labelledby="oublieFen" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="text-center container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10 m-5">
+                                <h2 class="text-uppercase" id="oublieFen">Mot de passe oublié ?</h2>
+                                <p>Saisissez votre e-mail pour mettre un nouveau mot de passe.</p>
+                                <hr class="m-4">
+                                <form method="post" action="traitement/tr_oublie.php">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
+                                    </div>
+                                    <div class="mt-4">
+                                        <input class="btn btn-primary" type="submit" value="Envoyer" />
                                     </div>
                                 </form>
                             </div>
