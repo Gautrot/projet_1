@@ -61,7 +61,10 @@ class Manager{
   public function connexion($user) {
 # Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd->co_bdd()->prepare('SELECT email, mdp FROM user');
+    $req = $bdd->co_bdd()->prepare('SELECT email, mdp FROM user
+      WHERE email = :email
+      AND mdp = :mdp
+    ');
     $req -> execute([
       'email' => $user->getEmail(),
       'mdp' => $user->getMdp()
@@ -100,7 +103,9 @@ class Manager{
   public function inscription($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user');
+    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
+      WHERE email = :email
+    ');
     $req -> execute([
       'email' => $user->getEmail()
     ]);
@@ -169,7 +174,9 @@ class Manager{
   public function modifier($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user');
+    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
+      WHERE email = :email
+    ');
     $req -> execute([
       'email' => $user->getEmail()
     ]);
