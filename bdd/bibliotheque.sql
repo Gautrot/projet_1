@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 12 jan. 2021 à 08:26
--- Version du serveur :  5.7.26
--- Version de PHP :  7.2.18
+-- Host: 127.0.0.1:3306
+-- Generation Time: Feb 10, 2021 at 11:36 AM
+-- Server version: 5.7.31
+-- PHP Version: 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `bibliotheque`
+-- Database: `bibliotheque`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cd`
+-- Table structure for table `cd`
 --
 
 DROP TABLE IF EXISTS `cd`;
@@ -40,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `cd` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `film`
+-- Table structure for table `film`
 --
 
 DROP TABLE IF EXISTS `film`;
@@ -55,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `film` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `livre`
+-- Table structure for table `livre`
 --
 
 DROP TABLE IF EXISTS `livre`;
@@ -70,19 +69,28 @@ CREATE TABLE IF NOT EXISTS `livre` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `mail` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `email` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `mdp` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `nom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `prenom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `dateNaissance` char(10) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `mdp`, `nom`, `prenom`, `dateNaissance`) VALUES
+(1, 'a@gmail.com', 'a', 'A', 'A', '01-01-2000'),
+(2, 'b@gmail.com', 'b', 'B', 'B', NULL),
+(3, 'c@gmail.com', 'c', 'C', 'C', NULL);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

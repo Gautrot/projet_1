@@ -164,6 +164,7 @@ class Manager{
       'email' => $user->getEmail()
     ]);
     $res = $req->fetch();
+    var_dump($user);
     return $res;
   }
 
