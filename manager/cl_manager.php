@@ -196,6 +196,7 @@ class Manager{
         'id' => $res['id'],
         'mail' => $user->getMail(),
         'mdp' => $user->getMdp(),
+        'mdpconfirm' => $user->getMdpConfirm(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom()
       ]);
