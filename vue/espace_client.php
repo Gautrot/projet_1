@@ -2,7 +2,8 @@
 <?php
 require_once '../manager/cl_manager.php';
 $manager = new Manager();
-$valeur = $manager->recupSession($_SESSION['nom']);
+$res = $manager->recupSession($_SESSION['nom']);
+var_dump($res);
 ?>
 
 <!-- HTML -->

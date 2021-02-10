@@ -155,13 +155,15 @@ class Manager{
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user');
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
+      WHERE email = :$email
+      AND nom = :nom
+    ');
     $req -> execute([
       'nom' => $user->getNom(),
       'email' => $user->getEmail()
     ]);
     $res = $req->fetch();
-    #var_dump($user);
     return $res;
   }
 
