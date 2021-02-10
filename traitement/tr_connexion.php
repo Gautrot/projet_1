@@ -4,7 +4,7 @@ require_once '../manager/cl_manager.php';
 
 try {
   $user = new Utilisateur([
-    'mail' => $_POST['mail'],
+    'email' => $_POST['email'],
     'mdp' => $_POST['mdp']
   ]);
   $manager = new Manager();

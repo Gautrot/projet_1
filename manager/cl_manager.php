@@ -69,7 +69,6 @@ class Manager{
     $res = $req -> fetch();
 
     if ($res) {
-      $_SESSION['nom'] = $res['nom'];
       header("Location: ../vue/espace_client.php");
     }
 
@@ -132,7 +131,6 @@ class Manager{
        ]);
 
       if ($res2) {
-        $_SESSION['nom'] = $user->getNom();
         header("Location: ../vue/espace_client.php");
       }
 
@@ -155,16 +153,11 @@ class Manager{
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user');
-    $req -> execute([
-      'email' => $user->getEmail(),
-      'mdp' => $user->getMdp(),
-      'nom' => $user->getNom(),
-      'prenom' => $user->getPrenom(),
-      'dateNaissance' => $user->getDateNaissance()
-    ]);
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
+      WHERE email = :email
+    ');
+    $req -> execute([]);
     $res = $req->fetch();
-    var_dump($user);
     return $res;
   }
 
@@ -205,7 +198,6 @@ class Manager{
       ]);
 
       if ($res2) {
-        $_SESSION['nom'] = $user->getNom();
         header("Location: ../vue/espace_client.php");
       }
 

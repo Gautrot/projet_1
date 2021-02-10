@@ -8,7 +8,7 @@ if ($_POST['mdp'] === $_POST['mdpconfirm']) {
       'nom' => $_POST['nom'],
       'prenom' => $_POST['prenom'],
       'mdp' => $_POST['mdp'],
-      'mail' => $_POST['mail'],
+      'email' => $_POST['email'],
       'date_jour' => $_POST['date_jour'],
       'date_mois' => $_POST['date_mois'],
       'date_annee' => $_POST['date_annee']

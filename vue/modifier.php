@@ -2,6 +2,7 @@
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
 $manager = new Manager();
+$res = $manager->recupSession($_SESSION['email']);
 ?>
 
 <html lang="en">

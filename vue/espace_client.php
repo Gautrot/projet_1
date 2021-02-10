@@ -1,9 +1,9 @@
 <!-- PHP -->
 <?php
+require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
 $manager = new Manager();
-#$res = $manager->recupSession($_SESSION['nom']);
-var_dump($_SESSION);
+$res = $manager->recupSession($_SESSION['nom']);
 ?>
 
 <!-- HTML -->
@@ -11,11 +11,11 @@ var_dump($_SESSION);
 <html lang="en">
     <head>
         <!-- Required meta tags -->
-          <meta charset="utf-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-          <!-- Bootstrap CSS -->
-          <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-          <title>Espace client</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <title>Espace client</title>
     </head>
     <body class="bg-dark sidebar-toggled">
         <div class="container">
@@ -62,7 +62,7 @@ var_dump($_SESSION);
                         </li>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bonjour <?php echo $_SESSION['nom']; ?> !</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Bonjour <?php foreach ($res as $value) {echo $value['nom'];}?> !</span>
                                 <!-- Image -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
