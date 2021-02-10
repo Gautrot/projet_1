@@ -132,7 +132,6 @@ class Manager{
       $res2 = $req -> execute([
         'mail' => $user->getMail(),
         'mdp' => $user->getMdp(),
-        'mdpconfirm' => $user->getMdpConfirm(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom()
        ]);
@@ -184,7 +183,14 @@ class Manager{
     ]);
     $res = $req -> fetch();
 
-    if ($res) {
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['mail'])) {
+      header("Location: ../index.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+    else if ($res) {
       $req = $bdd -> co_bdd()->prepare('UPDATE user
       SET mail = :mail,
           mdp = :mdp,
@@ -197,7 +203,6 @@ class Manager{
         'id' => $res['id'],
         'mail' => $user->getMail(),
         'mdp' => $user->getMdp(),
-        'mdpconfirm' => $user->getMdpConfirm(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom(),
         'dateNaissance' => $user->getDateNaissance(),

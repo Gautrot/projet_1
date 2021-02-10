@@ -87,7 +87,7 @@ require_once 'manager/cl_manager.php';
                                         <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="mail" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="E-mail">
+                                        <input type="email" name="mail" class="form-control form-control-user" placeholder="E-mail">
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">

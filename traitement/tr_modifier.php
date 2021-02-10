@@ -2,13 +2,12 @@
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
 
-if ($_POST['mdp'] === $_POST['mdpconfirm']) {
+if ($_POST['mdp'] == $_POST['mdpconfirm']) {
   try {
     $user = new Utilisateur([
       'nom' => $_POST['nom'],
       'prenom' => $_POST['prenom'],
       'mdp' => $_POST['mdp'],
-      'mdpconfirm' => $_POST['mdpconfirm'],
       'mail' => $_POST['mail'],
       'date_jour' => $_POST['date_jour'],
       'date_mois' => $_POST['date_mois'],
