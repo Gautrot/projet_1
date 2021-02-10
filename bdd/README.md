@@ -5,7 +5,7 @@ Tableaux :
   - user : Utilisateurs
     * id - ID (incrément auto.)
     * pseudo - Pseudonyme de l'utilisateur
-    * mail - E-mail de l'utilisateur
+    * email - E-mail de l'utilisateur
     * mdp - Mot de passe de l'utilisateur
     * nom - Nom de l'utilisateur
     * prenom - Prénom de l'utilisateur

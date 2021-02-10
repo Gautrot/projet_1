@@ -9,7 +9,7 @@ require_once 'manager/cl_manager.php';
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
         <title>Index</title>
     </head>
     <body class="bg-secondary">
@@ -28,6 +28,9 @@ require_once 'manager/cl_manager.php';
                                     <div class="col-6" data-toggle="modal" data-target="#inscription" href="#inscription">
                                         <a class="btn btn-primary btn-user btn-block">S'inscrire</a>
                                     </div>
+                                </div>
+                                <div class="text-center" data-toggle="modal" data-target="#oublie" href="#oublie">
+                                    <a class="small">Mot de passe oublié ?</a>
                                 </div>
 <!-- PHP : Message d'erreur de connexion/inscription -->
                                 <p class="text-danger form-text">
@@ -50,15 +53,15 @@ require_once 'manager/cl_manager.php';
                 <div class="modal-content">
                     <div class="text-center container">
                         <div class="row justify-content-center">
-                            <div class="col-lg-6 m-5">
+                            <div class="col-lg-10 m-5">
                                 <h2 class="text-uppercase" id="connexionFen">Connexion</h2>
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_connexion.php">
-                                    <div class="m-2">
-                                        <input type="email" name="mail" placeholder="E-mail" />
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
                                     </div>
-                                    <div class="m-2">
-                                        <input type="password" name="mdp" placeholder="Mot de passe" />
+                                    <div class="form-group">
+                                        <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
                                     </div>
                                     <div class="m-4">
                                         <input class="btn btn-primary" type="submit" value="Se connecter" />
@@ -77,21 +80,26 @@ require_once 'manager/cl_manager.php';
                 <div class="modal-content">
                     <div class="text-center container">
                         <div class="row justify-content-center">
-                            <div class="col-lg-6 m-5">
+                            <div class="col-lg-10 m-5">
                                 <h2 class="text-uppercase" id="inscriptionFen">Inscription</h2>
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_inscription.php">
-                                    <div class="m-2">
-                                        <input type="text" name="nom" placeholder="Nom" />
+                                    <div class="form-group">
+                                        <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom">
                                     </div>
-                                    <div class="m-2">
-                                        <input type="text" name="prenom" placeholder="Prénom" />
+                                    <div class="form-group">
+                                        <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom">
                                     </div>
-                                    <div class="m-2">
-                                        <input type="email" name="mail" placeholder="E-mail" />
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
                                     </div>
-                                    <div class="m-2">
-                                        <input type="password" name="mdp" placeholder="Mot de passe" />
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="password" name="mdpconfirm" class="form-control form-control-user" placeholder="Confirmer">
+                                        </div>
                                     </div>
                                     <div class="mt-4">
                                         <input class="btn btn-primary" type="submit" value="S'inscrire" />
@@ -104,7 +112,32 @@ require_once 'manager/cl_manager.php';
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Fenêtre mot de passe oublié -->
+        <div class="modal fade" id="oublie" tabindex="-1" aria-labelledby="oublieFen" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="text-center container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10 m-5">
+                                <h2 class="text-uppercase" id="oublieFen">Mot de passe oublié ?</h2>
+                                <p>Saisissez votre e-mail pour mettre un nouveau mot de passe.</p>
+                                <hr class="m-4">
+                                <form method="post" action="traitement/tr_oublie.php">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
+                                    </div>
+                                    <div class="mt-4">
+                                        <input class="btn btn-primary" type="submit" value="Envoyer" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -2,20 +2,27 @@
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
 
-if (empty($_POST['login']) || empty($_POST['password']) || empty($_POST['email'])) {
-  echo 'Erreur. Un ou plusieurs champs sont vides.
-        <form action="../vue/modifier.php" method="post">
-          <input type="submit" value="Retour" />
-        </form>';
+if ($_POST['mdp'] === $_POST['mdpconfirm']) {
+  try {
+    $user = new Utilisateur([
+      'nom' => $_POST['nom'],
+      'prenom' => $_POST['prenom'],
+      'mdp' => $_POST['mdp'],
+      'email' => $_POST['email'],
+      'date_jour' => $_POST['date_jour'],
+      'date_mois' => $_POST['date_mois'],
+      'date_annee' => $_POST['date_annee']
+    ]);
+    $manager = new Manager();
+    $manager->modifier($user);
+  }
+  catch (Exception $e) {
+    $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
+  }
 }
 
 else {
-  $a = new Utilisateur([
-    'login' => $_POST['login'],
-    'password' => $_POST['password'],
-    'email' => $_POST['email']
-  ]);
-  $b = new Manager();
-  $b->modifier($a);
+  header("Location: ../index.php");
+  echo 'Erreur : Les mots de passes ne sont pas identiques.';
 }
 ?>
