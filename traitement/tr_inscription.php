@@ -7,6 +7,7 @@ try {
     'nom' => $_POST['nom'],
     'prenom' => $_POST['prenom'],
     'mdp' => $_POST['mdp'],
+    'mdpconfirm' => $_POST['mdpconfirm'],
     'mail' => $_POST['mail']
   ]);
   $manager = new Manager();

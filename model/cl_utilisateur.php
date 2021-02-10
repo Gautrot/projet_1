@@ -1,6 +1,6 @@
 <?php
 class Utilisateur{
-  private $nom, $mdp, $mail, $prenom;
+  private $nom, $mdp, $mdpconfirm, $mail, $prenom;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
@@ -12,6 +12,10 @@ class Utilisateur{
 
   public function getMdp() {
     return $this->mdp;
+  }
+
+  public function getMdpConfirm() {
+    return $this->mdpconfirm;
   }
 
   public function getNom() {
@@ -35,6 +39,12 @@ class Utilisateur{
   public function setMdp($mdp) {
     if (is_string($mdp)) {
       $this->mdp = $mdp;
+    }
+  }
+
+  public function setMdpConfirm($mdpconfirm) {
+    if (is_string($mdpconfirm)) {
+      $this->mdpconfirm = $mdpconfirm;
     }
   }
 

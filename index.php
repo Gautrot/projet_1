@@ -89,8 +89,13 @@ require_once 'manager/cl_manager.php';
                                     <div class="form-group">
                                         <input type="email" name="mail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-mail">
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" name="mdp" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <input type="password" name="mdp" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="password" name="mdpconfirm" class="form-control form-control-user" id="exampleInputPassword" placeholder="Confirmer">
+                                        </div>
                                     </div>
                                     <div class="mt-4">
                                         <input class="btn btn-primary" type="submit" value="S'inscrire" />

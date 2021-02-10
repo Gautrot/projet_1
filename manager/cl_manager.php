@@ -132,6 +132,7 @@ class Manager{
       $res2 = $req -> execute([
         'mail' => $user->getMail(),
         'mdp' => $user->getMdp(),
+        'mdpconfirm' => $user->getMdpConfirm(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom()
        ]);
