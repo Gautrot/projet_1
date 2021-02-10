@@ -2,7 +2,7 @@
 # Appelle le ficher 'cl_bdd.php'
 require_once 'cl_bdd.php';
 
-# PHP Mailer
+# PHPMailer
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
-require 'C:/wamp64/www/Alex G/projet_1/phpmailer/vendor/autoload.php';
+require 'C:/wamp64/www/projet/projet_1/phpmailer/vendor/autoload.php';
 
 // Instantiation and passing `true` enables exceptions
 $mail = new PHPMailer(true);

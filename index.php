@@ -9,8 +9,7 @@ require_once 'manager/cl_manager.php';
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-        <title>Index</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        <title>Index</title>
     </head>
     <body class="bg-secondary">
         <div class="container">
@@ -55,10 +54,10 @@ require_once 'manager/cl_manager.php';
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_connexion.php">
                                     <div class="form-group">
-                                        <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-mail">
+                                        <input type="email" name="mail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-mail">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
+                                        <input type="password" name="mdp" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
                                     </div>
                                     <div class="m-4">
                                         <input class="btn btn-primary" type="submit" value="Se connecter" />
@@ -81,17 +80,17 @@ require_once 'manager/cl_manager.php';
                                 <h2 class="text-uppercase" id="inscriptionFen">Inscription</h2>
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_inscription.php">
-                                    <div class="m-2">
-                                        <input type="text" name="nom" placeholder="Nom" />
+                                    <div class="form-group">
+                                        <input type="text" name="nom" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nom">
                                     </div>
-                                    <div class="m-2">
-                                        <input type="text" name="prenom" placeholder="Prénom" />
+                                    <div class="form-group">
+                                        <input type="text" name="prenom" class="form-control form-control-user" id="exampleInputPassword" placeholder="Prénom">
                                     </div>
-                                    <div class="m-2">
-                                        <input type="email" name="mail" placeholder="E-mail" />
+                                    <div class="form-group">
+                                        <input type="email" name="mail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-mail">
                                     </div>
-                                    <div class="m-2">
-                                        <input type="password" name="mdp" placeholder="Mot de passe" />
+                                    <div class="form-group">
+                                        <input type="password" name="mdp" class="form-control form-control-user" id="exampleInputPassword" placeholder="Mot de passe">
                                     </div>
                                     <div class="mt-4">
                                         <input class="btn btn-primary" type="submit" value="S'inscrire" />
@@ -104,7 +103,7 @@ require_once 'manager/cl_manager.php';
             </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     </body>
 </html>
