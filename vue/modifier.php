@@ -2,6 +2,8 @@
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
 $manager = new Manager();
+$res = $manager->recupSession($_SESSION['mail']);
+var_dump($_SESSION['mail']);
 ?>
 
 <html lang="en">
@@ -25,16 +27,19 @@ $manager = new Manager();
                                 </div>
                                 <hr>
                                 <form class="user" action="../traitement/tr_modifier.php">
+                                    <?php
+                                    foreach ($res as $value) {
+                                    ?>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom" value="<?php echo $_SESSION['nom']; ?>">
+                                            <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom" value="<?php echo $value['nom']; ?>">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom" value="<?php echo $_SESSION['prenom']; ?>">
+                                            <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom" value="<?php echo $value['prenom']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="mail" class="form-control form-control-user" placeholder="E-mail" value="<?php echo $_SESSION['mail']; ?>">
+                                        <input type="email" name="mail" class="form-control form-control-user" placeholder="E-mail" value="<?php echo $value['mail']; ?>">
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
@@ -49,19 +54,21 @@ $manager = new Manager();
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4 mb-3 mb-sm-0">
-                                            <input type="text" name="date_jour" class="form-control form-control-user" placeholder="Jour" value="<?php echo $_SESSION['date_jour']; ?>">
+                                            <input type="text" name="date_jour" class="form-control form-control-user" placeholder="Jour" value="<?php echo $value['date_jour']; ?>">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" name="date_mois" class="form-control form-control-user" placeholder="Mois" value="<?php echo $_SESSION['date_mois']; ?>">
+                                            <input type="text" name="date_mois" class="form-control form-control-user" placeholder="Mois" value="<?php echo $value['date_mois']; ?>">
                                         </div>
                                         <div class="col-sm-4">
-                                            <input type="text" name="date_annee" class="form-control form-control-user" placeholder="Année" value="<?php echo $_SESSION['date_annee']; ?>">
+                                            <input type="text" name="date_annee" class="form-control form-control-user" placeholder="Année" value="<?php echo $value['date_annee']; ?>">
                                         </div>
                                     </div>
                                     <div class="justify-content-center">
                                         <input class="btn btn-primary" type="submit" value="Modifier" />
                                     </div>
-                                    <?php var_dump($valeur); var_dump($_SESSION); ?>
+                                    <?php
+                                    }
+                                    ?>
                                 </form>
                                 <div class="text-danger form-text text-center">
 <!-- PHP : Message d'erreur de modification -->
