@@ -67,7 +67,7 @@ $res = $manager->recupSession($_SESSION['email']);
                                     </div>
                                     <?php
                                     }
-                                    var_dump($value);
+                                    var_dump($res);
                                     ?>
                                 </form>
                                 <div class="text-danger form-text text-center">
