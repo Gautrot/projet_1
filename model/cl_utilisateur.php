@@ -1,13 +1,13 @@
 <?php
 class Utilisateur{
-  private $nom, $mdp, $mail, $prenom, $datenaissance;
+  private $nom, $mdp, $email, $prenom, $datenaissance;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
   }
 
-  public function getMail() {
-    return $this->mail;
+  public function getEmail() {
+    return $this->email;
   }
 
   public function getMdp() {
@@ -26,9 +26,9 @@ class Utilisateur{
     return $this->datenaissance;
   }
 
-  public function setMail($mail) {
-    if (is_string($mail)) {
-      $this->mail = $mail;
+  public function setEmail($email) {
+    if (is_string($email)) {
+      $this->email = $email;
     }
   }
 

@@ -2,8 +2,7 @@
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
 $manager = new Manager();
-$res = $manager->recupSession($_SESSION['mail']);
-var_dump($_SESSION['mail']);
+$res = $manager->recupSession($_SESSION['email']);
 ?>
 
 <html lang="en">
@@ -39,7 +38,7 @@ var_dump($_SESSION['mail']);
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="mail" class="form-control form-control-user" placeholder="E-mail" value="<?php echo $value['mail']; ?>">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail" value="<?php echo $value['email']; ?>">
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">

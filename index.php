@@ -9,7 +9,8 @@ require_once 'manager/cl_manager.php';
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">        <title>Index</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+        <title>Index</title>
     </head>
     <body class="bg-secondary">
         <div class="container">
@@ -54,7 +55,7 @@ require_once 'manager/cl_manager.php';
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_connexion.php">
                                     <div class="form-group">
-                                        <input type="email" name="mail" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="E-mail">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
@@ -87,7 +88,7 @@ require_once 'manager/cl_manager.php';
                                         <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom">
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="mail" class="form-control form-control-user" placeholder="E-mail">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">

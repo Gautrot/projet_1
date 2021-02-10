@@ -61,12 +61,9 @@ class Manager{
   public function connexion($user) {
 # Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd->co_bdd()->prepare('SELECT * FROM user
-      WHERE mail = :mail
-      AND mdp = :mdp
-    ');
+    $req = $bdd->co_bdd()->prepare('SELECT email, mdp FROM user');
     $req -> execute([
-      'mail' => $user->getMail(),
+      'email' => $user->getEmail(),
       'mdp' => $user->getMdp()
     ]);
     $res = $req -> fetch();
@@ -78,7 +75,7 @@ class Manager{
 
 # Si l'un des deux champs sont vides.
 
-    else if (empty($_POST['mail']) || empty($_POST['mdp'])) {
+    else if (empty($_POST['email']) || empty($_POST['mdp'])) {
       header("Location: ../index.php");
       throw new Exception ("Un ou plusieurs champs sont vides.");
     }
@@ -103,17 +100,15 @@ class Manager{
   public function inscription($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE mail = :mail
-      ');
+    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user');
     $req -> execute([
-      'mail' => $user->getMail()
+      'email' => $user->getEmail()
     ]);
     $res = $req -> fetchall();
 
 # Si un ou plusieurs champs sont vides.
 
-    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['mail'])) {
+    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
       header("Location: ../index.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
@@ -126,11 +121,11 @@ class Manager{
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (mail, mdp, nom, prenom)
-      VALUES (:mail, :mdp, :nom, :prenom)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (email, mdp, nom, prenom)
+      VALUES (:email, :mdp, :nom, :prenom)
       ');
       $res2 = $req -> execute([
-        'mail' => $user->getMail(),
+        'email' => $user->getEmail(),
         'mdp' => $user->getMdp(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom()
@@ -143,7 +138,7 @@ class Manager{
 
 # Si un ou plusieurs champs sont vides.
 
-      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['mail'])) {
+      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
         header("Location: ../index.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
@@ -160,15 +155,13 @@ class Manager{
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE mail = :mail
-    ');
+    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user');
     $req -> execute([
       'nom' => $user->getNom(),
-      'mail' => $user->getMail()
+      'email' => $user->getEmail()
     ]);
     $res = $req->fetch();
-    var_dump($user);
+    #var_dump($user);
     return $res;
   }
 
@@ -177,24 +170,22 @@ class Manager{
   public function modifier($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE mail = :mail
-    ');
+    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user');
     $req -> execute([
-      'mail' => $user->getMail()
+      'email' => $user->getEmail()
     ]);
     $res = $req -> fetch();
 
 # Si un ou plusieurs champs sont vides.
 
-    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['mail'])) {
+    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
       header("Location: ../index.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
     else if ($res) {
       $req = $bdd -> co_bdd()->prepare('UPDATE user
-      SET mail = :mail,
+      SET email = :email,
           mdp = :mdp,
           nom = :nom,
           prenom = :prenom,
@@ -203,7 +194,7 @@ class Manager{
       ');
       $res2 = $req -> execute([
         'id' => $res['id'],
-        'mail' => $user->getMail(),
+        'email' => $user->getEmail(),
         'mdp' => $user->getMdp(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom(),
@@ -217,7 +208,7 @@ class Manager{
 
 # Si un ou plusieurs champs sont vides.
 
-      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['mail'])) {
+      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
         header("Location: ../vue/edit.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
