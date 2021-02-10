@@ -155,10 +155,10 @@ class Manager{
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
-      WHERE nom = :nom
+      WHERE email = :email
     ');
     $req -> execute([
-      'nom' => $user
+      'email' => $user
     ]);
     $res = $req->fetch();
     return $res;
