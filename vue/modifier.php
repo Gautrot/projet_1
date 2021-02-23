@@ -1,8 +1,8 @@
 <?php
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
-$manager = new Manager();
-$res = $manager->recupSession($_SESSION['email']);
+#$manager = new Manager();
+#$res = $manager->recupSession($_SESSION['email']);
 ?>
 
 <html lang="en">
@@ -25,20 +25,20 @@ $res = $manager->recupSession($_SESSION['email']);
                                     <h1 class="h4 text-gray-900 mb-4">Modifier votre compte</h1>
                                 </div>
                                 <hr>
-                                <form class="user" action="../traitement/tr_modifier.php">
+                                <form class="user" action="../traitement/tr_modifier.php" method="post">
                                     <?php
-                                    foreach ($res as $value) {
+                                    #foreach ($res as $value) {
                                     ?>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom" value="<?php echo $value['nom']; ?>">
+                                            <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom" value="<?php #echo $value['nom']; ?>">
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom" value="<?php echo $value['prenom']; ?>">
+                                            <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom" value="<?php #echo $value['prenom']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail" value="<?php echo $value['email']; ?>">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail" value="<?php #echo $value['email']; ?>">
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
@@ -48,26 +48,15 @@ $res = $manager->recupSession($_SESSION['email']);
                                             <input type="password" name="mdpconfirm" class="form-control form-control-user" placeholder="Confirmer">
                                         </div>
                                     </div>
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Date de naissance</h1>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-sm-4 mb-3 mb-sm-0">
-                                            <input type="text" name="date_jour" class="form-control form-control-user" placeholder="Jour" value="<?php echo $value['date_jour']; ?>">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="date_mois" class="form-control form-control-user" placeholder="Mois" value="<?php echo $value['date_mois']; ?>">
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <input type="text" name="date_annee" class="form-control form-control-user" placeholder="Année" value="<?php echo $value['date_annee']; ?>">
-                                        </div>
+                                    <div class="form-group">
+                                        <input type="text" name="dateNaissance" class="form-control form-control-user" placeholder="Date de naissance" value="<?php #echo $value['dateNaissance']; ?>">
                                     </div>
                                     <div class="justify-content-center">
                                         <input class="btn btn-primary" type="submit" value="Modifier" />
                                     </div>
                                     <?php
-                                    }
-                                    var_dump($res);
+                                    #}
+                                    #var_dump($manager);
                                     ?>
                                 </form>
                                 <div class="text-danger form-text text-center">

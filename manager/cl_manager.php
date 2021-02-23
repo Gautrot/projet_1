@@ -1,7 +1,7 @@
 <?php
 # Appelle le ficher 'cl_bdd.php'
 require_once 'cl_bdd.php';
-
+/*
 # PHPMailer
 // Import PHPMailer classes into the global namespace
 // These must be at the top of your script, not inside a function
@@ -52,7 +52,7 @@ catch (Exception $e) {
 }
 
 # Fin PHP Mailer
-
+*/
 # Début classe Manager
 class Manager{
 
@@ -159,7 +159,7 @@ class Manager{
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user
+    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
       WHERE email = :email
     ');
     $req -> execute([
@@ -214,12 +214,12 @@ class Manager{
 # Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
-        header("Location: ../vue/edit.php");
+        header("Location: ../vue/modifier.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
 
       else {
-        header("Location: ../vue/edit.php");
+        header("Location: ../vue/modifier.php");
         throw new Exception("Modification échouée !");
       }
     }
@@ -227,9 +227,53 @@ class Manager{
 
 # Mot de passe oublié
 
-    public function oublie($user) {
+  public function oublie($user) {
 
-    }
+  }
+
+# Liste les livres de la BDD
+
+public function listLivre(){
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre');
+  $req -> execute([]);
+  $resliv = $req->fetchall();
+  return $resliv;
+}
+
+# Liste les films de la BDD
+
+public function listFilm(){
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT * FROM film');
+  $req -> execute([]);
+  $resfilm = $req->fetchall();
+  return $resfilm;
+}
+
+# Liste les cd de la BDD
+
+public function listCD(){
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd');
+  $req -> execute([]);
+  $rescd = $req->fetchall();
+  return $rescd;
+}
+
+# Liste les utilisateurs de la BDD
+
+public function listUtilisateur(){
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT * FROM user');
+  $req -> execute([]);
+  $rescd = $req->fetchall();
+  return $rescd;
+}
 
 # Fin classe Manager
 

@@ -13,66 +13,54 @@
         <!-- Page Wrapper -->
         <div id="wrapper">
             <!-- Sidebar -->
-            <ul class="navbar-nav bg-gradient-light sidebar sidebar-dark accordion" id="accordionSidebar">
-                <!-- Sidebar Toggler (Sidebar) -->
-                <div class="text-center d-none d-md-inline">
-                    <button class="rounded border-0" id="sidebarToggle">Médiathèque Anne Franck</button>
+            <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Médiathèque Anne Franck</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+                        <!-- Accueil -->
+                        <li class="nav-item active">
+                            <a class="nav-link" href="espace_client.php">Accueil<span class="sr-only">(current)</span></a>
+                        </li>
+                        <!-- Tous les contenus -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="tableau.php" tabindex="-1" aria-disabled="true">Tous les contenus</a>
+                        </li>
+                        <!-- Oeuvres -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Oeuvres
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item" href="films.php">Films</a></li>
+                                <li><a class="dropdown-item" href="livres.php">Livres</a></li>
+                                <li><a class="dropdown-item" href="cd.php">CD</a></li>
+                            </ul>
+                        </li>
+                        <!-- Statistiques (Administration) -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                                Statistiques
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                <li><a class="dropdown-item" href="graphique.php">Graphique</a></li>
+                                <li><a class="dropdown-item" href="classement.php">Classement</a></li>
+                                <li><a class="dropdown-item" href="tabl_utilisateur.php">Liste d'utilisateurs</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Autres</a>
+                        </li>
+                    </ul>
+                    <!-- Barre de recherche -->
+                    <form class="d-flex">
+                        <input class="form-control mr-2" type="search" placeholder="Rechercher..." aria-label="Rechercher">
+                        <button class="btn btn-outline-success" type="submit">Rechercher</button>
+                    </form>
                 </div>
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3"></div>
-                </a>
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-                <!-- Accueil -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="espace_client.php">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Accueil</span></a>
-                </li>
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-                <!-- Bibliothèque -->
-                <div class="sidebar-heading">
-                    Bibliothèque
-                </div>
-                <!-- Oeuvres (Collapse) -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Oeuvres</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="films.php">Films</a>
-                            <a class="collapse-item" href="livres.php">Livres</a>
-                            <a class="collapse-item" href="cd.php">CD</a>
-                        </div>
-                    </div>
-                </li>
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-                <!-- Administration -->
-                <div class="sidebar-heading">
-                    Administration
-                </div>
-                <!-- Statistiques (Collapse) -->
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Statistiques</span>
-                    </a>
-                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="graphique.php">Graphique</a>
-                            <a class="collapse-item" href="classement.php">Classement</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            </nav>
             <!-- Fin Navbar -->
             <!-- Content Wrapper -->
             <div id="content-wrapper" class="d-flex flex-column">

@@ -1,3 +1,11 @@
+<?php
+require_once '../model/cl_utilisateur.php';
+require_once '../manager/cl_manager.php';
+
+$liste = new Manager();
+$res = $liste->listUtilisateur();
+?>
+
 <!-- HTML -->
 <!doctype html>
 <html lang="en">
@@ -47,6 +55,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                                 <li><a class="dropdown-item" href="graphique.php">Graphique</a></li>
                                 <li><a class="dropdown-item" href="classement.php">Classement</a></li>
+                                <li><a class="dropdown-item" href="tabl_utilisateur.php">Liste d'utilisateurs</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -160,10 +169,40 @@
                         </nav>
                     </div>
                     <!-- Fin Contenu -->
-                    <div class="text-center text-light">
-                      <h1>Films</h1>
-                      <p>Films disponibles en ce moment.</p>
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-dark">Livres</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Date de naissance</th>
+                                            <th>Email</th>
+                                            <th>Rang</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        foreach ($res as $value) {
+                                          echo '<tr>
+                                                    <td>' .$value['nom']. '</td>
+                                                    <td>' .$value['prenom']. '</td>
+                                                    <td>' .$value['dateNaissance']. '</td>
+                                                    <td>' .$value['email']. '</td>
+                                                    <td>' .$value['rang']. '</td>
+                                                </tr>';
+                                        }
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
+
                     <!-- Footer -->
                     <footer class="sticky-footer bg-white">
                         <div class="container my-auto">
