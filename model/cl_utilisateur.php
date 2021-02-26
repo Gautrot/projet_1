@@ -1,10 +1,12 @@
 <?php
 class Utilisateur{
-  private $nom, $mdp, $email, $prenom, $datenaissance;
+  private $nom, $mdp, $email, $prenom, $datenaissance, $rang;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
   }
+
+# Getters
 
   public function getEmail() {
     return $this->email;
@@ -25,6 +27,12 @@ class Utilisateur{
   public function getDateNaissance() {
     return $this->datenaissance;
   }
+
+  public function getRang() {
+    return $this->rang;
+  }
+
+# Setters
 
   public function setEmail($email) {
     if (is_string($email)) {
@@ -52,11 +60,17 @@ class Utilisateur{
 
   public function setDateNaissance($datenaissance) {
     if (is_string($datenaissance)) {
-      $this->date_jour = $datenaissance. '-';
-      $this->date_mois = $datenaissance. '-';
-      $this->date_annee = $datenaissance;
+      $this->dateNaissance = $datenaissance;
     }
   }
+
+  public function setrang($rang) {
+    if (is_string($rang)) {
+      $this->rang = $rang;
+    }
+  }
+
+# Hydratation
 
   public function hydrate(array $res) {
     foreach ($res as $key => $value) {

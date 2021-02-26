@@ -61,7 +61,7 @@ class Manager{
   public function connexion($user) {
 # Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd->co_bdd()->prepare('SELECT email, mdp FROM user
+    $req = $bdd->co_bdd()->prepare('SELECT * FROM user
       WHERE email = :email
       AND mdp = :mdp
     ');
@@ -73,6 +73,7 @@ class Manager{
 
     if ($res) {
       $_SESSION['nom'] = $res['nom'];
+      $_SESSION['rang'] = $res['rang'];
       header("Location: ../vue/espace_client.php");
     }
 
@@ -126,14 +127,15 @@ class Manager{
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (email, mdp, nom, prenom)
-      VALUES (:email, :mdp, :nom, :prenom)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (email, mdp, nom, prenom, rang)
+      VALUES (:email, :mdp, :nom, :prenom, :rang)
       ');
       $res2 = $req -> execute([
         'email' => $user->getEmail(),
         'mdp' => $user->getMdp(),
         'nom' => $user->getNom(),
-        'prenom' => $user->getPrenom()
+        'prenom' => $user->getPrenom(),
+        'rang' => $user->getRang()
        ]);
 
       if ($res2) {
@@ -225,29 +227,6 @@ class Manager{
     }
   }
 
-# Suprpimer (Admin)
-
-public function supprAdmin($user) {
-  #Instancie la classe BDD
-  $bdd = new BDD();
-  $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
-    WHERE email = :email
-  ');
-  $req -> execute([
-    'email' => $user->getEmail()
-  ]);
-  $res = $req -> fetchall();
-
-# Si le compte existe dans la BDD.
-
-  if ($res) {
-    $req = $bdd -> co_bdd()->prepare('DELETE FROM user
-    WHERE id = :id
-    ');
-    header("Location: ../vue/tabl_utilisateur.php");
-  }
-}
-
 # Mot de passe oublié
 
   public function oublie($user) {
@@ -298,7 +277,91 @@ public function listUtilisateur(){
   return $rescd;
 }
 
-# Fin classe Manager
+/*
+----
+Partie Administration
+----
+*/
+
+# Ajout d'un utilisateur
+
+  public function inscrAdmin($user) {
+    #Instancie la classe BDD
+    $bdd = new BDD();
+    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
+      WHERE email = :email
+    ');
+    $req -> execute([
+      'email' => $user->getEmail()
+    ]);
+    $res = $req -> fetchall();
+
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['email'])) {
+      header("Location: ../vue/tabl_utilisateur.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+# Si le compte existe dans la BDD.
+
+    else if ($res) {
+      header("Location: ../vue/tabl_utilisateur.php");
+      throw new Exception("Ce compte existe.");
+    }
+
+    else {
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (email, dateNaissance, nom, prenom, rang)
+      VALUES (:email, :dateNaissance, :nom, :prenom, :rang)
+      ');
+      $res2 = $req -> execute([
+        'email' => $user->getEmail(),
+        'dateNaissance' => $user->getDateNaissance(),
+        'nom' => $user->getNom(),
+        'prenom' => $user->getPrenom(),
+        'rang' => $user->getRang()
+       ]);
+
+      if ($res2) {
+        header("Location: ../vue/tabl_utilisateur.php");
+      }
+
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['email'])) {
+        header("Location: ../vue/tabl_utilisateur.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
+      }
+
+      else {
+        header("Location: ../vue/tabl_utilisateur.php");
+        throw new Exception("Inscription échouée !");
+      }
+    }
+  }
+
+# Suppresion d'un utilisateur
+
+  public function supprAdmin($user) {
+    #Instancie la classe BDD
+    $bdd = new BDD();
+    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
+      WHERE email = :email
+    ');
+    $req -> execute([
+      'email' => $user->getEmail()
+    ]);
+    $res = $req -> fetchall();
+
+    if ($res) {
+      $req = $bdd -> co_bdd()->prepare('DELETE FROM user
+        WHERE email = :email
+      ');
+      header("Location: ../vue/tabl_utilisateur.php");
+    }
+  }
+
+  # Fin classe Manager
 
 }
 ?>

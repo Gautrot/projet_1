@@ -125,15 +125,6 @@ $res = $liste->listUtilisateur();
                                     </a>
                                     <!-- Dropdown - Liste -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <!--
-                                        <a class="dropdown-item" href="#">
-                                            <!-- Image --><!--
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill mr-2" viewBox="0 0 16 16">
-                                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                                            </svg>
-                                            Profil
-                                        </a>
-                                        -->
                                         <form action="modifier.php" method="post">
                                             <a class="dropdown-item" href="modifier.php">
                                                 <!-- Image -->
@@ -143,15 +134,6 @@ $res = $liste->listUtilisateur();
                                                 Modifier
                                             </a>
                                         </form>
-                                        <!--
-                                        <a class="dropdown-item" href="#">
-                                            <!-- Image --><!--
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list mr-2" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
-                                            </svg>
-                                            Activités
-                                        </a>
-                                        -->
                                         <hr>
                                         <form action="../traitement/tr_deconnexion.php" method="post">
                                             <a class="dropdown-item" href="../traitement/tr_deconnexion.php">
@@ -169,7 +151,7 @@ $res = $liste->listUtilisateur();
                         </nav>
                     </div>
                     <!-- Fin Contenu -->
-                    <div class="card shadow mb-4">
+                    <div class="card shadow">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-dark">Liste d'utilisateurs</h6>
                         </div>
@@ -178,39 +160,62 @@ $res = $liste->listUtilisateur();
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th style="width:50px">Selectionner</th>
                                             <th>Nom</th>
                                             <th>Prénom</th>
                                             <th>Date de naissance</th>
                                             <th>Email</th>
                                             <th>Rang</th>
+                                            <th style="width:50px">Selectionner</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         foreach ($res as $value) {
                                           echo '<tr>
-                                                    <td><input type="checkbox" value="' .$value['nom']. '"/>
                                                     <td>' .$value['nom']. '</td>
                                                     <td>' .$value['prenom']. '</td>
                                                     <td>' .$value['dateNaissance']. '</td>
                                                     <td>' .$value['email']. '</td>
                                                     <td>' .$value['rang']. '</td>
+                                                    <form method="post" action="../traitement/tr_suppr_admin.php">
+                                                        <td><input type="checkbox" name="checkbox"/>
+                                                    </form>
                                                 </tr>';
                                         }
                                         ?>
+                                        <form method="post" action="../traitement/tr_inscr_admin.php">
+                                            <tr>
+                                                <td><input type="text" name="nom" placeholder="Nom"></td>
+                                                <td><input type="text" name="prenom" placeholder="Prénom"></td>
+                                                <td><input type="text" name="dateNaissance" placeholder="Date de naissance"></td>
+                                                <td><input type="email" name="email" placeholder="E-mail"></td>
+                                                <td>
+                                                    <select name="rang">
+                                                        <option name="USR" value="USR">USR</option>
+                                                        <option name="ADM" value="ADM">ADM</option>
+                                                    </select>
+                                                </td>
+                                                <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                            </tr>
+                                        </form>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         <div class="form-group row p-3">
-                            <div class="col-6" data-toggle="modal" data-target="#connexion" href="../traitement/tr_modif_admin.php">
-                                <a class="btn btn-primary btn-user btn-block">Modifier le(s) utilisateur(s)</a>
-                            </div>
-                            <div class="col-6" data-toggle="modal" data-target="#inscription" href="../traitement/tr_suppr_admin.php">
-                                <a class="btn btn-primary btn-user btn-block">Supprimer le(s) utilisateur(s)</a>
-                            </div>
+                            <form method="post" action="../traitement/tr_suppr_admin.php">
+                                <div class="m-2" data-toggle="modal">
+                                    <input class="btn btn-primary" type="submit" value="Supprimer le(s) utilisateur(s)" />
+                                </div>
+                            </form>
                         </div>
+                        <p class="text-danger form-text text-center">
+                            <?php
+                            if (isset($_SESSION['erreur'])) {
+                              echo $_SESSION['erreur'];
+                            }
+                            ?>
+                        </p>
                     </div>
 
                     <!-- Footer -->
