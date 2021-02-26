@@ -225,6 +225,29 @@ class Manager{
     }
   }
 
+# Suprpimer (Admin)
+
+public function supprAdmin($user) {
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
+    WHERE email = :email
+  ');
+  $req -> execute([
+    'email' => $user->getEmail()
+  ]);
+  $res = $req -> fetchall();
+
+# Si le compte existe dans la BDD.
+
+  if ($res) {
+    $req = $bdd -> co_bdd()->prepare('DELETE FROM user
+    WHERE id = :id
+    ');
+    header("Location: ../vue/tabl_utilisateur.php");
+  }
+}
+
 # Mot de passe oublié
 
   public function oublie($user) {

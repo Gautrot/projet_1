@@ -171,13 +171,14 @@ $res = $liste->listUtilisateur();
                     <!-- Fin Contenu -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-dark">Livres</h6>
+                            <h6 class="m-0 font-weight-bold text-dark">Liste d'utilisateurs</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th style="width:50px">Selectionner</th>
                                             <th>Nom</th>
                                             <th>Prénom</th>
                                             <th>Date de naissance</th>
@@ -189,6 +190,7 @@ $res = $liste->listUtilisateur();
                                         <?php
                                         foreach ($res as $value) {
                                           echo '<tr>
+                                                    <td><input type="checkbox" value="' .$value['nom']. '"/>
                                                     <td>' .$value['nom']. '</td>
                                                     <td>' .$value['prenom']. '</td>
                                                     <td>' .$value['dateNaissance']. '</td>
@@ -199,6 +201,14 @@ $res = $liste->listUtilisateur();
                                         ?>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                        <div class="form-group row p-3">
+                            <div class="col-6" data-toggle="modal" data-target="#connexion" href="../traitement/tr_modif_admin.php">
+                                <a class="btn btn-primary btn-user btn-block">Modifier le(s) utilisateur(s)</a>
+                            </div>
+                            <div class="col-6" data-toggle="modal" data-target="#inscription" href="../traitement/tr_suppr_admin.php">
+                                <a class="btn btn-primary btn-user btn-block">Supprimer le(s) utilisateur(s)</a>
                             </div>
                         </div>
                     </div>
