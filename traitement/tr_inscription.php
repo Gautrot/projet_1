@@ -8,7 +8,8 @@ if ($_POST['mdp'] === $_POST['mdpconfirm']) {
       'nom' => $_POST['nom'],
       'prenom' => $_POST['prenom'],
       'mdp' => $_POST['mdp'],
-      'email' => $_POST['email']
+      'email' => $_POST['email'],
+      'rang' => 'USR'
     ]);
     $manager = new Manager();
     $manager->inscription($user);
