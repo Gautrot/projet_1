@@ -1,12 +1,12 @@
 <?php
-require_once '../model/cl_utilisateur.php';
+require_once '../model/cl_film.php';
 require_once '../manager/cl_manager.php';
 
 try {
-  $film = new Utilisateur([
-    'FilmNom' => $_POST['FilmNom'],
-    'FilmAut' => $_POST['FilmAut'],
-    'FilmTh' => $_POST['FilmTh']
+  $film = new Film([
+    'filmnom' => $_POST['filmnom'],
+    'filmaut' => $_POST['filmaut'],
+    'filmth' => $_POST['filmth']
   ]);
   $manager = new Manager();
   $manager->ajoutFilm($film);

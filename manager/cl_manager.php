@@ -5,7 +5,7 @@ require_once 'cl_bdd.php';
 /*
 # PHPMailer
 // Import PHPMailer classes into the global namespace
-// These must be at the top of your script, not inside a function
+// these must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -21,7 +21,7 @@ try {
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      // Enable verbose debug output
     $mail->isSMTP();                                            // Send using SMTP
     $mail->Host       = 'smtp.example.com';                     // Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+    $mail->SMTPauth   = true;                                   // Enable SMTP authentication
     $mail->Username   = 'user@example.com';                     // SMTP username
     $mail->Password   = 'secret';                               // SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
@@ -42,8 +42,8 @@ try {
     // Content
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->Body    = 'this is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'this is the body in plain text for non-HTML mail clients';
 
     $mail->send();
     echo 'Message has been sent';
@@ -136,7 +136,7 @@ class Manager{
       $res2 = $req -> execute([
         'email' => $user->getEmail(),
         'mdp' => $user->getMdp(),
-        'nom' => $user->getNom(),
+        'nom' => $user->getnom(),
         'prenom' => $user->getPrenom(),
         'rang' => $user->getRang()
        ]);
@@ -207,7 +207,7 @@ class Manager{
         'id' => $res['id'],
         'email' => $user->getEmail(),
         'mdp' => $user->getMdp(),
-        'nom' => $user->getNom(),
+        'nom' => $user->getnom(),
         'prenom' => $user->getPrenom(),
         'datenaissance' => $user->getDatenaissance()
       ]);
@@ -238,7 +238,7 @@ class Manager{
 
 # Liste les livres de la BDD
 
-public function listLivre(){
+public function listlivre(){
   #Instancie la classe BDD
   $bdd = new BDD();
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre');
@@ -249,7 +249,7 @@ public function listLivre(){
 
 # Liste les films de la BDD
 
-public function listFilm(){
+public function listfilm(){
   #Instancie la classe BDD
   $bdd = new BDD();
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM film');
@@ -321,7 +321,7 @@ Partie Administration
         'email' => $user->getEmail(),
         'datenaissance' => $user->getDatenaissance(),
         'mdp' => $user->getMdp(),
-        'nom' => $user->getNom(),
+        'nom' => $user->getnom(),
         'prenom' => $user->getPrenom(),
         'rang' => $user->getRang()
        ]);
@@ -371,16 +371,16 @@ Partie Administration
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre
-      WHERE LivNom = :LivNom
+      WHERE livnom = :livnom
     ');
     $req -> execute([
-      'LivNom' => $livre->getLivnom()
+      'livnom' => $livre->getLivnom()
     ]);
     $res = $req -> fetchall();
 
 # Si un ou plusieurs champs sont vides.
 
-    if (empty($_POST['LivNom']) || empty($_POST['LivAut']) || empty($_POST['LivTh'])) {
+    if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
       //header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
@@ -393,13 +393,13 @@ Partie Administration
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO livre (LivNom, LivAut, LivTh)
-      VALUES (:LivNom, :LivAut :LivTh)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO livre (livnom, livaut, livth)
+        VALUES (:livnom, :livaut :livth)
       ');
       $res2 = $req -> execute([
-        'LivNom' => $livre->getLivnom(),
-        'LivAut' => $livre->getLivaut(),
-        'LivTh' => $livre->getLivth()
+        'livnom' => $livre->getLivnom(),
+        'livaut' => $livre->getLivaut(),
+        'livth' => $livre->getLivth()
        ]);
 
       if ($res2) {
@@ -408,7 +408,7 @@ Partie Administration
 
 # Si un ou plusieurs champs sont vides.
 
-      else if (empty($_POST['LivNom']) || empty($_POST['LivAut']) || empty($_POST['LivTh'])) {
+      else if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
         //header("Location: ../vue/tableau.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
@@ -426,16 +426,16 @@ Partie Administration
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd
-      WHERE CdNom = :CdNom
+      WHERE Cdnom = :Cdnom
     ');
     $req -> execute([
-      'CdNom' => $cd->getCdnom()
+      'Cdnom' => $cd->getCdnom()
     ]);
     $res = $req -> fetchall();
 
 # Si un ou plusieurs champs sont vides.
 
-    if (empty($_POST['CdNom']) || empty($_POST['CdAut']) || empty($_POST['CdTh'])) {
+    if (empty($_POST['Cdnom']) || empty($_POST['Cdaut']) || empty($_POST['Cdth'])) {
       header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
@@ -448,13 +448,13 @@ Partie Administration
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO cd (CdNom, CdAut, CdTh)
-      VALUES (:CdNom, :CdAut :CdTh)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO cd (Cdnom, Cdaut, Cdth)
+        VALUES (:Cdnom, :Cdaut :Cdth)
       ');
       $res2 = $req -> execute([
-        'CdNom' => $cd->getCdnom(),
-        'CdAut' => $cd->getCdaut(),
-        'CdTh' => $cd->getCdth()
+        'Cdnom' => $cd->getCdnom(),
+        'Cdaut' => $cd->getCdaut(),
+        'Cdth' => $cd->getCdth()
        ]);
 
       if ($res2) {
@@ -463,7 +463,7 @@ Partie Administration
 
 # Si un ou plusieurs champs sont vides.
 
-      else if (empty($_POST['CdNom']) || empty($_POST['CdAut']) || empty($_POST['CdTh'])) {
+      else if (empty($_POST['Cdnom']) || empty($_POST['Cdaut']) || empty($_POST['Cdth'])) {
         header("Location: ../vue/tableau.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
@@ -481,16 +481,16 @@ Partie Administration
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM film
-      WHERE FilmNom = :FilmNom
+      WHERE filmnom = :filmnom
     ');
     $req -> execute([
-      'FilmNom' => $film->getFilmnom()
+      'filmnom' => $film->getFilmnom()
     ]);
     $res = $req -> fetchall();
 
 # Si un ou plusieurs champs sont vides.
 
-    if (empty($_POST['FilmNom']) || empty($_POST['FilmAut']) || empty($_POST['FilmTh'])) {
+    if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
       header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
@@ -503,13 +503,13 @@ Partie Administration
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO film (FilmNom, FilmAut, FilmTh)
-      VALUES (:FilmNom, :FilmAut :FilmTh)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO film (filmnom, filmaut, filmth)
+        VALUES (:filmnom, :filmaut :filmth)
       ');
       $res2 = $req -> execute([
-        'FilmNom' => $film->getFilmnom(),
-        'FilmAut' => $film->getFilmaut(),
-        'FilmTh' => $film->getFilmth()
+        'filmnom' => $film->getFilmnom(),
+        'filmaut' => $film->getFilmaut(),
+        'filmth' => $film->getFilmth()
        ]);
 
       if ($res2) {
@@ -518,7 +518,7 @@ Partie Administration
 
 # Si un ou plusieurs champs sont vides.
 
-      else if (empty($_POST['FilmNom']) || empty($_POST['FilmAut']) || empty($_POST['FilmTh'])) {
+      else if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
         header("Location: ../vue/tableau.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }

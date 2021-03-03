@@ -1,9 +1,9 @@
 <?php
-require_once '../model/cl_utilisateur.php';
+require_once '../model/cl_cd.php';
 require_once '../manager/cl_manager.php';
 
 try {
-  $cd = new Utilisateur([
+  $cd = new Cd([
     'CdNom' => $_POST['CdNom'],
     'CdAut' => $_POST['CdAut'],
     'CdTh' => $_POST['CdTh']

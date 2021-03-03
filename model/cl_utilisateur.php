@@ -1,7 +1,6 @@
 <?php
 class Utilisateur{
   private $nom, $mdp, $email, $prenom, $datenaissance, $rang;
-  private $cdnom, $cdaut, $cdth, $livnom, $livaut, $livth, $filmnom, $filmaut, $filmth;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
@@ -33,41 +32,6 @@ class Utilisateur{
     return $this->rang;
   }
 
-  public function getLivnom() {
-    return $this->livnom;
-  }
-
-  public function getLivaut() {
-    return $this->livaut;
-  }
-
-  public function getLivth() {
-    return $this->livth;
-  }
-
-  public function getCdnom() {
-    return $this->cdnom;
-  }
-
-  public function getCdaut() {
-    return $this->cdaut;
-  }
-
-  public function getCdth() {
-    return $this->cdth;
-  }
-
-  public function getFilmnom() {
-    return $this->filmnom;
-  }
-
-  public function getFilmaut() {
-    return $this->filmaut;
-  }
-
-  public function getFilmth() {
-    return $this->filmth;
-  }
 # Setters
 
   public function setEmail($email) {
@@ -103,60 +67,6 @@ class Utilisateur{
   public function setRang($rang) {
     if (is_string($rang)) {
       $this->rang = $rang;
-    }
-  }
-
-  public function setLivnom($livnom) {
-    if (is_string($livnom)) {
-      $this->livnom = $livnom;
-    }
-  }
-
-  public function setLivaut($livaut) {
-    if (is_string($livaut)) {
-      $this->livaut = $livaut;
-    }
-  }
-
-  public function setLivth($livth) {
-    if (is_string($livth)) {
-      $this->livth = $livth;
-    }
-  }
-
-  public function setCdnom($cdnom) {
-    if (is_string($cdnom)) {
-      $this->cdnom = $cdnom;
-    }
-  }
-
-  public function setCdaut($cdaut) {
-    if (is_string($cdaut)) {
-      $this->cdaut = $cdaut;
-    }
-  }
-
-  public function setCdth($cdth) {
-    if (is_string($cdth)) {
-      $this->cdth = $cdth;
-    }
-  }
-
-  public function setFilmnom($filmnom) {
-    if (is_string($filmnom)) {
-      $this->filmnom = $filmnom;
-    }
-  }
-
-  public function setFilmaut($filmaut) {
-    if (is_string($filmaut)) {
-      $this->filmaut = $filmaut;
-    }
-  }
-
-  public function setFilmth($filmth) {
-    if (is_string($filmth)) {
-      $this->filmth = $filmth;
     }
   }
 
