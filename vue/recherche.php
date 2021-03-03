@@ -8,7 +8,7 @@ require_once '../manager/cl_manager.php';
 <html lang="en">
     <!-- Header -->
     <?php include('../include/header.php'); ?>
-    <title>Classement</title>
+    <title>Rechercher</title>
     <!-- Fin Header -->
     <body class="bg-dark">
         <!-- Content Wrapper -->
