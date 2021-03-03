@@ -1,12 +1,16 @@
 <?php
 class Livre{
-  private $livnom, $livaut, $livth;
+  private $livnom, $livaut, $livth, $refliv;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
   }
 
 # Getters
+
+  public function getRefliv() {
+    return $this->refliv;
+  }
 
   public function getLivnom() {
     return $this->livnom;
@@ -21,6 +25,10 @@ class Livre{
   }
 
 # Setters
+
+  public function setRefliv($refliv) {
+    $this->refliv = $refliv;
+  }
 
   public function setLivnom($livnom) {
     if (is_string($livnom)) {

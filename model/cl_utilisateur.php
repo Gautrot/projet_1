@@ -1,12 +1,16 @@
 <?php
 class Utilisateur{
-  private $nom, $mdp, $email, $prenom, $datenaissance, $rang;
+  private $nom, $mdp, $email, $prenom, $datenaissance, $rang, $id;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
   }
 
 # Getters
+
+  public function getId() {
+    return $this->id;
+  }
 
   public function getEmail() {
     return $this->email;
@@ -33,6 +37,10 @@ class Utilisateur{
   }
 
 # Setters
+
+  public function setId($id) {
+    $this->id = $id;
+  }
 
   public function setEmail($email) {
     if (is_string($email)) {

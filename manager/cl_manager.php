@@ -235,39 +235,6 @@ class Manager{
 
   }
 
-# Liste les livres de la BDD
-
-public function listLivre(){
-  #Instancie la classe BDD
-  $bdd = new BDD();
-  $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre');
-  $req -> execute([]);
-  $resliv = $req->fetchall();
-  return $resliv;
-}
-
-# Liste les films de la BDD
-
-public function listFilm(){
-  #Instancie la classe BDD
-  $bdd = new BDD();
-  $req = $bdd -> co_bdd()->prepare('SELECT * FROM film');
-  $req -> execute([]);
-  $resfilm = $req->fetchall();
-  return $resfilm;
-}
-
-# Liste les cd de la BDD
-
-public function listCD(){
-  #Instancie la classe BDD
-  $bdd = new BDD();
-  $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd');
-  $req -> execute([]);
-  $rescd = $req->fetchall();
-  return $rescd;
-}
-
 # Liste les utilisateurs de la BDD
 
 public function listUtilisateur(){
@@ -363,25 +330,45 @@ Partie Administration
   public function supprAdmin($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
+    $req = $bdd -> co_bdd()->prepare('DELETE FROM user
       WHERE email = :email
     ');
     $req -> execute([
       'id' => $res['id'],
-      'email' => $user->getEmail()
+      'email' => $user->getEmail(),
+      'datenaissance' => $user->getDatenaissance(),
+      'mdp' => $user->getMdp(),
+      'nom' => $user->getnom(),
+      'prenom' => $user->getPrenom(),
+      'rang' => $user->getRang()
     ]);
     $res = $req -> fetch();
     var_dump($req);
 
     if ($res) {
-      $req = $bdd -> co_bdd()->prepare('DELETE FROM user
-        WHERE id = :id
-      ');
+      session_destroy();
       //header("Location: ../vue/tabl_utilisateur.php");
     }
     var_dump($req2);
 
   }
+
+/*
+----
+Livre
+----
+*/
+
+# Liste les livres de la BDD
+
+public function listLivre(){
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre');
+  $req -> execute([]);
+  $resliv = $req->fetchall();
+  return $resliv;
+}
 
 # Ajout d'un livre
 
@@ -438,6 +425,75 @@ Partie Administration
     }
   }
 
+# Modification d'un livre
+
+  public function modifLiv($livre) {
+    #Instancie la classe BDD
+    $bdd = new BDD();
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre
+      WHERE livnom = :livnom
+    ');
+    $req -> execute([
+      'livnom' => $livre->getLivnom()
+    ]);
+    $res = $req -> fetch();
+
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
+      //header("Location: ../vue/modif_liv.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+    else if ($res) {
+      $req = $bdd -> co_bdd()->prepare('UPDATE livre
+      SET livnom = :livnom,
+          livaut = :livaut,
+          livth = :livth
+      WHERE refliv = :refliv
+      ');
+      $res2 = $req -> execute([
+        'refliv' => $livre->getRefliv(),
+        'livnom' => $livre->getLivnom(),
+        'livaut' => $livre->getLivaut(),
+        'livth' => $livre->getLivth()
+      ]);
+
+      if ($res2) {
+        //header("Location: ../vue/livres.php");
+      }
+
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
+        //header("Location: ../vue/modif_liv.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
+      }
+
+      else {
+        //header("Location: ../vue/modif_liv.php");
+        throw new Exception("Modification échouée !");
+      }
+    }
+  }
+
+/*
+----
+CD
+----
+*/
+
+# Liste les cd de la BDD
+
+public function listCD(){
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd');
+  $req -> execute([]);
+  $rescd = $req->fetchall();
+  return $rescd;
+}
+
 # Ajout d'un cd
 
   public function ajoutCd($cd) {
@@ -493,6 +549,75 @@ Partie Administration
     }
   }
 
+# Modification d'un cd
+
+  public function modifCd($cd) {
+    #Instancie la classe BDD
+    $bdd = new BDD();
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd
+      WHERE cdnom = :cdnom
+    ');
+    $req -> execute([
+      'cdnom' => $cd->getCdnom()
+    ]);
+    $res = $req -> fetch();
+
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
+      //header("Location: ../vue/modif_cd.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+    else if ($res) {
+      $req = $bdd -> co_bdd()->prepare('UPDATE cd
+      SET cdnom = :cdnom,
+          cdaut = :cdaut,
+          cdth = :cdth
+      WHERE refcd = :refcd
+      ');
+      $res2 = $req -> execute([
+        'refcd' => $cd->getRefcd(),
+        'cdnom' => $cd->getCdnom(),
+        'cdaut' => $cd->getCdaut(),
+        'cdth' => $cd->getCdth()
+      ]);
+
+      if ($res2) {
+        //header("Location: ../vue/cdres.php");
+      }
+
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
+        //header("Location: ../vue/modif_cd.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
+      }
+
+      else {
+        //header("Location: ../vue/modif_cd.php");
+        throw new Exception("Modification échouée !");
+      }
+    }
+  }
+
+/*
+----
+Film
+----
+*/
+
+# Liste les films de la BDD
+
+public function listFilm(){
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT * FROM film');
+  $req -> execute([]);
+  $resfilm = $req->fetchall();
+  return $resfilm;
+}
+
 # Ajout d'un film
 
   public function ajoutFilm($film) {
@@ -544,6 +669,58 @@ Partie Administration
       else {
         header("Location: ../vue/tableau.php");
         throw new Exception("Ajout échouée !");
+      }
+    }
+  }
+
+# Modification d'un cd
+
+  public function modifFilm($film) {
+    #Instancie la classe BDD
+    $bdd = new BDD();
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM film
+      WHERE filmnom = :filmnom
+    ');
+    $req -> execute([
+      'filmnom' => $film->getFilmnom()
+    ]);
+    $res = $req -> fetch();
+
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
+      //header("Location: ../vue/modif_film.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+    else if ($res) {
+      $req = $bdd -> co_bdd()->prepare('UPDATE film
+      SET filmnom = :filmnom,
+          filmaut = :filmaut,
+          filmth = :filmth
+      WHERE reffilm = :reffilm
+      ');
+      $res2 = $req -> execute([
+        'reffilm' => $film->getReffilm(),
+        'filmnom' => $film->getFilmnom(),
+        'filmaut' => $film->getFilmaut(),
+        'filmth' => $film->getFilmth()
+      ]);
+
+      if ($res2) {
+        //header("Location: ../vue/filmres.php");
+      }
+
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
+        //header("Location: ../vue/modif_film.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
+      }
+
+      else {
+        //header("Location: ../vue/modif_film.php");
+        throw new Exception("Modification échouée !");
       }
     }
   }

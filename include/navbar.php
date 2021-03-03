@@ -53,7 +53,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
                     Oeuvres
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">*
+                <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                     <li><a class="dropdown-item" href="cd.php">CD</a></li>
                     <li><a class="dropdown-item" href="films.php">Films</a></li>
                     <li><a class="dropdown-item" href="livres.php">Livres</a></li>

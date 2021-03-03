@@ -49,18 +49,18 @@ $rescd = $liste->listcd();
                                       echo '<tr>
                                                 <td>' .$value['cdnom']. '</td>
                                                 <td>' .$value['cdaut']. '</td>
-                                                <td>' .$value['cdth']. '</td>';
+                                                <td>' .$value['cdth']. '</td>
+                                                <form method="post" action="../traitement/tr_reserve.php">
+                                                    <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                                </form>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<form method="post" action="../traitement/tr_reserve.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
-                                              </form>
-                                              <form method="post" action="../traitement/tr_modif_cd.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                        echo '<form method="post" action="modif_cd.php">
+                                                  <td>
+                                                      <input type="hidden" name="cd_modif" value="' .$value['cdnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Modifier" />
+                                                  </td>
                                               </form>';
-                                      }
-                                      else {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
-                                      }
+                                        }
                                       echo '</tr>';
                                     }
                                     if ($_SESSION['rang'] == 'ADM') {
@@ -110,17 +110,17 @@ $rescd = $liste->listcd();
                                       echo '<tr>
                                                 <td>' .$value['filmnom']. '</td>
                                                 <td>' .$value['filmaut']. '</td>
-                                                <td>' .$value['filmth']. '</td>';
+                                                <td>' .$value['filmth']. '</td>
+                                                <form method="post" action="../traitement/tr_reserve.php">
+                                                    <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                                </form>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<form method="post" action="../traitement/tr_reserve.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
-                                              </form>
-                                              <form method="post" action="../traitement/tr_modif_film.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                        echo '<form method="post" action="modif_film.php">
+                                                  <td>
+                                                      <input type="hidden" name="film_modif" value="' .$value['filmnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Modifier" />
+                                                  </td>
                                               </form>';
-                                      }
-                                      else {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
                                       }
                                       echo '</tr>';
                                     }
@@ -171,17 +171,17 @@ $rescd = $liste->listcd();
                                       echo '<tr>
                                                 <td>' .$value['livnom']. '</td>
                                                 <td>' .$value['livaut']. '</td>
-                                                <td>' .$value['livth']. '</td>';
+                                                <td>' .$value['livth']. '</td>
+                                                <form method="post" action="../traitement/tr_reserve.php">
+                                                    <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                                </form>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<form method="post" action="../traitement/tr_reserve.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
-                                              </form>
-                                              <form method="post" action="../traitement/tr_modif_liv.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                        echo '<form method="post" action="modif_liv.php">
+                                                  <td>
+                                                      <input type="hidden" name="liv_modif" value="' .$value['livnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Modifier" />
+                                                  </td>
                                               </form>';
-                                      }
-                                      else {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
                                       }
                                       echo '</tr>';
                                     }
