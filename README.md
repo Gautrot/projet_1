@@ -9,6 +9,8 @@ Projet 1 - Bibliothèque
 
 * ../img
 
+* ../include
+
 * ../manager
 
 * ../model
