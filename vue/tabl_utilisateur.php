@@ -11,6 +11,7 @@ $res = $liste->listUtilisateur();
 <html lang="en">
     <!-- Header -->
     <?php include('../include/header.php'); ?>
+    <title>Tableau des utilisateurs</title>
     <!-- Fin Header -->
     <body class="bg-dark">
         <!-- Content Wrapper -->

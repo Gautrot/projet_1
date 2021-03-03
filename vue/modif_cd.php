@@ -12,6 +12,7 @@ $rescd = $liste->listcd();
 <html lang="en">
     <!-- Header -->
     <?php include('../include/header.php'); ?>
+    <title>Modification - CD</title>
     <!-- Fin Header -->
     <body class="bg-dark">
         <!-- Content Wrapper -->

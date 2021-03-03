@@ -12,6 +12,7 @@ $resliv = $liste->listlivre();
 <html lang="en">
     <!-- Header -->
     <?php include('../include/header.php'); ?>
+    <title>Modification - Livre</title>
     <!-- Fin Header -->
     <body class="bg-dark">
         <!-- Content Wrapper -->

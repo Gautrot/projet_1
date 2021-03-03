@@ -16,6 +16,7 @@ $rescd = $liste->listcd();
 <html lang="en">
     <!-- Header -->
     <?php include('../include/header.php'); ?>
+    <title>Contenu</title>
     <!-- Fin Header -->
     <body class="bg-dark">
         <!-- Content Wrapper -->

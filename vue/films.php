@@ -1,14 +1,10 @@
 <?php
 require_once '../model/cl_utilisateur.php';
-require_once '../model/cl_livre.php';
-require_once '../model/cl_cd.php';
 require_once '../model/cl_film.php';
 require_once '../manager/cl_manager.php';
 
 $liste = new Manager();
-$resliv = $liste->listlivre();
 $resfilm = $liste->listfilm();
-$rescd = $liste->listcd();
 ?>
 
 <!-- HTML -->
@@ -16,6 +12,7 @@ $rescd = $liste->listcd();
 <html lang="en">
     <!-- Header -->
     <?php include('../include/header.php'); ?>
+    <title>Films</title>
     <!-- Fin Header -->
     <body class="bg-dark">
         <!-- Content Wrapper -->

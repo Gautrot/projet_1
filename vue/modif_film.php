@@ -12,6 +12,7 @@ $resfilm = $liste->listfilm();
 <html lang="en">
     <!-- Header -->
     <?php include('../include/header.php'); ?>
+    <title>Modification - Film</title>
     <!-- Fin Header -->
     <body class="bg-dark">
         <!-- Content Wrapper -->
