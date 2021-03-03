@@ -38,6 +38,7 @@ $rescd = $liste->listcd();
                                         <th>Titre</th>
                                         <th>Auteur</th>
                                         <th>Thème</th>
+                                        <th style="width:50px">Réserver</th>
                                         <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
                                     </tr>
                                 </thead>
@@ -48,7 +49,13 @@ $rescd = $liste->listcd();
                                                 <td>' .$value['livnom']. '</td>
                                                 <td>' .$value['livaut']. '</td>
                                                 <td>' .$value['livth']. '</td>';
-                                                if ($_SESSION['rang'] == 'ADM') { echo '<td></td>';}
+                                      if ($_SESSION['rang'] == 'ADM') {
+                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                              <td></td>';
+                                      }
+                                      else {
+                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
+                                      }
                                       echo '</tr>';
                                     }
                                     if ($_SESSION['rang'] == 'ADM') {
@@ -57,6 +64,7 @@ $rescd = $liste->listcd();
                                                     <td><input type="text" name="livnom" placeholder="Titre"></td>
                                                     <td><input type="text" name="livaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="livth" placeholder="Thème"></td>
+                                                    <td></td>
                                                     <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';
@@ -86,6 +94,7 @@ $rescd = $liste->listcd();
                                         <th>Titre</th>
                                         <th>Auteur</th>
                                         <th>Thème</th>
+                                        <th style="width:50px">Réserver</th>
                                         <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
                                     </tr>
                                 </thead>
@@ -96,7 +105,13 @@ $rescd = $liste->listcd();
                                                 <td>' .$value['filmnom']. '</td>
                                                 <td>' .$value['filmaut']. '</td>
                                                 <td>' .$value['filmth']. '</td>';
-                                                if ($_SESSION['rang'] == 'ADM') { echo '<td></td>';}
+                                      if ($_SESSION['rang'] == 'ADM') {
+                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                              <td></td>';
+                                      }
+                                      else {
+                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
+                                      }
                                       echo '</tr>';
                                     }
                                     if ($_SESSION['rang'] == 'ADM') {
@@ -105,6 +120,7 @@ $rescd = $liste->listcd();
                                                     <td><input type="text" name="filmnom" placeholder="Titre"></td>
                                                     <td><input type="text" name="filmaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="filmth" placeholder="Thème"></td>
+                                                    <td></td>
                                                     <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';
@@ -134,6 +150,7 @@ $rescd = $liste->listcd();
                                         <th>Titre</th>
                                         <th>Auteur</th>
                                         <th>Thème</th>
+                                        <th style="width:50px">Réserver</th>
                                         <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
                                     </tr>
                                 </thead>
@@ -144,7 +161,13 @@ $rescd = $liste->listcd();
                                                 <td>' .$value['cdnom']. '</td>
                                                 <td>' .$value['cdaut']. '</td>
                                                 <td>' .$value['cdth']. '</td>';
-                                                if ($_SESSION['rang'] == 'ADM') { echo '<td></td>';}
+                                      if ($_SESSION['rang'] == 'ADM') {
+                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                              <td></td>';
+                                      }
+                                      else {
+                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
+                                      }
                                       echo '</tr>';
                                     }
                                     if ($_SESSION['rang'] == 'ADM') {
@@ -153,6 +176,7 @@ $rescd = $liste->listcd();
                                                     <td><input type="text" name="cdnom" placeholder="Titre"></td>
                                                     <td><input type="text" name="cdaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="cdth" placeholder="Thème"></td>
+                                                    <td></td>
                                                     <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';

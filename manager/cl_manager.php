@@ -238,7 +238,7 @@ class Manager{
 
 # Liste les livres de la BDD
 
-public function listlivre(){
+public function listLivre(){
   #Instancie la classe BDD
   $bdd = new BDD();
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre');
@@ -249,7 +249,7 @@ public function listlivre(){
 
 # Liste les films de la BDD
 
-public function listfilm(){
+public function listFilm(){
   #Instancie la classe BDD
   $bdd = new BDD();
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM film');
@@ -381,20 +381,20 @@ Partie Administration
 # Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
-      //header("Location: ../vue/tableau.php");
+      header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
 # Si le livre existe dans la BDD.
 
     else if ($res) {
-      //header("Location: ../vue/tableau.php");
+      header("Location: ../vue/tableau.php");
       throw new Exception("Ce livre existe.");
     }
 
     else {
       $req = $bdd -> co_bdd()->prepare('INSERT INTO livre (livnom, livaut, livth)
-        VALUES (:livnom, :livaut :livth)
+        VALUES (:livnom, :livaut, :livth)
       ');
       $res2 = $req -> execute([
         'livnom' => $livre->getLivnom(),
@@ -403,44 +403,44 @@ Partie Administration
        ]);
 
       if ($res2) {
-        //header("Location: ../vue/tableau.php");
+        header("Location: ../vue/tableau.php");
       }
 
 # Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
-        //header("Location: ../vue/tableau.php");
+        header("Location: ../vue/tableau.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
 
       else {
-        //header("Location: ../vue/tableau.php");
+        header("Location: ../vue/tableau.php");
         throw new Exception("Ajout échouée !");
       }
     }
   }
 
-# Ajout d'un CD
+# Ajout d'un cd
 
   public function ajoutCd($cd) {
     #Instancie la classe BDD
     $bdd = new BDD();
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd
-      WHERE Cdnom = :Cdnom
+      WHERE cdnom = :cdnom
     ');
     $req -> execute([
-      'Cdnom' => $cd->getCdnom()
+      'cdnom' => $cd->getCdnom()
     ]);
     $res = $req -> fetchall();
 
 # Si un ou plusieurs champs sont vides.
 
-    if (empty($_POST['Cdnom']) || empty($_POST['Cdaut']) || empty($_POST['Cdth'])) {
+    if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
       header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
-# Si le CD existe dans la BDD.
+# Si le cd existe dans la BDD.
 
     else if ($res) {
       header("Location: ../vue/tableau.php");
@@ -448,13 +448,13 @@ Partie Administration
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO cd (Cdnom, Cdaut, Cdth)
-        VALUES (:Cdnom, :Cdaut :Cdth)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO cd (cdnom, cdaut, cdth)
+        VALUES (:cdnom, :cdaut, :cdth)
       ');
       $res2 = $req -> execute([
-        'Cdnom' => $cd->getCdnom(),
-        'Cdaut' => $cd->getCdaut(),
-        'Cdth' => $cd->getCdth()
+        'cdnom' => $cd->getCdnom(),
+        'cdaut' => $cd->getCdaut(),
+        'cdth' => $cd->getCdth()
        ]);
 
       if ($res2) {
@@ -463,7 +463,7 @@ Partie Administration
 
 # Si un ou plusieurs champs sont vides.
 
-      else if (empty($_POST['Cdnom']) || empty($_POST['Cdaut']) || empty($_POST['Cdth'])) {
+      else if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
         header("Location: ../vue/tableau.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
@@ -504,7 +504,7 @@ Partie Administration
 
     else {
       $req = $bdd -> co_bdd()->prepare('INSERT INTO film (filmnom, filmaut, filmth)
-        VALUES (:filmnom, :filmaut :filmth)
+        VALUES (:filmnom, :filmaut, :filmth)
       ');
       $res2 = $req -> execute([
         'filmnom' => $film->getFilmnom(),
