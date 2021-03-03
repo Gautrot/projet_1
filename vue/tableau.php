@@ -26,9 +26,10 @@ $rescd = $liste->listcd();
                 <?php include('../include/navbar.php'); ?>
                 <!-- Fin Navbar -->
                 <!-- Tableau -->
+                <!-- CD -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-dark">Livres</h6>
+                        <h6 class="m-0 font-weight-bold text-dark">CD</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -44,14 +45,18 @@ $rescd = $liste->listcd();
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($resliv as $value) {
+                                    foreach ($rescd as $value) {
                                       echo '<tr>
-                                                <td>' .$value['livnom']. '</td>
-                                                <td>' .$value['livaut']. '</td>
-                                                <td>' .$value['livth']. '</td>';
+                                                <td>' .$value['cdnom']. '</td>
+                                                <td>' .$value['cdaut']. '</td>
+                                                <td>' .$value['cdth']. '</td>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
-                                              <td></td>';
+                                        echo '<form method="post" action="../traitement/tr_reserve.php">
+                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                              </form>
+                                              <form method="post" action="../traitement/tr_modif_cd.php">
+                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                              </form>';
                                       }
                                       else {
                                         echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
@@ -59,11 +64,11 @@ $rescd = $liste->listcd();
                                       echo '</tr>';
                                     }
                                     if ($_SESSION['rang'] == 'ADM') {
-                                      echo '<form method="post" action="../traitement/tr_ajout_liv.php">
+                                      echo '<form method="post" action="../traitement/tr_ajout_cd.php">
                                                 <tr>
-                                                    <td><input type="text" name="livnom" placeholder="Titre"></td>
-                                                    <td><input type="text" name="livaut" placeholder="Nom de l\'auteur"></td>
-                                                    <td><input type="text" name="livth" placeholder="Thème"></td>
+                                                    <td><input type="text" name="cdnom" placeholder="Titre"></td>
+                                                    <td><input type="text" name="cdaut" placeholder="Nom de l\'auteur"></td>
+                                                    <td><input type="text" name="cdth" placeholder="Thème"></td>
                                                     <td></td>
                                                     <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
@@ -82,6 +87,7 @@ $rescd = $liste->listcd();
                         ?>
                     </p>
                 </div>
+                <!-- Films -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-dark">Films</h6>
@@ -106,8 +112,12 @@ $rescd = $liste->listcd();
                                                 <td>' .$value['filmaut']. '</td>
                                                 <td>' .$value['filmth']. '</td>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
-                                              <td></td>';
+                                        echo '<form method="post" action="../traitement/tr_reserve.php">
+                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                              </form>
+                                              <form method="post" action="../traitement/tr_modif_film.php">
+                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                              </form>';
                                       }
                                       else {
                                         echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
@@ -138,9 +148,10 @@ $rescd = $liste->listcd();
                         ?>
                     </p>
                 </div>
+                <!-- Livres -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-dark">CD</h6>
+                        <h6 class="m-0 font-weight-bold text-dark">Livres</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -156,14 +167,18 @@ $rescd = $liste->listcd();
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($rescd as $value) {
+                                    foreach ($resliv as $value) {
                                       echo '<tr>
-                                                <td>' .$value['cdnom']. '</td>
-                                                <td>' .$value['cdaut']. '</td>
-                                                <td>' .$value['cdth']. '</td>';
+                                                <td>' .$value['livnom']. '</td>
+                                                <td>' .$value['livaut']. '</td>
+                                                <td>' .$value['livth']. '</td>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
-                                              <td></td>';
+                                        echo '<form method="post" action="../traitement/tr_reserve.php">
+                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                              </form>
+                                              <form method="post" action="../traitement/tr_modif_liv.php">
+                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                              </form>';
                                       }
                                       else {
                                         echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
@@ -171,11 +186,11 @@ $rescd = $liste->listcd();
                                       echo '</tr>';
                                     }
                                     if ($_SESSION['rang'] == 'ADM') {
-                                      echo '<form method="post" action="../traitement/tr_ajout_cd.php">
+                                      echo '<form method="post" action="../traitement/tr_ajout_liv.php">
                                                 <tr>
-                                                    <td><input type="text" name="cdnom" placeholder="Titre"></td>
-                                                    <td><input type="text" name="cdaut" placeholder="Nom de l\'auteur"></td>
-                                                    <td><input type="text" name="cdth" placeholder="Thème"></td>
+                                                    <td><input type="text" name="livnom" placeholder="Titre"></td>
+                                                    <td><input type="text" name="livaut" placeholder="Nom de l\'auteur"></td>
+                                                    <td><input type="text" name="livth" placeholder="Thème"></td>
                                                     <td></td>
                                                     <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>

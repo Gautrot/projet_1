@@ -279,6 +279,21 @@ public function listUtilisateur(){
   return $rescd;
 }
 
+# Barre de recherche
+
+public function recherche($re){
+  #Instancie la classe BDD
+  $bdd = new BDD();
+  $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre, cd, film
+    WHERE cdnom = :cdnom
+    OR livnom = :livnom
+    OR filmnom = :filmnom
+  ');
+  $req -> execute([]);
+  $rescd = $req->fetchall();
+  return $rescd;
+}
+
 /*
 ----
 Partie Administration
