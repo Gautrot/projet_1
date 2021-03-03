@@ -43,14 +43,18 @@ $res = $liste->listUtilisateur();
                                     <?php
                                     foreach ($res as $value) {
                                       echo '<tr>
-                                                <td>' .$value['nom']. '</td>
-                                                <td>' .$value['prenom']. '</td>
-                                                <td>' .$value['datenaissance']. '</td>
-                                                <td>' .$value['email']. '</td>
-                                                <td>' .$value['mdp']. '</td>
-                                                <td>' .$value['rang']. '</td>
                                                 <form method="post" action="../traitement/tr_suppr_admin.php">
-                                                    <td><input class="btn btn-primary" type="submit" name="supprimer" value="Supprimer" /></td>
+                                                    <td>' .$value['nom']. '</td>
+                                                    <td>' .$value['prenom']. '</td>
+                                                    <td>' .$value['datenaissance']. '</td>
+                                                    <td>' .$value['email']. '</td>
+                                                    <td>' .$value['mdp']. '</td>
+                                                    <td>' .$value['rang']. '</td>
+                                                    <td>
+                                                        <input type="hidden" name="supprimer" value="' .$value['nom']. '">
+                                                        <input class="btn btn-primary" type="submit" value="Supprimer" />
+                                                        </input>
+                                                    </td>
                                                 </form>
                                             </tr>';
                                     }

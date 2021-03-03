@@ -18,4 +18,5 @@ catch (Exception $e) {
   $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
 }
 var_dump($user);
+//var_dump($manager->supprAdmin($user));
 ?>

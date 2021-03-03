@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 03 mars 2021 à 10:06
+-- Généré le :  mer. 03 mars 2021 à 14:46
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -30,12 +30,19 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `cd`;
 CREATE TABLE IF NOT EXISTS `cd` (
-  `RefCd` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `CdNom` varchar(50) COLLATE utf8_bin NOT NULL,
-  `CdAut` varchar(50) COLLATE utf8_bin NOT NULL,
-  `CdTh` varchar(50) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`RefCd`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `refcd` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `cdnom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `cdaut` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `cdth` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`refcd`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `cd`
+--
+
+INSERT INTO `cd` (`refcd`, `cdnom`, `cdaut`, `cdth`) VALUES
+(1, 'te', 'te', 'te');
 
 -- --------------------------------------------------------
 
@@ -45,18 +52,18 @@ CREATE TABLE IF NOT EXISTS `cd` (
 
 DROP TABLE IF EXISTS `film`;
 CREATE TABLE IF NOT EXISTS `film` (
-  `RefFilm` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `FilmNom` varchar(50) COLLATE utf8_bin NOT NULL,
-  `FilmAut` varchar(50) COLLATE utf8_bin NOT NULL,
-  `FilmTh` varchar(50) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`RefFilm`)
+  `reffilm` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `filmnom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `filmaut` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `filmth` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`reffilm`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `film`
 --
 
-INSERT INTO `film` (`RefFilm`, `FilmNom`, `FilmAut`, `FilmTh`) VALUES
+INSERT INTO `film` (`reffilm`, `filmnom`, `filmaut`, `filmth`) VALUES
 (1, 'az', 'az', 'az');
 
 -- --------------------------------------------------------
@@ -67,12 +74,20 @@ INSERT INTO `film` (`RefFilm`, `FilmNom`, `FilmAut`, `FilmTh`) VALUES
 
 DROP TABLE IF EXISTS `livre`;
 CREATE TABLE IF NOT EXISTS `livre` (
-  `RefLiv` smallint(6) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `LivNom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `LivAut` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `LivTh` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  PRIMARY KEY (`RefLiv`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `refliv` smallint(6) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `livnom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `livaut` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  `livth` varchar(50) COLLATE utf8_bin DEFAULT NULL,
+  PRIMARY KEY (`refliv`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `livre`
+--
+
+INSERT INTO `livre` (`refliv`, `livnom`, `livaut`, `livth`) VALUES
+(1, 'az', 'az', 'az'),
+(2, 'cv', 'cv', 'cv');
 
 -- --------------------------------------------------------
 
@@ -102,7 +117,7 @@ INSERT INTO `user` (`id`, `email`, `mdp`, `nom`, `prenom`, `datenaissance`, `ran
 (3, 'c@gmail.com', 'c', 'C', 'C', NULL, 'USR'),
 (4, 'az@az.fr', 'az', 'az', 'az', NULL, 'ADM'),
 (5, 'xc@xc.fr', NULL, 'xc', 'xc', NULL, 'USR'),
-(6, 'test@test.fr', 'test', 'test', 'test', NULL, 'USR');
+(6, 'test@test.fr', 'test', 'test', 'test', '01-01-2020', 'USR');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

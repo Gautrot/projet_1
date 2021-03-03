@@ -92,7 +92,6 @@ class Manager{
       header("Location: ../index.php");
       throw new Exception ("L'e-mail ou le mot de passe est incorrecte ou n'existe pas.");
     }
-  var_dump($user);
   }
 
 # Déconnexion
@@ -353,16 +352,20 @@ Partie Administration
       WHERE email = :email
     ');
     $req -> execute([
+      'id' => $res['id'],
       'email' => $user->getEmail()
     ]);
-    $res = $req -> fetchall();
+    $res = $req -> fetch();
+    var_dump($req);
 
     if ($res) {
       $req = $bdd -> co_bdd()->prepare('DELETE FROM user
-        WHERE email = :email
+        WHERE id = :id
       ');
       //header("Location: ../vue/tabl_utilisateur.php");
     }
+    var_dump($req2);
+
   }
 
 # Ajout d'un livre
