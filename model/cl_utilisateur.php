@@ -96,7 +96,7 @@ class Utilisateur{
 
   public function setDatenaissance($datenaissance) {
     if (is_string($datenaissance)) {
-      $this->dateNaissance = $datenaissance;
+      $this->datenaissance = $datenaissance;
     }
   }
 

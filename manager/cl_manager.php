@@ -209,7 +209,7 @@ class Manager{
         'mdp' => $user->getMdp(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom(),
-        'datenaissance' => $user->getdatenaissance()
+        'datenaissance' => $user->getDatenaissance()
       ]);
 
       if ($res2) {
@@ -319,7 +319,7 @@ Partie Administration
       ');
       $res2 = $req -> execute([
         'email' => $user->getEmail(),
-        'datenaissance' => $user->getdatenaissance(),
+        'datenaissance' => $user->getDatenaissance(),
         'mdp' => $user->getMdp(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom(),
@@ -374,21 +374,21 @@ Partie Administration
       WHERE LivNom = :LivNom
     ');
     $req -> execute([
-      'LivNom' => $livre->getLivNom()
+      'LivNom' => $livre->getLivnom()
     ]);
     $res = $req -> fetchall();
 
 # Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['LivNom']) || empty($_POST['LivAut']) || empty($_POST['LivTh'])) {
-      header("Location: ../vue/tableau.php");
+      //header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
 # Si le livre existe dans la BDD.
 
     else if ($res) {
-      header("Location: ../vue/tableau.php");
+      //header("Location: ../vue/tableau.php");
       throw new Exception("Ce livre existe.");
     }
 
@@ -397,24 +397,24 @@ Partie Administration
       VALUES (:LivNom, :LivAut :LivTh)
       ');
       $res2 = $req -> execute([
-        'LivNom' => $livre->getLivNom(),
-        'LivAut' => $livre->getLivAut(),
-        'LivTh' => $livre->getLivTh(),
+        'LivNom' => $livre->getLivnom(),
+        'LivAut' => $livre->getLivaut(),
+        'LivTh' => $livre->getLivth()
        ]);
 
       if ($res2) {
-        header("Location: ../vue/tableau.php");
+        //header("Location: ../vue/tableau.php");
       }
 
 # Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['LivNom']) || empty($_POST['LivAut']) || empty($_POST['LivTh'])) {
-        header("Location: ../vue/tableau.php");
+        //header("Location: ../vue/tableau.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
 
       else {
-        header("Location: ../vue/tableau.php");
+        //header("Location: ../vue/tableau.php");
         throw new Exception("Ajout échouée !");
       }
     }
@@ -429,7 +429,7 @@ Partie Administration
       WHERE CdNom = :CdNom
     ');
     $req -> execute([
-      'CdNom' => $cd->getCdNom()
+      'CdNom' => $cd->getCdnom()
     ]);
     $res = $req -> fetchall();
 
@@ -452,9 +452,9 @@ Partie Administration
       VALUES (:CdNom, :CdAut :CdTh)
       ');
       $res2 = $req -> execute([
-        'CdNom' => $cd->getCdNom(),
-        'CdAut' => $cd->getCdAut(),
-        'CdTh' => $cd->getCdTh(),
+        'CdNom' => $cd->getCdnom(),
+        'CdAut' => $cd->getCdaut(),
+        'CdTh' => $cd->getCdth()
        ]);
 
       if ($res2) {
@@ -484,7 +484,7 @@ Partie Administration
       WHERE FilmNom = :FilmNom
     ');
     $req -> execute([
-      'FilmNom' => $film->getFilmNom()
+      'FilmNom' => $film->getFilmnom()
     ]);
     $res = $req -> fetchall();
 
@@ -507,9 +507,9 @@ Partie Administration
       VALUES (:FilmNom, :FilmAut :FilmTh)
       ');
       $res2 = $req -> execute([
-        'FilmNom' => $film->getFilmNom(),
-        'FilmAut' => $film->getFilmAut(),
-        'FilmTh' => $film->getFilmTh(),
+        'FilmNom' => $film->getFilmnom(),
+        'FilmAut' => $film->getFilmaut(),
+        'FilmTh' => $film->getFilmth()
        ]);
 
       if ($res2) {

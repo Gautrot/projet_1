@@ -63,6 +63,13 @@ $rescd = $liste->listCD();
                             </table>
                         </div>
                     </div>
+                    <p class="text-danger form-text text-center">
+                        <?php
+                        if (isset($_SESSION['erreur'])) {
+                          echo $_SESSION['erreur'];
+                        }
+                        ?>
+                    </p>
                 </div>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -104,6 +111,13 @@ $rescd = $liste->listCD();
                             </table>
                         </div>
                     </div>
+                    <p class="text-danger form-text text-center">
+                        <?php
+                        if (isset($_SESSION['erreur'])) {
+                          echo $_SESSION['erreur'];
+                        }
+                        ?>
+                    </p>
                 </div>
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -145,8 +159,15 @@ $rescd = $liste->listCD();
                             </table>
                         </div>
                     </div>
-                <!-- Fin Tableau -->
+                    <p class="text-danger form-text text-center">
+                        <?php
+                        if (isset($_SESSION['erreur'])) {
+                          echo $_SESSION['erreur'];
+                        }
+                        ?>
+                    </p>
                 </div>
+                <!-- Fin Tableau -->
             </div>
             <!-- Fin Contenu -->
             <!-- Footer -->

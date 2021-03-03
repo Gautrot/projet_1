@@ -14,5 +14,6 @@ try {
 catch (Exception $e) {
   $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
 }
-
+//var_dump($livre);
+//var_dump($manager->ajoutLiv($livre));
 ?>
