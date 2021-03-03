@@ -248,7 +248,7 @@ public function listUtilisateur(){
 
 # Barre de recherche
 
-public function recherche($re){
+public function recherche(){
   #Instancie la classe BDD
   $bdd = new BDD();
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre, cd, film
@@ -257,8 +257,10 @@ public function recherche($re){
     OR filmnom = :filmnom
   ');
   $req -> execute([]);
-  $rescd = $req->fetchall();
-  return $rescd;
+  $re = $req->fetchall();
+  header("Location: ../vue/recherche.php");
+  return $re;
+
 }
 
 /*

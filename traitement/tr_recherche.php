@@ -6,7 +6,7 @@ require_once '../manager/cl_manager.php';
 
 try {
   $livre = new Livre([
-    'livnom' => $_POST['livnom']
+    'livnom' => $_GET['livnom']
   ]);
   $manager = new Manager();
   $manager->recherche($livre);
@@ -16,7 +16,7 @@ catch (Exception $e) {
 
 try {
   $cd = new Cd([
-    'cdnom' => $_POST['cdnom']
+    'cdnom' => $_GET['cdnom']
   ]);
   $manager = new Manager();
   $manager->recherche($cd);
@@ -26,7 +26,7 @@ catch (Exception $e) {
 
 try {
   $film = new Film([
-    'filmnom' => $_POST['filmnom']
+    'filmnom' => $_GET['filmnom']
   ]);
   $manager = new Manager();
   $manager->recherche($film);
