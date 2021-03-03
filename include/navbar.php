@@ -4,15 +4,15 @@
         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
                 <input type="text" class="form-control bg-light border border-primary small text-secondary" placeholder="Rechercher" aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
-                            <!-- Image -->
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                            </svg>
-                            <a href="#"></a>
-                        </button>
-                    </div>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <!-- Image -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                        <a href="#"></a>
+                    </button>
+                </div>
             </div>
         </form>
         <ul class="navbar-nav ml-auto">
@@ -41,7 +41,7 @@
                 </div>
             </li>
             <!-- Accueil -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="espace_client.php">Accueil<span class="sr-only">(current)</span></a>
             </li>
             <!-- Tous les contenus -->
@@ -67,15 +67,15 @@
                         Statistiques
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item" href="graphique.php">Graphique</a></li>
-                        <li><a class="dropdown-item" href="classement.php">Classement</a></li>
+                        <li><a class="dropdown-item disabled" href="graphique.php">Graphique</a></li>
+                        <li><a class="dropdown-item disabled" href="classement.php">Classement</a></li>
                         <li><a class="dropdown-item" href="tabl_utilisateur.php">Liste d\'utilisateurs</a></li>
                     </ul>
                 </li>';
                 }
             ?>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Autres</a>
+                <a class="nav-link" href="contact.php" tabindex="-1" aria-disabled="true">Contacts</a>
             </li>
             <li class="nav-item dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

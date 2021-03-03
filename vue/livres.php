@@ -9,7 +9,6 @@ require_once '../manager/cl_manager.php';
     <!-- Header -->
     <?php include('../include/header.php'); ?>
     <!-- Fin Header -->
-
     <body class="bg-dark">
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -31,5 +30,6 @@ require_once '../manager/cl_manager.php';
         <!-- Fin Content Wrapper -->
         <!-- JS -->
         <?php include('../include/javascript.php'); ?>
+        <!-- Fin JS -->
     </body>
 </html>
