@@ -67,8 +67,6 @@
                         Statistiques
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                        <li><a class="dropdown-item disabled" href="graphique.php">Graphique</a></li>
-                        <li><a class="dropdown-item disabled" href="classement.php">Classement</a></li>
                         <li><a class="dropdown-item" href="tabl_utilisateur.php">Liste d\'utilisateurs</a></li>
                     </ul>
                 </li>';

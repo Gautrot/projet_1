@@ -34,7 +34,7 @@ $res = $liste->listUtilisateur();
                                         <th>Prénom</th>
                                         <th>Date de naissance</th>
                                         <th>Email</th>
-                                        <th>mot de passe</th>
+                                        <th>Mot de passe</th>
                                         <th>Rang</th>
                                         <th style="width:50px">Selectionner</th>
                                     </tr>
@@ -50,7 +50,7 @@ $res = $liste->listUtilisateur();
                                                 <td>' .$value['mdp']. '</td>
                                                 <td>' .$value['rang']. '</td>
                                                 <form method="post" action="../traitement/tr_suppr_admin.php">
-                                                    <td><input type="checkbox" name="checkbox"/>
+                                                    <td><input class="btn btn-primary" type="submit" name="supprimer" value="Supprimer" /></td>
                                                 </form>
                                             </tr>';
                                     }
@@ -74,13 +74,6 @@ $res = $liste->listUtilisateur();
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="card-body mb-3">
-                        <form method="post" action="../traitement/tr_suppr_admin.php">
-                            <div data-toggle="modal">
-                                <input class="btn btn-primary" type="submit" value="Supprimer le(s) utilisateur(s)" />
-                            </div>
-                        </form>
                     </div>
                     <p class="text-danger form-text text-center">
                         <?php

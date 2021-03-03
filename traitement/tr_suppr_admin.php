@@ -2,16 +2,20 @@
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
 
-if ($_POST['checkbox'] == 1) {
-  try {
-    $user = new Utilisateur([
-      'email' => $_POST['email']
-    ]);
-    $manager = new Manager();
-    $manager->supprAdmin($user);
-  }
-  catch (Exception $e) {
-    $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
-  }
+try {
+  $user = new Utilisateur([
+    'nom' => $_POST['nom'],
+    'prenom' => $_POST['prenom'],
+    'datenaissance' => $_POST['datenaissance'],
+    'email' => $_POST['email'],
+    'mdp' => $_POST['mdp'],
+    'rang' => $_POST['rang']
+  ]);
+  $manager = new Manager();
+  $manager->supprAdmin($user);
 }
+catch (Exception $e) {
+  $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
+}
+var_dump($user);
 ?>

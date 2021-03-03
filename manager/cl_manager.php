@@ -361,7 +361,7 @@ Partie Administration
       $req = $bdd -> co_bdd()->prepare('DELETE FROM user
         WHERE email = :email
       ');
-      header("Location: ../vue/tabl_utilisateur.php");
+      //header("Location: ../vue/tabl_utilisateur.php");
     }
   }
 

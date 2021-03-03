@@ -38,10 +38,8 @@
     </div>
     <!-- Container End -->
 </footer>
-<div class="row">
-    <div class="col-lg-12 col-md-12 bg-info">
-        <p class="text-center m-2">
-            Projet © 2021
-        </p>
-    </div>
+<div class="bg-info">
+    <p class="text-center m-2">
+        Projet © 2021
+    </p>
 </div>
