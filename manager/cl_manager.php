@@ -365,7 +365,172 @@ Partie Administration
     }
   }
 
-  # Fin classe Manager
+# Ajout d'un livre
+
+  public function ajoutLiv($livre) {
+    #Instancie la classe BDD
+    $bdd = new BDD();
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre
+      WHERE LivNom = :LivNom
+    ');
+    $req -> execute([
+      'LivNom' => $livre->getLivNom()
+    ]);
+    $res = $req -> fetchall();
+
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['LivNom']) || empty($_POST['LivAut']) || empty($_POST['LivTh'])) {
+      header("Location: ../vue/tableau.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+# Si le livre existe dans la BDD.
+
+    else if ($res) {
+      header("Location: ../vue/tableau.php");
+      throw new Exception("Ce livre existe.");
+    }
+
+    else {
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO livre (LivNom, LivAut, LivTh)
+      VALUES (:LivNom, :LivAut :LivTh)
+      ');
+      $res2 = $req -> execute([
+        'LivNom' => $livre->getLivNom(),
+        'LivAut' => $livre->getLivAut(),
+        'LivTh' => $livre->getLivTh(),
+       ]);
+
+      if ($res2) {
+        header("Location: ../vue/tableau.php");
+      }
+
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['LivNom']) || empty($_POST['LivAut']) || empty($_POST['LivTh'])) {
+        header("Location: ../vue/tableau.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
+      }
+
+      else {
+        header("Location: ../vue/tableau.php");
+        throw new Exception("Ajout échouée !");
+      }
+    }
+  }
+
+# Ajout d'un CD
+
+  public function ajoutCd($cd) {
+    #Instancie la classe BDD
+    $bdd = new BDD();
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd
+      WHERE CdNom = :CdNom
+    ');
+    $req -> execute([
+      'CdNom' => $cd->getCdNom()
+    ]);
+    $res = $req -> fetchall();
+
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['CdNom']) || empty($_POST['CdAut']) || empty($_POST['CdTh'])) {
+      header("Location: ../vue/tableau.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+# Si le CD existe dans la BDD.
+
+    else if ($res) {
+      header("Location: ../vue/tableau.php");
+      throw new Exception("Ce CD existe.");
+    }
+
+    else {
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO cd (CdNom, CdAut, CdTh)
+      VALUES (:CdNom, :CdAut :CdTh)
+      ');
+      $res2 = $req -> execute([
+        'CdNom' => $cd->getCdNom(),
+        'CdAut' => $cd->getCdAut(),
+        'CdTh' => $cd->getCdTh(),
+       ]);
+
+      if ($res2) {
+        header("Location: ../vue/tableau.php");
+      }
+
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['CdNom']) || empty($_POST['CdAut']) || empty($_POST['CdTh'])) {
+        header("Location: ../vue/tableau.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
+      }
+
+      else {
+        header("Location: ../vue/tableau.php");
+        throw new Exception("Ajout échouée !");
+      }
+    }
+  }
+
+# Ajout d'un film
+
+  public function ajoutFilm($film) {
+    #Instancie la classe BDD
+    $bdd = new BDD();
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM film
+      WHERE FilmNom = :FilmNom
+    ');
+    $req -> execute([
+      'FilmNom' => $film->getFilmNom()
+    ]);
+    $res = $req -> fetchall();
+
+# Si un ou plusieurs champs sont vides.
+
+    if (empty($_POST['FilmNom']) || empty($_POST['FilmAut']) || empty($_POST['FilmTh'])) {
+      header("Location: ../vue/tableau.php");
+      throw new Exception("Un ou plusieurs champs sont vides.");
+    }
+
+# Si le film existe dans la BDD.
+
+    else if ($res) {
+      header("Location: ../vue/tableau.php");
+      throw new Exception("Ce film existe.");
+    }
+
+    else {
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO film (FilmNom, FilmAut, FilmTh)
+      VALUES (:FilmNom, :FilmAut :FilmTh)
+      ');
+      $res2 = $req -> execute([
+        'FilmNom' => $film->getFilmNom(),
+        'FilmAut' => $film->getFilmAut(),
+        'FilmTh' => $film->getFilmTh(),
+       ]);
+
+      if ($res2) {
+        header("Location: ../vue/tableau.php");
+      }
+
+# Si un ou plusieurs champs sont vides.
+
+      else if (empty($_POST['FilmNom']) || empty($_POST['FilmAut']) || empty($_POST['FilmTh'])) {
+        header("Location: ../vue/tableau.php");
+        throw new Exception("Un ou plusieurs champs sont vides.");
+      }
+
+      else {
+        header("Location: ../vue/tableau.php");
+        throw new Exception("Ajout échouée !");
+      }
+    }
+  }
+
+# Fin classe Manager
 
 }
 ?>

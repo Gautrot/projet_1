@@ -35,6 +35,7 @@ $rescd = $liste->listCD();
                                         <th>Titre</th>
                                         <th>Auteur</th>
                                         <th>Thème</th>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,8 +44,19 @@ $rescd = $liste->listCD();
                                       echo '<tr>
                                                 <td>' .$value['LivNom']. '</td>
                                                 <td>' .$value['LivAut']. '</td>
-                                                <td>' .$value['LivTh']. '</td>
-                                            </tr>';
+                                                <td>' .$value['LivTh']. '</td>';
+                                                if ($_SESSION['rang'] == 'ADM') { echo '<td></td>';}
+                                      echo '</tr>';
+                                    }
+                                    if ($_SESSION['rang'] == 'ADM') {
+                                      echo '<form method="post" action="../traitement/tr_ajout_liv.php">
+                                                <tr>
+                                                    <td><input type="text" name="LivNom" placeholder="Titre"></td>
+                                                    <td><input type="text" name="LivAut" placeholder="Nom de l\'auteur"></td>
+                                                    <td><input type="text" name="LivTh" placeholder="Thème"></td>
+                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                </tr>
+                                            </form>';
                                     }
                                     ?>
                                 </tbody>
@@ -64,16 +76,28 @@ $rescd = $liste->listCD();
                                         <th>Titre</th>
                                         <th>Auteur</th>
                                         <th>Thème</th>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($resfilm as $value2) {
+                                    foreach ($resfilm as $value) {
                                       echo '<tr>
-                                                <td>' .$value2['FilmNom']. '</td>
-                                                <td>' .$value2['FilmAut']. '</td>
-                                                <td>' .$value2['FilmTh']. '</td>
-                                            </tr>';
+                                                <td>' .$value['FilmNom']. '</td>
+                                                <td>' .$value['FilmAut']. '</td>
+                                                <td>' .$value['FilmTh']. '</td>';
+                                                if ($_SESSION['rang'] == 'ADM') { echo '<td></td>';}
+                                      echo '</tr>';
+                                    }
+                                    if ($_SESSION['rang'] == 'ADM') {
+                                      echo '<form method="post" action="../traitement/tr_ajout_film.php">
+                                                <tr>
+                                                    <td><input type="text" name="FilmNom" placeholder="Titre"></td>
+                                                    <td><input type="text" name="FilmAut" placeholder="Nom de l\'auteur"></td>
+                                                    <td><input type="text" name="FilmTh" placeholder="Thème"></td>
+                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                </tr>
+                                            </form>';
                                     }
                                     ?>
                                 </tbody>
@@ -93,16 +117,28 @@ $rescd = $liste->listCD();
                                         <th>Titre</th>
                                         <th>Auteur</th>
                                         <th>Thème</th>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($rescd as $value3) {
+                                    foreach ($rescd as $value) {
                                       echo '<tr>
-                                                <td>' .$value3['CdNom']. '</td>
-                                                <td>' .$value3['CdAut']. '</td>
-                                                <td>' .$value3['CdTh']. '</td>
-                                            </tr>';
+                                                <td>' .$value['CdNom']. '</td>
+                                                <td>' .$value['CdAut']. '</td>
+                                                <td>' .$value['CdTh']. '</td>';
+                                                if ($_SESSION['rang'] == 'ADM') { echo '<td></td>';}
+                                      echo '</tr>';
+                                    }
+                                    if ($_SESSION['rang'] == 'ADM') {
+                                      echo '<form method="post" action="../traitement/tr_ajout_cd.php">
+                                                <tr>
+                                                    <td><input type="text" name="CdNom" placeholder="Titre"></td>
+                                                    <td><input type="text" name="CdAut" placeholder="Nom de l\'auteur"></td>
+                                                    <td><input type="text" name="CdTh" placeholder="Thème"></td>
+                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                </tr>
+                                            </form>';
                                     }
                                     ?>
                                 </tbody>

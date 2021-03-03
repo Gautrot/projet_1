@@ -3,38 +3,35 @@
     <!-- Container Start -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3 offset-md-1 offset-lg-0">
-                <!-- About -->
-                <div class="block about">
-                    <h4>Contacts</h4>
-                    <!-- description -->
-                    <p class="alt-color">
-                        Avenue Ambroise Croizat - 93440 Dugny<br>
-                        01 49 34 11 54
-                    </p>
+                <div class="mt-2 col-lg-3 col-md-3 offset-md-1 offset-lg-1">
+                    <!-- About -->
+                    <div class="block about">
+                        <h4>Contacts</h4>
+                        <!-- description -->
+                        <p class="alt-color">
+                            Avenue Ambroise Croizat - 93440 Dugny<br>
+                            01 49 34 11 54
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <!-- Link list -->
-            <div class="col-lg-3 col-md-3 offset-md-1 offset-lg-1">
-                <div class="block">
-                    <h4>Liens rapides</h4>
-                    <ul>
+                <!-- Link list -->
+                <div class="mt-2 col-lg-3 col-md-3 offset-md-1 offset-lg-1">
+                    <div class="block">
+                        <h4>Liens rapides</h4>
                         <form action="../vue/contact.php" method="post">
-                            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1285">
-                                <a href="../vue/contact.php">Contact</a>
-                            </li>
+                            <a href="../vue/contact.php">Contact</a>
                         </form>
-                    </ul>
+                    </div>
                 </div>
-            </div>
-            <!-- Link list -->
-            <div class="col-lg-3 col-md-3 offset-md-1 offset-lg-0">
-                <div class="block">
-                    <h4>Accès</h4>
-                    <p>
-                        Bus 133 - Arrêt Gabriel Peri<br>
-                        Bus 249 - Arrêt Leo Lagrang
-                    </p>
+                <!-- Link list -->
+                <div class="mt-2 col-lg-3 col-md-3 offset-md-1 offset-lg-0">
+                    <div class="block">
+                        <h4>Accès</h4>
+                        <p>
+                            Bus 133 - Arrêt Gabriel Peri<br>
+                            Bus 249 - Arrêt Leo Lagrang
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,8 +39,8 @@
     <!-- Container End -->
 </footer>
 <div class="row">
-    <div class="col-lg-12 col-md-12 bg-secondary">
-        <p class="text-center">
+    <div class="col-lg-12 col-md-12 bg-info">
+        <p class="text-center m-2">
             Projet © 2021
         </p>
     </div>
