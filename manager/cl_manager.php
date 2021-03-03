@@ -200,7 +200,7 @@ class Manager{
           mdp = :mdp,
           nom = :nom,
           prenom = :prenom,
-          dateNaissance = :dateNaissance,
+          datenaissance = :datenaissance,
       WHERE id = :id
       ');
       $res2 = $req -> execute([
@@ -209,7 +209,7 @@ class Manager{
         'mdp' => $user->getMdp(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom(),
-        'dateNaissance' => $user->getDateNaissance()
+        'datenaissance' => $user->getdatenaissance()
       ]);
 
       if ($res2) {
@@ -301,7 +301,7 @@ Partie Administration
 
 # Si un ou plusieurs champs sont vides.
 
-    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['email'])) {
+    if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
       header("Location: ../vue/tabl_utilisateur.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
@@ -314,13 +314,13 @@ Partie Administration
     }
 
     else {
-      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (email, dateNaissance, nom, prenom, rang)
-      VALUES (:email, :dateNaissance, :nom, :prenom, :rang)
+      $req = $bdd -> co_bdd()->prepare('INSERT INTO user (email, datenaissance, mdp, nom, prenom, rang)
+      VALUES (:email, :datenaissance, :mdp, :nom, :prenom, :rang)
       ');
       $res2 = $req -> execute([
         'email' => $user->getEmail(),
-        'dateNaissance' => $user->getDateNaissance(),
-        'mdp' => $user->getmdp(),
+        'datenaissance' => $user->getdatenaissance(),
+        'mdp' => $user->getMdp(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom(),
         'rang' => $user->getRang()
@@ -332,7 +332,7 @@ Partie Administration
 
 # Si un ou plusieurs champs sont vides.
 
-      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['email'])) {
+      else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
         header("Location: ../vue/tabl_utilisateur.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }

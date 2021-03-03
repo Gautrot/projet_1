@@ -45,7 +45,7 @@ $res = $liste->listUtilisateur();
                                       echo '<tr>
                                                 <td>' .$value['nom']. '</td>
                                                 <td>' .$value['prenom']. '</td>
-                                                <td>' .$value['dateNaissance']. '</td>
+                                                <td>' .$value['datenaissance']. '</td>
                                                 <td>' .$value['email']. '</td>
                                                 <td>' .$value['mdp']. '</td>
                                                 <td>' .$value['rang']. '</td>
@@ -59,7 +59,7 @@ $res = $liste->listUtilisateur();
                                         <tr>
                                             <td><input type="text" name="nom" placeholder="Nom"></td>
                                             <td><input type="text" name="prenom" placeholder="Prénom"></td>
-                                            <td><input type="text" name="dateNaissance" placeholder="Date de naissance"></td>
+                                            <td><input type="text" name="datenaissance" placeholder="Date de naissance"></td>
                                             <td><input type="email" name="email" placeholder="E-mail"></td>
                                               <td><input type="password" name="mdp" placeholder="Mot de passe"></td>
                                             <td>

@@ -9,7 +9,7 @@ if ($_POST['mdp'] === $_POST['mdpconfirm']) {
       'prenom' => $_POST['prenom'],
       'mdp' => $_POST['mdp'],
       'email' => $_POST['email'],
-      'dateNaissance' => $_POST['dateNaissance']
+      'datenaissance' => $_POST['datenaissance']
     ]);
     $manager = new Manager();
     $manager->modifier($user);

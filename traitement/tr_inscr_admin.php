@@ -6,7 +6,7 @@ try {
   $user = new Utilisateur([
     'nom' => $_POST['nom'],
     'prenom' => $_POST['prenom'],
-    'dateNaissance' => $_POST['dateNaissance'],
+    'datenaissance' => $_POST['datenaissance'],
     'email' => $_POST['email'],
     'mdp' => $_POST['mdp'],
     'rang' => $_POST['rang']

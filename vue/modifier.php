@@ -43,7 +43,7 @@ require_once '../manager/cl_manager.php';
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="dateNaissance" class="form-control form-control-user" placeholder="Date de naissance" value="<?php #echo $value['dateNaissance']; ?>">
+                                        <input type="text" name="datenaissance" class="form-control form-control-user" placeholder="Date de naissance" value="<?php #echo $value['datenaissance']; ?>">
                                     </div>
                                     <div class="justify-content-center">
                                         <input class="btn btn-primary" type="submit" value="Modifier" />
