@@ -1,6 +1,7 @@
 <?php
 # Appelle le ficher 'cl_bdd.php'
 require_once 'cl_bdd.php';
+
 /*
 # PHPMailer
 // Import PHPMailer classes into the global namespace
@@ -53,6 +54,7 @@ catch (Exception $e) {
 
 # Fin PHP Mailer
 */
+
 # Début classe Manager
 class Manager{
 
@@ -90,6 +92,7 @@ class Manager{
       header("Location: ../index.php");
       throw new Exception ("L'e-mail ou le mot de passe est incorrecte ou n'existe pas.");
     }
+  var_dump($user);
   }
 
 # Déconnexion
