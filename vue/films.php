@@ -41,7 +41,7 @@ $resfilm = $liste->listfilm();
                                         <th>Auteur</th>
                                         <th>Thème</th>
                                         <th style="width:50px">Réserver</th>
-                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th colspan="2">Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,17 +50,23 @@ $resfilm = $liste->listfilm();
                                       echo '<tr>
                                                 <td>' .$value['filmnom']. '</td>
                                                 <td>' .$value['filmaut']. '</td>
-                                                <td>' .$value['filmth']. '</td>';
+                                                <td>' .$value['filmth']. '</td>
+                                                <form method="post" action="../traitement/tr_reserve.php">
+                                                    <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                                </form>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<form method="post" action="../traitement/tr_reserve.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                        echo '<form method="post" action="modif_film.php">
+                                                  <td>
+                                                      <input type="hidden" name="film_modif" value="' .$value['filmnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Modifier" />
+                                                  </td>
                                               </form>
-                                              <form method="post" action="../traitement/tr_modif_film.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                              <form method="post" action="suppr_film.php">
+                                                  <td>
+                                                      <input type="hidden" name="film_suppr" value="' .$value['filmnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Supprimer" />
+                                                  </td>
                                               </form>';
-                                      }
-                                      else {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
                                       }
                                       echo '</tr>';
                                     }
@@ -71,7 +77,7 @@ $resfilm = $liste->listfilm();
                                                     <td><input type="text" name="filmaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="filmth" placeholder="Thème"></td>
                                                     <td></td>
-                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';
                                     }

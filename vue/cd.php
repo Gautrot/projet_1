@@ -29,6 +29,9 @@ $rescd = $liste->listcd();
                 <!-- Tableau -->
                 <!-- CD -->
                 <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-dark">CD</h6>
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -38,7 +41,7 @@ $rescd = $liste->listcd();
                                         <th>Auteur</th>
                                         <th>Thème</th>
                                         <th style="width:50px">Réserver</th>
-                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th colspan="2">Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,18 +50,24 @@ $rescd = $liste->listcd();
                                       echo '<tr>
                                                 <td>' .$value['cdnom']. '</td>
                                                 <td>' .$value['cdaut']. '</td>
-                                                <td>' .$value['cdth']. '</td>';
+                                                <td>' .$value['cdth']. '</td>
+                                                <form method="post" action="../traitement/tr_reserve.php">
+                                                    <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                                </form>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<form method="post" action="../traitement/tr_reserve.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                        echo '<form method="post" action="modif_cd.php">
+                                                  <td>
+                                                      <input type="hidden" name="cd_modif" value="' .$value['cdnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Modifier" />
+                                                  </td>
                                               </form>
-                                              <form method="post" action="../traitement/tr_modif_cd.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                              <form method="post" action="suppr_cd.php">
+                                                  <td>
+                                                      <input type="hidden" name="cd_suppr" value="' .$value['cdnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Supprimer" />
+                                                  </td>
                                               </form>';
-                                      }
-                                      else {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
-                                      }
+                                        }
                                       echo '</tr>';
                                     }
                                     if ($_SESSION['rang'] == 'ADM') {
@@ -68,7 +77,7 @@ $rescd = $liste->listcd();
                                                     <td><input type="text" name="cdaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="cdth" placeholder="Thème"></td>
                                                     <td></td>
-                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';
                                     }

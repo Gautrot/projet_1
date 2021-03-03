@@ -41,7 +41,7 @@ $rescd = $liste->listcd();
                                         <th>Auteur</th>
                                         <th>Thème</th>
                                         <th style="width:50px">Réserver</th>
-                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th colspan="2">Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +60,12 @@ $rescd = $liste->listcd();
                                                       <input type="hidden" name="cd_modif" value="' .$value['cdnom']. '">
                                                       <input class="btn btn-primary" type="submit" value="Modifier" />
                                                   </td>
+                                              </form>
+                                              <form method="post" action="suppr_cd.php">
+                                                  <td>
+                                                      <input type="hidden" name="cd_suppr" value="' .$value['cdnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Supprimer" />
+                                                  </td>
                                               </form>';
                                         }
                                       echo '</tr>';
@@ -71,7 +77,7 @@ $rescd = $liste->listcd();
                                                     <td><input type="text" name="cdaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="cdth" placeholder="Thème"></td>
                                                     <td></td>
-                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';
                                     }
@@ -102,7 +108,7 @@ $rescd = $liste->listcd();
                                         <th>Auteur</th>
                                         <th>Thème</th>
                                         <th style="width:50px">Réserver</th>
-                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th colspan="2">Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -121,6 +127,12 @@ $rescd = $liste->listcd();
                                                       <input type="hidden" name="film_modif" value="' .$value['filmnom']. '">
                                                       <input class="btn btn-primary" type="submit" value="Modifier" />
                                                   </td>
+                                              </form>
+                                              <form method="post" action="suppr_film.php">
+                                                  <td>
+                                                      <input type="hidden" name="film_suppr" value="' .$value['filmnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Supprimer" />
+                                                  </td>
                                               </form>';
                                       }
                                       echo '</tr>';
@@ -132,7 +144,7 @@ $rescd = $liste->listcd();
                                                     <td><input type="text" name="filmaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="filmth" placeholder="Thème"></td>
                                                     <td></td>
-                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';
                                     }
@@ -163,7 +175,7 @@ $rescd = $liste->listcd();
                                         <th>Auteur</th>
                                         <th>Thème</th>
                                         <th style="width:50px">Réserver</th>
-                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th colspan="2">Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -182,6 +194,12 @@ $rescd = $liste->listcd();
                                                       <input type="hidden" name="liv_modif" value="' .$value['livnom']. '">
                                                       <input class="btn btn-primary" type="submit" value="Modifier" />
                                                   </td>
+                                              </form>
+                                              <form method="post" action="suppr_liv.php">
+                                                  <td>
+                                                      <input type="hidden" name="liv_suppr" value="' .$value['livnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Supprimer" />
+                                                  </td>
                                               </form>';
                                       }
                                       echo '</tr>';
@@ -193,7 +211,7 @@ $rescd = $liste->listcd();
                                                     <td><input type="text" name="livaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="livth" placeholder="Thème"></td>
                                                     <td></td>
-                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';
                                     }

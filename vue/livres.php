@@ -41,7 +41,7 @@ $resliv = $liste->listlivre();
                                         <th>Auteur</th>
                                         <th>Thème</th>
                                         <th style="width:50px">Réserver</th>
-                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th>Selection</th>';} ?>
+                                        <?php if ($_SESSION['rang'] == 'ADM') { echo '<th colspan="2">Selection</th>';} ?>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -50,17 +50,23 @@ $resliv = $liste->listlivre();
                                       echo '<tr>
                                                 <td>' .$value['livnom']. '</td>
                                                 <td>' .$value['livaut']. '</td>
-                                                <td>' .$value['livth']. '</td>';
+                                                <td>' .$value['livth']. '</td>
+                                                <form method="post" action="../traitement/tr_reserve.php">
+                                                    <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                                </form>';
                                       if ($_SESSION['rang'] == 'ADM') {
-                                        echo '<form method="post" action="../traitement/tr_reserve.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
+                                        echo '<form method="post" action="modif_liv.php">
+                                                  <td>
+                                                      <input type="hidden" name="liv_modif" value="' .$value['livnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Modifier" />
+                                                  </td>
                                               </form>
-                                              <form method="post" action="../traitement/tr_modif_liv.php">
-                                                  <td><input class="btn btn-primary" type="submit" value="Modifier" /></td>
+                                              <form method="post" action="suppr_liv.php">
+                                                  <td>
+                                                      <input type="hidden" name="liv_suppr" value="' .$value['livnom']. '">
+                                                      <input class="btn btn-primary" type="submit" value="Supprimer" />
+                                                  </td>
                                               </form>';
-                                      }
-                                      else {
-                                        echo '<td><input class="btn btn-primary" type="submit" value="Réserver" /></td>';
                                       }
                                       echo '</tr>';
                                     }
@@ -71,7 +77,7 @@ $resliv = $liste->listlivre();
                                                     <td><input type="text" name="livaut" placeholder="Nom de l\'auteur"></td>
                                                     <td><input type="text" name="livth" placeholder="Thème"></td>
                                                     <td></td>
-                                                    <td><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
+                                                    <td colspan="2"><input class="btn btn-primary" type="submit" value="Ajouter" /></td>
                                                 </tr>
                                             </form>';
                                     }
