@@ -336,23 +336,14 @@ Partie Administration
       WHERE email = :email
     ');
     $req -> execute([
-      'id' => $res['id'],
-      'email' => $user->getEmail(),
-      'datenaissance' => $user->getDatenaissance(),
-      'mdp' => $user->getMdp(),
-      'nom' => $user->getnom(),
-      'prenom' => $user->getPrenom(),
-      'rang' => $user->getRang()
+      'email' => $user->getEmail()
     ]);
     $res = $req -> fetch();
-    var_dump($req);
 
     if ($res) {
       session_destroy();
-      //header("Location: ../vue/tabl_utilisateur.php");
+      header("Location: ../vue/tabl_utilisateur.php");
     }
-    var_dump($req2);
-
   }
 
 /*
@@ -443,7 +434,7 @@ public function listLivre(){
 # Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
-      //header("Location: ../vue/modif_liv.php");
+      header("Location: ../vue/modif_liv.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
@@ -462,18 +453,18 @@ public function listLivre(){
       ]);
 
       if ($res2) {
-        //header("Location: ../vue/livres.php");
+        header("Location: ../vue/livres.php");
       }
 
 # Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
-        //header("Location: ../vue/modif_liv.php");
+        header("Location: ../vue/modif_liv.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
 
       else {
-        //header("Location: ../vue/modif_liv.php");
+        header("Location: ../vue/modif_liv.php");
         throw new Exception("Modification échouée !");
       }
     }
@@ -567,7 +558,7 @@ public function listCD(){
 # Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
-      //header("Location: ../vue/modif_cd.php");
+      header("Location: ../vue/modif_cd.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
@@ -586,18 +577,18 @@ public function listCD(){
       ]);
 
       if ($res2) {
-        //header("Location: ../vue/cdres.php");
+        header("Location: ../vue/cdres.php");
       }
 
 # Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
-        //header("Location: ../vue/modif_cd.php");
+        header("Location: ../vue/modif_cd.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
 
       else {
-        //header("Location: ../vue/modif_cd.php");
+        header("Location: ../vue/modif_cd.php");
         throw new Exception("Modification échouée !");
       }
     }
@@ -691,7 +682,7 @@ public function listFilm(){
 # Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
-      //header("Location: ../vue/modif_film.php");
+      header("Location: ../vue/modif_film.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
@@ -710,18 +701,18 @@ public function listFilm(){
       ]);
 
       if ($res2) {
-        //header("Location: ../vue/filmres.php");
+        header("Location: ../vue/filmres.php");
       }
 
 # Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
-        //header("Location: ../vue/modif_film.php");
+        header("Location: ../vue/modif_film.php");
         throw new Exception("Un ou plusieurs champs sont vides.");
       }
 
       else {
-        //header("Location: ../vue/modif_film.php");
+        header("Location: ../vue/modif_film.php");
         throw new Exception("Modification échouée !");
       }
     }

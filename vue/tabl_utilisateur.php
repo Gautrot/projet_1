@@ -45,17 +45,13 @@ $res = $liste->listUtilisateur();
                                     foreach ($res as $value) {
                                       echo '<tr>
                                                 <form method="post" action="../traitement/tr_suppr_admin.php">
-                                                    <td>' .$value['nom']. '</td>
-                                                    <td>' .$value['prenom']. '</td>
-                                                    <td>' .$value['datenaissance']. '</td>
-                                                    <td>' .$value['email']. '</td>
-                                                    <td>' .$value['mdp']. '</td>
-                                                    <td>' .$value['rang']. '</td>
-                                                    <td>
-                                                        <input type="hidden" name="supprimer" value="' .$value['nom']. '">
-                                                        <input class="btn btn-primary" type="submit" value="Supprimer" />
-                                                        </input>
-                                                    </td>
+                                                    <td nom="'.$value['nom'].'" value="'.$value['nom'].'">' .$value['nom']. '</td>
+                                                    <td nom="'.$value['prenom'].'" value="'.$value['prenom'].'">' .$value['prenom']. '</td>
+                                                    <td nom="'.$value['datenaissance'].'" value="'.$value['datenaissance'].'">' .$value['datenaissance']. '</td>
+                                                    <td nom="'.$value['email'].'" value="'.$value['email'].'">' .$value['email']. '</td>
+                                                    <td nom="'.$value['mdp'].'" value="'.$value['mdp'].'">' .$value['mdp']. '</td>
+                                                    <td nom="'.$value['rang'].'" value="'.$value['rang'].'">' .$value['rang']. '</td>
+                                                    <td> <input class="btn btn-primary" type="submit" value="Supprimer" /></td>
                                                 </form>
                                             </tr>';
                                     }
