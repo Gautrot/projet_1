@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mer. 03 mars 2021 à 07:52
+-- Généré le :  mer. 03 mars 2021 à 10:06
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -50,7 +50,14 @@ CREATE TABLE IF NOT EXISTS `film` (
   `FilmAut` varchar(50) COLLATE utf8_bin NOT NULL,
   `FilmTh` varchar(50) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`RefFilm`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Déchargement des données de la table `film`
+--
+
+INSERT INTO `film` (`RefFilm`, `FilmNom`, `FilmAut`, `FilmTh`) VALUES
+(1, 'az', 'az', 'az');
 
 -- --------------------------------------------------------
 
@@ -80,19 +87,22 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mdp` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `nom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `prenom` varchar(50) COLLATE utf8_bin DEFAULT NULL,
-  `dateNaissance` char(10) COLLATE utf8_bin DEFAULT NULL,
+  `datenaissance` char(10) COLLATE utf8_bin DEFAULT NULL,
   `rang` char(3) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `mdp`, `nom`, `prenom`, `dateNaissance`, `rang`) VALUES
+INSERT INTO `user` (`id`, `email`, `mdp`, `nom`, `prenom`, `datenaissance`, `rang`) VALUES
 (1, 'a@gmail.com', 'a', 'A', 'A', '01-01-2000', 'ADM'),
 (2, 'b@gmail.com', 'b', 'B', 'B', NULL, 'USR'),
-(3, 'c@gmail.com', 'c', 'C', 'C', NULL, 'USR');
+(3, 'c@gmail.com', 'c', 'C', 'C', NULL, 'USR'),
+(4, 'az@az.fr', 'az', 'az', 'az', NULL, 'ADM'),
+(5, 'xc@xc.fr', NULL, 'xc', 'xc', NULL, 'USR'),
+(6, 'test@test.fr', 'test', 'test', 'test', NULL, 'USR');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
