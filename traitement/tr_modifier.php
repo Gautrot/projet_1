@@ -20,7 +20,7 @@ if ($_POST['mdp'] === $_POST['mdpconfirm']) {
 }
 
 else {
-  header("Location: ../index.php");
+  header("Location: ../espace_client.php");
   echo 'Erreur : Les mots de passes ne sont pas identiques.';
 }
 ?>

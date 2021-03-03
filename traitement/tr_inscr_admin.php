@@ -8,6 +8,7 @@ try {
     'prenom' => $_POST['prenom'],
     'dateNaissance' => $_POST['dateNaissance'],
     'email' => $_POST['email'],
+    'mdp' => $_POST['mdp'],
     'rang' => $_POST['rang']
   ]);
   $manager = new Manager();

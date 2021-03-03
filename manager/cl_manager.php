@@ -320,6 +320,7 @@ Partie Administration
       $res2 = $req -> execute([
         'email' => $user->getEmail(),
         'dateNaissance' => $user->getDateNaissance(),
+        'mdp' => $user->getmdp(),
         'nom' => $user->getNom(),
         'prenom' => $user->getPrenom(),
         'rang' => $user->getRang()

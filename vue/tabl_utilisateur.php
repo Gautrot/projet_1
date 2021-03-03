@@ -34,6 +34,7 @@ $res = $liste->listUtilisateur();
                                         <th>Prénom</th>
                                         <th>Date de naissance</th>
                                         <th>Email</th>
+                                        <th>mot de passe</th>
                                         <th>Rang</th>
                                         <th style="width:50px">Selectionner</th>
                                     </tr>
@@ -46,6 +47,7 @@ $res = $liste->listUtilisateur();
                                                 <td>' .$value['prenom']. '</td>
                                                 <td>' .$value['dateNaissance']. '</td>
                                                 <td>' .$value['email']. '</td>
+                                                <td>' .$value['mdp']. '</td>
                                                 <td>' .$value['rang']. '</td>
                                                 <form method="post" action="../traitement/tr_suppr_admin.php">
                                                     <td><input type="checkbox" name="checkbox"/>
@@ -59,6 +61,7 @@ $res = $liste->listUtilisateur();
                                             <td><input type="text" name="prenom" placeholder="Prénom"></td>
                                             <td><input type="text" name="dateNaissance" placeholder="Date de naissance"></td>
                                             <td><input type="email" name="email" placeholder="E-mail"></td>
+                                              <td><input type="password" name="mdp" placeholder="Mot de passe"></td>
                                             <td>
                                                 <select name="rang">
                                                     <option name="USR" value="USR">USR</option>
