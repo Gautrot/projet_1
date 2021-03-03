@@ -1,5 +1,5 @@
 <?php
-class Utilisateur{
+class Film{
   private $filmnom, $filmaut, $filmth;
 
   public function __construct($donnees){

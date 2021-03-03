@@ -1,5 +1,8 @@
 <?php
 require_once '../model/cl_utilisateur.php';
+require_once '../model/cl_livre.php';
+require_once '../model/cl_cd.php';
+require_once '../model/cl_film.php';
 require_once '../manager/cl_manager.php';
 
 $liste = new Manager();
