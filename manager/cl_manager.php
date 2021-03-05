@@ -332,19 +332,21 @@ Partie Administration
   public function supprAdmin($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
-    $req = $bdd -> co_bdd()->prepare('DELETE FROM user
-      WHERE email = :email
-    ');
+    $req = $bdd -> co_bdd()->prepare('SELECT * FROM user');
     $req -> execute([
-      'email' => $user->getEmail()
+      'id' => $user->getId()
     ]);
     $res = $req -> fetch();
 
     if ($res) {
-      session_destroy();
+      $req = $bdd -> co_bdd()->prepare('DELETE FROM user
+        WHERE id = :id
+      ');
+      //session_destroy();
       header("Location: ../vue/tabl_utilisateur.php");
     }
   }
+
 
 /*
 ----

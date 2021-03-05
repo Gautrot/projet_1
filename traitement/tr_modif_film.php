@@ -3,18 +3,20 @@ require_once '../model/cl_film.php';
 require_once '../manager/cl_manager.php';
 
 try {
+  #Instancie la classe Film
   $film = new Film([
     'filmnom' => $_POST['filmnom'],
     'filmaut' => $_POST['filmaut'],
     'filmth' => $_POST['filmth']
   ]);
+  #Instancie la classe Manager
   $manager = new Manager();
-  $manager->modiffilm($film);
+  #Excecute la fonction modifFilm
+  $manager->modifFilm($film);
 }
+#Envoi un message d'erreur en cas d'echec
 catch (Exception $e) {
   $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
 }
-var_dump($film);
-var_dump($_POST);
-var_dump($manager->modiffilm($film));
+
 ?>

@@ -1,22 +1,24 @@
 <?php
 require_once '../model/cl_utilisateur.php';
 require_once '../manager/cl_manager.php';
+$liste = new Manager();
+$res = $liste->listUtilisateur();
 
-try {
-  $user = new Utilisateur([
-    'nom' => $_POST['nom'],
-    'prenom' => $_POST['prenom'],
-    'datenaissance' => $_POST['datenaissance'],
-    'email' => $_POST['email'],
-    'mdp' => $_POST['mdp'],
-    'rang' => $_POST['rang']
-  ]);
-  $manager = new Manager();
-  $manager->supprAdmin($user);
-}
-catch (Exception $e) {
-  $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
+foreach ($res as $value) {
+  try {
+    #Instancie la classe Utilisateur
+    $user = new Utilisateur([
+      $value['id'] => $_POST['id']
+    ]);
+    #Instancie la classe Manager
+    $manager = new Manager();
+    #Excecute la fonction supprAdmin
+    $manager->supprAdmin($user);
+  }
+  #Envoi un message d'erreur en cas d'echec
+  catch (Exception $e) {
+    $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
+  }
 }
 var_dump($user);
-var_dump($manager->supprAdmin($user));
 ?>

@@ -1,4 +1,6 @@
 <?php
+# PAS FINI
+
 require_once '../model/cl_livre.php';
 require_once '../model/cl_cd.php';
 require_once '../model/cl_film.php';
@@ -11,6 +13,7 @@ try {
   $manager = new Manager();
   $manager->recherche($livre);
 }
+#Envoi un message d'erreur en cas d'echec
 catch (Exception $e) {
 }
 
@@ -21,6 +24,7 @@ try {
   $manager = new Manager();
   $manager->recherche($cd);
 }
+#Envoi un message d'erreur en cas d'echec
 catch (Exception $e) {
 }
 
@@ -31,6 +35,7 @@ try {
   $manager = new Manager();
   $manager->recherche($film);
 }
+#Envoi un message d'erreur en cas d'echec
 catch (Exception $e) {
 }
 

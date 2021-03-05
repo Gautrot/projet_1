@@ -3,14 +3,18 @@ require_once '../model/cl_cd.php';
 require_once '../manager/cl_manager.php';
 
 try {
-  $cd = new cd([
+  #Instancie la classe Cd
+  $cd = new Cd([
     'cdnom' => $_POST['cdnom'],
     'cdaut' => $_POST['cdaut'],
     'cdth' => $_POST['cdth']
   ]);
+  #Instancie la classe Manager
   $manager = new Manager();
-  $manager->ajoutcd($cd);
+  #Excecute la fonction ajoutCd
+  $manager->ajoutCd($cd);
 }
+#Envoi un message d'erreur en cas d'echec
 catch (Exception $e) {
   $_SESSION['erreur'] = 'Erreur : ' .$e->getMessage();
 }

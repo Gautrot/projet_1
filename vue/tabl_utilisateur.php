@@ -31,6 +31,7 @@ $res = $liste->listUtilisateur();
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Nom</th>
                                         <th>Prénom</th>
                                         <th>Date de naissance</th>
@@ -41,23 +42,27 @@ $res = $liste->listUtilisateur();
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    foreach ($res as $value) {
-                                      echo '<tr>
-                                                <form method="post" action="../traitement/tr_suppr_admin.php">
-                                                    <td nom="'.$value['nom'].'" value="'.$value['nom'].'">' .$value['nom']. '</td>
-                                                    <td nom="'.$value['prenom'].'" value="'.$value['prenom'].'">' .$value['prenom']. '</td>
-                                                    <td nom="'.$value['datenaissance'].'" value="'.$value['datenaissance'].'">' .$value['datenaissance']. '</td>
-                                                    <td nom="'.$value['email'].'" value="'.$value['email'].'">' .$value['email']. '</td>
-                                                    <td nom="'.$value['mdp'].'" value="'.$value['mdp'].'">' .$value['mdp']. '</td>
-                                                    <td nom="'.$value['rang'].'" value="'.$value['rang'].'">' .$value['rang']. '</td>
-                                                    <td> <input class="btn btn-primary" type="submit" value="Supprimer" /></td>
-                                                </form>
-                                            </tr>';
-                                    }
-                                    ?>
+                                    <form method="post" action="../traitement/tr_suppr_admin.php">
+                                        <?php
+                                        foreach ($res as $value) {
+                                        ?>
+                                        <tr>
+                                            <td name="<?php echo $value['id']; ?>"><?php echo $value['id']; ?></td>
+                                            <td name="<?php echo $value['nom']; ?>"><?php echo $value['nom']; ?></td>
+                                            <td name="<?php echo $value['prenom']; ?>"><?php echo $value['prenom']; ?></td>
+                                            <td name="<?php echo $value['datenaissance']; ?>"><?php echo $value['datenaissance']; ?></td>
+                                            <td name="<?php echo $value['email']; ?>"><?php echo $value['email']; ?></td>
+                                            <td name="<?php echo $value['mdp']; ?>"><?php echo $value['mdp']; ?></td>
+                                            <td name="<?php echo $value['rang']; ?>"><?php echo $value['rang']; ?></td>
+                                            <td><input class="btn btn-primary" type="submit" value="Supprimer" /></td>
+                                        </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </form>
                                     <form method="post" action="../traitement/tr_inscr_admin.php">
                                         <tr>
+                                            <td></td>
                                             <td><input type="text" name="nom" placeholder="Nom"></td>
                                             <td><input type="text" name="prenom" placeholder="Prénom"></td>
                                             <td><input type="text" name="datenaissance" placeholder="Date de naissance"></td>
