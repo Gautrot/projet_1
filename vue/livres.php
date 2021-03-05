@@ -48,9 +48,9 @@ $resliv = $liste->listLivre();
                                     <?php
                                     foreach ($resliv as $value) {
                                       echo '<tr>
-                                                <td>' .$value['livnom']. '</td>
-                                                <td>' .$value['livaut']. '</td>
-                                                <td>' .$value['livth']. '</td>
+                                                <td name="' .$value['livnom']. '">' .$value['livnom']. '</td>
+                                                <td name="' .$value['livaut']. '">' .$value['livaut']. '</td>
+                                                <td name="' .$value['livth']. '">' .$value['livth']. '</td>
                                                 <form method="post" action="../traitement/tr_reserve.php">
                                                     <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
                                                 </form>';

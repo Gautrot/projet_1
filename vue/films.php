@@ -48,9 +48,9 @@ $resfilm = $liste->listFilm();
                                     <?php
                                     foreach ($resfilm as $value) {
                                       echo '<tr>
-                                                <td>' .$value['filmnom']. '</td>
-                                                <td>' .$value['filmaut']. '</td>
-                                                <td>' .$value['filmth']. '</td>
+                                                <td name="' .$value['filmnom']. '">' .$value['filmnom']. '</td>
+                                                <td name="' .$value['filmaut']. '">' .$value['filmaut']. '</td>
+                                                <td name="' .$value['filmth']. '">' .$value['filmth']. '</td>
                                                 <form method="post" action="../traitement/tr_reserve.php">
                                                     <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
                                                 </form>';

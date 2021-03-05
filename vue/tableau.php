@@ -48,9 +48,9 @@ $rescd = $liste->listcd();
                                     <?php
                                     foreach ($rescd as $value) {
                                       echo '<tr>
-                                                <td>' .$value['cdnom']. '</td>
-                                                <td>' .$value['cdaut']. '</td>
-                                                <td>' .$value['cdth']. '</td>
+                                                <td name="' .$value['cdnom']. '">' .$value['cdnom']. '</td>
+                                                <td name="' .$value['cdaut']. '">' .$value['cdaut']. '</td>
+                                                <td name="' .$value['cdth']. '">' .$value['cdth']. '</td>
                                                 <form method="post" action="../traitement/tr_reserve.php">
                                                     <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
                                                 </form>';
@@ -115,9 +115,9 @@ $rescd = $liste->listcd();
                                     <?php
                                     foreach ($resfilm as $value) {
                                       echo '<tr>
-                                                <td>' .$value['filmnom']. '</td>
-                                                <td>' .$value['filmaut']. '</td>
-                                                <td>' .$value['filmth']. '</td>
+                                                <td name="' .$value['filmnom']. '">' .$value['filmnom']. '</td>
+                                                <td name="' .$value['filmaut']. '">' .$value['filmaut']. '</td>
+                                                <td name="' .$value['filmth']. '">' .$value['filmth']. '</td>
                                                 <form method="post" action="../traitement/tr_reserve.php">
                                                     <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
                                                 </form>';
@@ -182,9 +182,9 @@ $rescd = $liste->listcd();
                                     <?php
                                     foreach ($resliv as $value) {
                                       echo '<tr>
-                                                <td>' .$value['livnom']. '</td>
-                                                <td>' .$value['livaut']. '</td>
-                                                <td>' .$value['livth']. '</td>
+                                                <td name="' .$value['livnom']. '">' .$value['livnom']. '</td>
+                                                <td name="' .$value['livaut']. '">' .$value['livaut']. '</td>
+                                                <td name="' .$value['livth']. '">' .$value['livth']. '</td>
                                                 <form method="post" action="../traitement/tr_reserve.php">
                                                     <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
                                                 </form>';

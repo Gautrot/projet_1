@@ -48,9 +48,9 @@ $rescd = $liste->listCd();
                                     <?php
                                     foreach ($rescd as $value) {
                                       echo '<tr>
-                                                <td>' .$value['cdnom']. '</td>
-                                                <td>' .$value['cdaut']. '</td>
-                                                <td>' .$value['cdth']. '</td>
+                                                <td name="' .$value['cdnom']. '">' .$value['cdnom']. '</td>
+                                                <td name="' .$value['cdaut']. '">' .$value['cdaut']. '</td>
+                                                <td name="' .$value['cdth']. '">' .$value['cdth']. '</td>
                                                 <form method="post" action="../traitement/tr_reserve.php">
                                                     <td><input class="btn btn-primary" type="submit" value="Réserver" /></td>
                                                 </form>';
