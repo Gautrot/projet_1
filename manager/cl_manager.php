@@ -2,8 +2,7 @@
 # Appelle le ficher 'cl_bdd.php'
 require_once 'cl_bdd.php';
 
-/*
-# PHPMailer
+/* PHPMailer (PAS FINI)
 // Import PHPMailer classes into the global namespace
 // these must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -80,14 +79,14 @@ class Manager{
       header("Location: ../vue/espace_client.php");
     }
 
-# Si l'un des deux champs sont vides.
+# Erreur : Si l'un des deux champs sont vides.
 
     else if (empty($_POST['email']) || empty($_POST['mdp'])) {
       header("Location: ../index.php");
       throw new Exception ("Un ou plusieurs champs sont vides.");
     }
 
-# Si la saisie du mot de passe ou de l'e-mail est incorrecte.
+# Erreur : Si la saisie du mot de passe ou de l'e-mail est incorrecte.
 
     else {
       header("Location: ../index.php");
@@ -116,14 +115,14 @@ class Manager{
     ]);
     $res = $req -> fetchall();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
       header("Location: ../index.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
-# Si le compte existe dans la BDD.
+# Erreur : Si le compte existe dans la BDD.
 
     else if ($res) {
       header("Location: ../index.php");
@@ -147,7 +146,7 @@ class Manager{
         header("Location: ../vue/espace_client.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
         header("Location: ../index.php");
@@ -191,7 +190,7 @@ class Manager{
     ]);
     $res = $req -> fetch();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
       header("Location: ../index.php");
@@ -221,7 +220,7 @@ class Manager{
         header("Location: ../vue/espace_client.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
         header("Location: ../vue/modifier.php");
@@ -290,14 +289,14 @@ Partie Administration
     ]);
     $res = $req -> fetchall();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
       header("Location: ../vue/tabl_utilisateur.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
-# Si le compte existe dans la BDD.
+# Erreur : Si le compte existe dans la BDD.
 
     else if ($res) {
       header("Location: ../vue/tabl_utilisateur.php");
@@ -322,7 +321,7 @@ Partie Administration
         header("Location: ../vue/tabl_utilisateur.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['mdp']) || empty($_POST['email'])) {
         header("Location: ../vue/tabl_utilisateur.php");
@@ -391,14 +390,14 @@ public function listLivre(){
     ]);
     $res = $req -> fetchall();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
       header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
-# Si le livre existe dans la BDD.
+# Erreur : Si le livre existe dans la BDD.
 
     else if ($res) {
       header("Location: ../vue/tableau.php");
@@ -420,7 +419,7 @@ public function listLivre(){
         header("Location: ../vue/tableau.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
         header("Location: ../vue/tableau.php");
@@ -448,7 +447,7 @@ public function listLivre(){
     ]);
     $res = $req -> fetch();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
       header("Location: ../vue/modif_liv.php");
@@ -474,7 +473,7 @@ public function listLivre(){
         header("Location: ../vue/livres.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['livnom']) || empty($_POST['livaut']) || empty($_POST['livth'])) {
         header("Location: ../vue/modif_liv.php");
@@ -520,14 +519,14 @@ public function listCD(){
     ]);
     $res = $req -> fetchall();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
       header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
-# Si le cd existe dans la BDD.
+# Erreur : Si le cd existe dans la BDD.
 
     else if ($res) {
       header("Location: ../vue/tableau.php");
@@ -549,7 +548,7 @@ public function listCD(){
         header("Location: ../vue/tableau.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
         header("Location: ../vue/tableau.php");
@@ -577,7 +576,7 @@ public function listCD(){
     ]);
     $res = $req -> fetch();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
       header("Location: ../vue/modif_cd.php");
@@ -603,7 +602,7 @@ public function listCD(){
         header("Location: ../vue/cdres.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['cdnom']) || empty($_POST['cdaut']) || empty($_POST['cdth'])) {
         header("Location: ../vue/modif_cd.php");
@@ -649,14 +648,14 @@ public function listFilm(){
     ]);
     $res = $req -> fetchall();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
       header("Location: ../vue/tableau.php");
       throw new Exception("Un ou plusieurs champs sont vides.");
     }
 
-# Si le film existe dans la BDD.
+# Erreur : Si le film existe dans la BDD.
 
     else if ($res) {
       header("Location: ../vue/tableau.php");
@@ -678,7 +677,7 @@ public function listFilm(){
         header("Location: ../vue/tableau.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
         header("Location: ../vue/tableau.php");
@@ -706,7 +705,7 @@ public function listFilm(){
     ]);
     $res = $req -> fetch();
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
     if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
       header("Location: ../vue/modif_film.php");
@@ -732,7 +731,7 @@ public function listFilm(){
         header("Location: ../vue/filmres.php");
       }
 
-# Si un ou plusieurs champs sont vides.
+# Erreur : Si un ou plusieurs champs sont vides.
 
       else if (empty($_POST['filmnom']) || empty($_POST['filmaut']) || empty($_POST['filmth'])) {
         header("Location: ../vue/modif_film.php");
