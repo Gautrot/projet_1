@@ -63,6 +63,7 @@ class Manager{
   public function connexion($user) {
 # Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne tous les emails et mot de passes disponibles dans la table user
     $req = $bdd->co_bdd()->prepare('SELECT * FROM user
       WHERE email = :email
       AND mdp = :mdp
@@ -106,6 +107,7 @@ class Manager{
   public function inscription($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne tous les emails disponibles dans la table user
     $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
       WHERE email = :email
     ');
@@ -129,6 +131,7 @@ class Manager{
     }
 
     else {
+      #BDD : ajoute une ligne/un utilistateur dans la table user
       $req = $bdd -> co_bdd()->prepare('INSERT INTO user (email, mdp, nom, prenom, rang)
       VALUES (:email, :mdp, :nom, :prenom, :rang)
       ');
@@ -163,6 +166,7 @@ class Manager{
   public function recupSession($user){
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne tous les emails disponibles dans la table user
     $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
       WHERE email = :email
     ');
@@ -178,6 +182,7 @@ class Manager{
   public function modifier($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne tous les emails disponibles dans la table user
     $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
       WHERE email = :email
     ');
@@ -194,6 +199,7 @@ class Manager{
     }
 
     else if ($res) {
+      #BDD : met à jour tous les informations de l'utilisateur dans la table user
       $req = $bdd -> co_bdd()->prepare('UPDATE user
       SET email = :email,
           mdp = :mdp,
@@ -240,6 +246,7 @@ class Manager{
 public function listUtilisateur(){
   #Instancie la classe BDD
   $bdd = new BDD();
+  #BDD : selectionne tout ce qui est disponibles dans la table user
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM user');
   $req -> execute([]);
   $rescd = $req->fetchall();
@@ -251,16 +258,16 @@ public function listUtilisateur(){
 public function recherche(){
   #Instancie la classe BDD
   $bdd = new BDD();
+  #BDD : selectionne tous les noms disponibles dans les tables livre, cd, film
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre, cd, film
-    WHERE cdnom LIKE %:cdnom%
-    OR livnom LIKE %:livnom%
-    OR filmnom LIKE %:filmnom%
+    WHERE cdnom LIKE :cdnom
+    OR livnom LIKE :livnom
+    OR filmnom LIKE :filmnom
   ');
   $req -> execute([]);
   $re = $req->fetchall();
   header("Location: ../vue/recherche.php");
   return $re;
-
 }
 
 /*
@@ -274,6 +281,7 @@ Partie Administration
   public function inscrAdmin($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne tous les emails disponibles dans la table user
     $req = $bdd -> co_bdd()->prepare('SELECT email FROM user
       WHERE email = :email
     ');
@@ -297,6 +305,7 @@ Partie Administration
     }
 
     else {
+      #BDD : ajoute une ligne/un utilisateur dans la table user
       $req = $bdd -> co_bdd()->prepare('INSERT INTO user (email, datenaissance, mdp, nom, prenom, rang)
       VALUES (:email, :datenaissance, :mdp, :nom, :prenom, :rang)
       ');
@@ -332,6 +341,7 @@ Partie Administration
   public function supprAdmin($user) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne toutes les informations disponibles dans la table user
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM user');
     $req -> execute([
       'id' => $user->getId()
@@ -339,6 +349,7 @@ Partie Administration
     $res = $req -> fetch();
 
     if ($res) {
+      #BDD : supprime une ligne/un utilisateur correspondant à son ID dans la table user
       $req = $bdd -> co_bdd()->prepare('DELETE FROM user
         WHERE id = :id
       ');
@@ -359,6 +370,7 @@ Livre
 public function listLivre(){
   #Instancie la classe BDD
   $bdd = new BDD();
+  #BDD : selectionne toutes les informations disponibles dans la table livre
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre');
   $req -> execute([]);
   $resliv = $req->fetchall();
@@ -370,6 +382,7 @@ public function listLivre(){
   public function ajoutLiv($livre) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne toutes les informations disponibles dans la table livre
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre
       WHERE livnom = :livnom
     ');
@@ -393,6 +406,7 @@ public function listLivre(){
     }
 
     else {
+      #BDD : ajoute une ligne/un livre dans la table livre
       $req = $bdd -> co_bdd()->prepare('INSERT INTO livre (livnom, livaut, livth)
         VALUES (:livnom, :livaut, :livth)
       ');
@@ -425,6 +439,7 @@ public function listLivre(){
   public function modifLiv($livre) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne toutes les informations disponibles dans la table livre
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre
       WHERE livnom = :livnom
     ');
@@ -441,6 +456,7 @@ public function listLivre(){
     }
 
     else if ($res) {
+      #BDD : met à jour une ligne/un livre dans la table livre
       $req = $bdd -> co_bdd()->prepare('UPDATE livre
       SET livnom = :livnom,
           livaut = :livaut,
@@ -483,6 +499,7 @@ CD
 public function listCD(){
   #Instancie la classe BDD
   $bdd = new BDD();
+  #BDD : selectionne toutes les informations disponibles dans la table cd
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd');
   $req -> execute([]);
   $rescd = $req->fetchall();
@@ -494,6 +511,7 @@ public function listCD(){
   public function ajoutCd($cd) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne toutes les informations disponibles dans la table cd
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd
       WHERE cdnom = :cdnom
     ');
@@ -517,6 +535,7 @@ public function listCD(){
     }
 
     else {
+      #BDD : ajoute une ligne/un cd dans la table cd
       $req = $bdd -> co_bdd()->prepare('INSERT INTO cd (cdnom, cdaut, cdth)
         VALUES (:cdnom, :cdaut, :cdth)
       ');
@@ -549,6 +568,7 @@ public function listCD(){
   public function modifCd($cd) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne toutes les informations disponibles dans la table cd
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM cd
       WHERE cdnom = :cdnom
     ');
@@ -565,6 +585,7 @@ public function listCD(){
     }
 
     else if ($res) {
+      #BDD : met à jour une ligne/un cd dans la table cd
       $req = $bdd -> co_bdd()->prepare('UPDATE cd
       SET cdnom = :cdnom,
           cdaut = :cdaut,
@@ -607,6 +628,7 @@ Film
 public function listFilm(){
   #Instancie la classe BDD
   $bdd = new BDD();
+  #BDD : selectionne toutes les informations disponibles dans la table film
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM film');
   $req -> execute([]);
   $resfilm = $req->fetchall();
@@ -618,6 +640,7 @@ public function listFilm(){
   public function ajoutFilm($film) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne toutes les informations disponibles dans la table film
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM film
       WHERE filmnom = :filmnom
     ');
@@ -641,6 +664,7 @@ public function listFilm(){
     }
 
     else {
+      #BDD : ajoute une ligne/un film dans la table film
       $req = $bdd -> co_bdd()->prepare('INSERT INTO film (filmnom, filmaut, filmth)
         VALUES (:filmnom, :filmaut, :filmth)
       ');
@@ -673,6 +697,7 @@ public function listFilm(){
   public function modifFilm($film) {
     #Instancie la classe BDD
     $bdd = new BDD();
+    #BDD : selectionne toutes les informations disponibles dans la table film
     $req = $bdd -> co_bdd()->prepare('SELECT * FROM film
       WHERE filmnom = :filmnom
     ');
@@ -689,6 +714,7 @@ public function listFilm(){
     }
 
     else if ($res) {
+      #BDD : met à jour une ligne/un film dans la table film
       $req = $bdd -> co_bdd()->prepare('UPDATE film
       SET filmnom = :filmnom,
           filmaut = :filmaut,
