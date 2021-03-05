@@ -4,7 +4,7 @@ require_once '../model/cl_film.php';
 require_once '../manager/cl_manager.php';
 
 $liste = new Manager();
-$resfilm = $liste->listfilm();
+$resfilm = $liste->listFilm();
 ?>
 
 <!-- HTML -->

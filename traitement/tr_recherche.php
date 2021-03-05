@@ -7,42 +7,26 @@ require_once '../model/cl_film.php';
 require_once '../manager/cl_manager.php';
 
 try {
+  #Instancie la classe Livre
   $livre = new Livre([
-    'livnom' => $_GET['livnom']
+    'recherche' => $_GET['recherche']
   ]);
-  $manager = new Manager();
-  $manager->recherche($livre);
-}
-#Envoi un message d'erreur en cas d'echec
-catch (Exception $e) {
-}
-
-try {
+  #Instancie la classe Cd
   $cd = new Cd([
-    'cdnom' => $_GET['cdnom']
+    'recherche' => $_GET['recherche']
   ]);
-  $manager = new Manager();
-  $manager->recherche($cd);
-}
-#Envoi un message d'erreur en cas d'echec
-catch (Exception $e) {
-}
-
-try {
+  #Instancie la classe Film
   $film = new Film([
-    'filmnom' => $_GET['filmnom']
+    'recherche' => $_GET['recherche']
   ]);
+  #Instancie la classe Manager
   $manager = new Manager();
+  #Excecute la fonction recherche
+  $manager->recherche($livre);
+  $manager->recherche($cd);
   $manager->recherche($film);
 }
 #Envoi un message d'erreur en cas d'echec
 catch (Exception $e) {
 }
-
-var_dump($livre);
-var_dump($cd);
-var_dump($film);
-var_dump($manager->recherche($livre));
-var_dump($manager->recherche($cd));
-var_dump($manager->recherche($film));
 ?>

@@ -4,7 +4,7 @@ require_once '../model/cl_livre.php';
 require_once '../manager/cl_manager.php';
 
 $liste = new Manager();
-$resliv = $liste->listlivre();
+$resliv = $liste->listLivre();
 ?>
 
 <!-- HTML -->

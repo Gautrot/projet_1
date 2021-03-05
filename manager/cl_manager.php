@@ -252,9 +252,9 @@ public function recherche(){
   #Instancie la classe BDD
   $bdd = new BDD();
   $req = $bdd -> co_bdd()->prepare('SELECT * FROM livre, cd, film
-    WHERE cdnom = :cdnom
-    OR livnom = :livnom
-    OR filmnom = :filmnom
+    WHERE cdnom LIKE %:cdnom%
+    OR livnom LIKE %:livnom%
+    OR filmnom LIKE %:filmnom%
   ');
   $req -> execute([]);
   $re = $req->fetchall();

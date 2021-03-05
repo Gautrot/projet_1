@@ -4,7 +4,7 @@ require_once '../model/cl_cd.php';
 require_once '../manager/cl_manager.php';
 
 $liste = new Manager();
-$rescd = $liste->listcd();
+$rescd = $liste->listCd();
 ?>
 
 <!-- HTML -->
