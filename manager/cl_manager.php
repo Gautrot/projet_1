@@ -143,7 +143,7 @@ class Manager{
        ]);
 
       if ($res2) {
-        header("Location: ../vue/espace_client.php");
+        header("Location: ../index.php");
       }
 
 # Erreur : Si un ou plusieurs champs sont vides.
