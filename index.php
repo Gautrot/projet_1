@@ -54,10 +54,10 @@ require_once 'manager/cl_manager.php';
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_connexion.php">
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail" required autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
+                                        <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe" required>
                                     </div>
                                     <div class="m-4">
                                         <input class="btn btn-primary" type="submit" value="Se connecter" />
@@ -81,20 +81,20 @@ require_once 'manager/cl_manager.php';
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_inscription.php">
                                     <div class="form-group">
-                                        <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom">
+                                        <input type="text" name="nom" class="form-control form-control-user" placeholder="Nom" required autofocus>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom">
+                                        <input type="text" name="prenom" class="form-control form-control-user" placeholder="Prénom" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail" required>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-6 mb-3 mb-sm-0">
-                                            <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe">
+                                            <input type="password" name="mdp" class="form-control form-control-user" placeholder="Mot de passe" required>
                                         </div>
                                         <div class="col-sm-6">
-                                            <input type="password" name="mdpconfirm" class="form-control form-control-user" placeholder="Confirmer">
+                                            <input type="password" name="mdpconfirm" class="form-control form-control-user" placeholder="Confirmer" required>
                                         </div>
                                     </div>
                                     <div class="mt-4">
@@ -120,7 +120,7 @@ require_once 'manager/cl_manager.php';
                                 <hr class="m-4">
                                 <form method="post" action="traitement/tr_oublie.php">
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail">
+                                        <input type="email" name="email" class="form-control form-control-user" placeholder="E-mail" required>
                                     </div>
                                     <div class="mt-4">
                                         <input class="btn btn-primary" type="submit" value="Envoyer" />
