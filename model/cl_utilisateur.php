@@ -1,12 +1,16 @@
 <?php
 class Utilisateur{
-  private $nom, $mdp, $email, $prenom, $datenaissance, $rang;
+  private $nom, $mdp, $email, $prenom, $datenaissance, $rang, $id;
 
   public function __construct($donnees){
     $this->hydrate($donnees);
   }
 
 # Getters
+
+  public function getId() {
+    return $this->id;
+  }
 
   public function getEmail() {
     return $this->email;
@@ -24,7 +28,7 @@ class Utilisateur{
     return $this->prenom;
   }
 
-  public function getDateNaissance() {
+  public function getDatenaissance() {
     return $this->datenaissance;
   }
 
@@ -33,6 +37,10 @@ class Utilisateur{
   }
 
 # Setters
+
+  public function setId($id) {
+    $this->id = $id;
+  }
 
   public function setEmail($email) {
     if (is_string($email)) {
@@ -58,13 +66,13 @@ class Utilisateur{
     }
   }
 
-  public function setDateNaissance($datenaissance) {
+  public function setDatenaissance($datenaissance) {
     if (is_string($datenaissance)) {
-      $this->dateNaissance = $datenaissance;
+      $this->datenaissance = $datenaissance;
     }
   }
 
-  public function setrang($rang) {
+  public function setRang($rang) {
     if (is_string($rang)) {
       $this->rang = $rang;
     }
